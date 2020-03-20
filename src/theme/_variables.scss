@@ -1,0 +1,21 @@
+/*  Globals */
+// -- Apearence
+$background-image: url("assets/app-bg.jpg");
+// -- Typography
+$font-size: 14px;
+$font-body: "Source Sans Pro", sans-serif;
+$font-head: "Montserrat", Arial, sans-serif;
+$font-code: consolas, inconsolatas, monospace;
+$font-lineheight: 1.4;
+// -- Layout
+$spacing: 1em;
+/* Cards */
+$layout: flex;
+/* Dialog */
+@media screen and (max-width: 680) {
+  $small-width: 60vw;
+}
+@media screen and (max-width: 480) {
+  $small-width: 90vw;
+}
+$small-width: 50vw;

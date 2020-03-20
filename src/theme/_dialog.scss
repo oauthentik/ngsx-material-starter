@@ -1,0 +1,30 @@
+.medium-dialog,
+.large-dialog,
+.fullscreen-dialog,
+.small-dialog {
+  align-items: center;
+  max-height: 100vh !important;
+}
+.large-dialog {
+  min-height: 90vh;
+}
+.medium-dialog {
+  min-width: 40%;
+  max-width: 720px !important;
+  min-height: 90vh;
+}
+.fullscreen-dialog {
+  min-width: 100vw;
+  height: 100vh;
+}
+
+.small-dialog {
+  min-width: 360px;
+  max-width: 460px !important;
+  min-height: 200px;
+}
+.popup-dialog {
+  min-width: 360px;
+  max-width: 350px !important;
+  max-height: 240px !important;
+}
