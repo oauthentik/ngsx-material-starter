@@ -1,14 +1,20 @@
 /*  Globals */
 // -- Apearence
 $background-image: url("assets/app-bg.jpg");
+$default-bg: #fff;
+$default-fg: #000;
 // -- Typography
 $font-size: 14px;
-$font-body: "Source Sans Pro", sans-serif;
-$font-head: "Montserrat", Arial, sans-serif;
+$font-primary: "Source Sans Pro", sans-serif;
+$font-secondary: "Montserrat", Arial, sans-serif;
 $font-code: consolas, inconsolatas, monospace;
 $font-lineheight: 1.4;
 // -- Layout
+$app-toolbar-height: 48px;
 $spacing: 1em;
+$container-spacing: 20%;
+/* MEnus */
+$menu-width: 300px;
 /* Cards */
 $layout: flex;
 /* Dialog */
@@ -19,3 +25,9 @@ $layout: flex;
   $small-width: 90vw;
 }
 $small-width: 50vw;
+
+/* Breadcrumbs */
+$breadcrumb-bg: #fff !default;
+$breadcrumb-fg: #333 !default;
+$breadcrumb-font-family: $font-primary !default;
+$breadcrumb-height: 2em !default;

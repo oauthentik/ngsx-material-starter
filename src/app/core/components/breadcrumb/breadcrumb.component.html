@@ -1,0 +1,51 @@
+<div class="breadcrumb-container">
+  <nav *ngIf="breadcrumbs?.length">
+    <ng-container *ngFor="let item of breadcrumbs">
+      <a
+        *ngIf="!item.children"
+        class="link"
+        [class.disabled]="item.disabled"
+        [routerLink]="item.slugs"
+        [routerLinkActive]="routerLinkActiveClasslist"
+        [routerLinkActiveOptions]="{
+          exact: true
+        }"
+        #rla="routerLinkActive"
+        [queryParams]="item?.queryParams"
+      >
+        <mat-icon *ngIf="item.icon">{{ item?.icon }}</mat-icon>
+        <span class="space-left">
+          {{ item.label }}
+        </span>
+      </a>
+      <ng-container *ngIf="item.children?.length">
+        <mat-menu #breadcrumbMenu="matMenu">
+          <button
+            mat-menu-item
+            *ngFor="let option of item.children"
+            (click)="navigate(option.slugs)"
+          >
+            {{ option.label }}
+          </button>
+        </mat-menu>
+        <button
+          class="btn-auto btn-dark rounded-0 active"
+          [disabled]="item.disabled"
+          [routerLink]="item.slugs"
+          [routerLinkActive]="routerLinkActiveClasslist"
+          [routerLinkActiveOptions]="{
+            exact: true
+          }"
+          #rla="routerLinkActive"
+          [queryParams]="item?.queryParams"
+        >
+          <mat-icon *ngIf="item.icon">{{ item?.icon }}</mat-icon>
+          {{ item.label }}
+        </button>
+        <button mat-icon-button [matMenuTriggerFor]="breadcrumbMenu">
+          <mat-icon inline="true">create</mat-icon>
+        </button>
+      </ng-container>
+    </ng-container>
+  </nav>
+</div>

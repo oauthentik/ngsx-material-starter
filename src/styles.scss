@@ -1,6 +1,53 @@
 /* You can add global styles to this file, and also import other style files */
+$material-icons-font-path: "~material-icons/iconfont/";
+@import "material-icons/iconfont/material-icons.scss";
+@import "~@angular/material/theming";
+@include mat-core();
+
 @import "theme/all";
-body,html{
-  font-family: $font-body;
+$theme-primary: mat-palette($mat-indigo);
+$theme-accent: mat-palette($mat-yellow, A200, A100, A400);
+$theme-warn: mat-palette($mat-red, A200);
+$theme-pallete: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
+
+@include angular-material-theme($theme-pallete);
+body,
+html {
+  font-family: $font-primary;
   font-size: $font-size;
+  line-height: $font-lineheight;
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  overflow: hidden;
+  overflow-y: auto;
+}
+mat-toolbar.app-toolbar {
+  display: flex;
+  flex-direction: row;
+  align-items: stretch;
+  justify-content: start;
+  height: $app-toolbar-height;
+  max-height: $app-toolbar-height;
+  min-height: $app-toolbar-height;
+  z-index: 1005;
+}
+.app-logo-container {
+  width: $app-toolbar-height * 0.8;
+  display: flex;
+}
+.app-logo {
+  object-fit: contain;
+  margin: auto;
+  max-width: 100%;
+}
+.toolbar-title {
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+  display: flex;
+  font-family: $font-secondary;
+  font-weight: 500;
+  margin: 0;
+  padding: 5px 10px;
 }

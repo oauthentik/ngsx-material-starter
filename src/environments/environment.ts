@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  api: { host: `localhost:3000`, url: `localhost:3000/api` },
+  appName: "Angular Boilerplate"
 };
 
 /*

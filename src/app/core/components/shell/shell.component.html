@@ -1,0 +1,26 @@
+<mat-toolbar class="app-toolbar mat-elevation-z5">
+  <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="10px">
+    <div class="app-logo-container">
+      <img [src]="appLogo" alt="App Logo" class="app-logo" />
+    </div>
+    <button
+      (click)="drawer.toggle()"
+      mat-mini-fab
+      [ngClass]="{ 'mat-elevation-z1': drawer.opened }"
+    >
+      <mat-icon>menu</mat-icon>
+    </button>
+    <strong class="toolbar-title"> {{ appName }}</strong>
+  </div>
+</mat-toolbar>
+<mat-drawer-container class="app-drwwer-container">
+  <mat-drawer #drawer mode="push" opened>
+    <app-menu [menus]="menus$ | async"> </app-menu>
+  </mat-drawer>
+  <mat-drawer-content>
+    <div fxLayout="column" fxLayoutAlign="stretch stretch" fxLayoutGap="0px">
+      <app-breadcrumb></app-breadcrumb>
+      <router-outlet></router-outlet>
+    </div>
+  </mat-drawer-content>
+</mat-drawer-container>

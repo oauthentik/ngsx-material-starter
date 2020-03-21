@@ -1,0 +1,31 @@
+@import "variables";
+@import "mixins";
+:host {
+  width: 100%;
+  min-width: $menu-width;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  .menu-list {
+    padding: 0;
+    &.has-children {
+      padding: 0 0 10px 0;
+    }
+  }
+  button.menu-entry {
+    @include no-round();
+    @include flex-row();
+    @include stretch();
+    width: 100%;
+    font-weight: 600;
+    font-family: $font-secondary;
+    .menu-icon {
+      margin-right: 0.5em;
+    }
+    ::ng-deep .mat-buttom-wrapper {
+      @include fill();
+      @include flex-row();
+      @include center();
+    }
+  }
+}

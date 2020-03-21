@@ -1,0 +1,36 @@
+@mixin fill {
+  flex: 1 1 auto;
+}
+@mixin flex {
+  display: flex;
+}
+@mixin stretch {
+  justify-content: stretch;
+  align-items: stretch;
+}
+@mixin start {
+  justify-content: start;
+  align-items: start;
+}
+@mixin end {
+  justify-content: end;
+  align-items: end;
+}
+@mixin center {
+  justify-content: center;
+  align-items: center;
+}
+@mixin flex-row {
+  @include flex();
+  flex-direction: row;
+  @include stretch();
+}
+@mixin flex-column {
+  @include flex();
+  flex-direction: column;
+  @include stretch();
+}
+
+@mixin no-round {
+  border-radius: 0;
+}

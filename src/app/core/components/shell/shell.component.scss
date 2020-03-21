@@ -1,0 +1,16 @@
+@import "variables";
+@import "mixins";
+:host {
+  @include flex-column();
+  @include fill();
+  .app-drwwer-container {
+    @include flex-column();
+    @include fill();
+    display: flex;
+    background-color: $default-bg;
+    color: $default-fg;
+  }
+  mat-sidenav {
+    width: 270px;
+  }
+}
