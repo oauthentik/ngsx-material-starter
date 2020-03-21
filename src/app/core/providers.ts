@@ -19,6 +19,7 @@ import { NGXS_PLUGINS } from "@ngxs/store";
 import { JwtInterceptService } from "./services";
 import { AuthGuardService } from "./guards/auth-guard.service";
 import { AppRoutes } from "@app/config/routes";
+import { AppImages } from "@app/config/images";
 
 export const providers: Provider[] = [
   {
@@ -43,11 +44,11 @@ export const providers: Provider[] = [
   },
   {
     provide: APP_LOGO,
-    useValue: `assets/logo.svg`
+    useValue: environment.appLogo
   },
   {
     provide: APP_IMAGES,
-    useValue: `assets/imgs`
+    useValue: AppImages
   },
   AuthService,
   AnimationsService,

@@ -1,11 +1,12 @@
+@import "variables";
+@import "mixins";
 :host {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  @include flex-column();
+  @include center();
   min-height: 100vh;
   width: 100%;
   // background-attachment: fixed;
-  background: url(/assets/bg.svg) no-repeat center;
+  background: url(/assets/imgs/login-bg.jpg) no-repeat center;
   background-size: cover;
   .auth-card {
     max-width: 340px;
