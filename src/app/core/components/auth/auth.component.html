@@ -4,8 +4,8 @@
       Se connecter
     </span>
   </h4>
-  <div *ngIf="error | async" class="mat-warn mat-caption">
-    Mot de passe / Login incorrect
+  <div *ngIf="error | async as e" class="mat-error mat-caption">
+    {{ e.message }}
   </div>
   <div *ngIf="form.invalid && form.touched" class="mat-warn mat-caption">
     Veuillez saisir les champs requis

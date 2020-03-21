@@ -13,6 +13,7 @@ import { AppDashboardComponent } from "./components/app-dashboard/app-dashboard.
 import { RouterModule } from "@angular/router";
 import { AppState } from "./store/app.state";
 import { environment } from "@env/environment";
+import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 
 @NgModule({
   declarations: [ShellComponent, AuthComponent, AppDashboardComponent],
@@ -21,6 +22,7 @@ import { environment } from "@env/environment";
     NgxsModule.forRoot([AppState], {
       developmentMode: !environment.production
     }),
+    NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     HttpClientModule,
     UiModule,
     NgPipesModule,

@@ -7,6 +7,8 @@ import * as jwt_decode from "jwt-decode";
 import { Observable, of } from "rxjs";
 import { catchError, switchMap, tap } from "rxjs/operators";
 import { API } from "src/app/config/di";
+import { API_ROUTES } from "@app/config/api-index";
+import { AppAuthStateDefaults } from "@app/core/store/models/app-state.model";
 
 @Injectable({
   providedIn: "root"
@@ -21,16 +23,10 @@ export class AuthService {
   login(credentials) {
     return this.http
       .post<AuthStateModel>(
-        `${this.api.url}/${this.api.index["auth/login"]}`,
+        `${this.api.url}/${this.api.index[API_ROUTES.AuthLogin]}`,
         credentials
       )
       .pipe(
-        catchError(err => {
-          return of({
-            authenticating: false,
-            error: err
-          });
-        }),
         tap((data: any) => {
           if (data && data.access) {
             this.localStorageService.setItem("AUTH_TOKEN", data["access"]);
@@ -46,6 +42,13 @@ export class AuthService {
             authenticating: false,
             error: null
           }) as Observable<AuthStateModel>;
+        }),
+        catchError(err => {
+          return of({
+            ...AppAuthStateDefaults,
+            authenticating: false,
+            error: err
+          });
         })
       );
   }

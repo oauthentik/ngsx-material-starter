@@ -27,9 +27,7 @@ export class AppState {
     private router: Router,
     @Inject(BASE_HREF) private baseHref,
     @Inject(APP_ROUTES) private appRoutes
-  ) {
-    console.log(appRoutes);
-  }
+  ) {}
 
   @Action(LoadAppMenu)
   loadAppMenu(ctx: StateContext<AppStateModel>, role: UserRoles) {
@@ -45,6 +43,9 @@ export class AppState {
     return this.authService.login(payload).pipe(
       tap(auth => {
         ctx.patchState({ auth });
+        if (!auth.error && auth.user) {
+          this.router.navigate([this.baseHref]);
+        }
       })
     );
   }
@@ -53,7 +54,7 @@ export class AppState {
     return this.authService.logout().pipe(
       tap(ok => {
         ctx.setState(AppStateDefaults);
-        this.router.navigate([this.baseHref, this.appRoutes.Login]);
+        this.router.navigate([this.baseHref, this.appRoutes[AppRoutes.Login]]);
       })
     );
   }
