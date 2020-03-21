@@ -17,6 +17,7 @@
   align-items: end;
 }
 @mixin center {
+  text-align: center;
   justify-content: center;
   align-items: center;
 }
@@ -30,7 +31,49 @@
   flex-direction: column;
   @include stretch();
 }
-
+@mixin rounded {
+  border-radius: 20px;
+}
 @mixin no-round {
   border-radius: 0;
+}
+
+@mixin cards {
+  .mat-card-content {
+    @include flex-column();
+  }
+}
+@mixin typography {
+  .mat-card,
+  .mat-small,
+  .mat-caption,
+  .mat-button,
+  .mat-raised-button,
+  .mat-icon-button,
+  .mat-stroked-button,
+  .mat-flat-button,
+  .mat-fab,
+  .mat-mini-fab,
+  .mat-form-field {
+    font-family: $font-primary;
+  }
+  .mat-h2,
+  .mat-title,
+  .mat-typography h2,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  h7,
+  h8 {
+    font-family: $font-secondary;
+  }
+}
+@mixin bugfixes {
+  .mat-form-field-prefix .mat-icon,
+  .mat-form-field-suffix .mat-icon {
+    margin-right: 1em;
+  }
 }

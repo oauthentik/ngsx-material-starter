@@ -1,16 +1,27 @@
 <mat-toolbar class="app-toolbar mat-elevation-z5">
   <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="10px">
-    <div class="app-logo-container">
-      <img [src]="appLogo" alt="App Logo" class="app-logo" />
-    </div>
     <button
+      class="sidenav-toggle"
       (click)="drawer.toggle()"
       mat-mini-fab
       [ngClass]="{ 'mat-elevation-z1': drawer.opened }"
     >
       <mat-icon>menu</mat-icon>
     </button>
-    <strong class="toolbar-title"> {{ appName }}</strong>
+    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+      <a [routerLink]="[baseHref]" class="app-logo-container">
+        <img [src]="appLogo" alt="App Logo" class="app-logo" />
+      </a>
+      <strong class="toolbar-title"> {{ appName }}</strong>
+    </div>
+    <button
+      *ngIf="(auth$ | async)?.user"
+      matTooltip="Logout"
+      (click)="logout()"
+      mat-icon-button
+    >
+      <mat-icon>power_settings_new</mat-icon>
+    </button>
   </div>
 </mat-toolbar>
 <mat-drawer-container class="app-drwwer-container">
@@ -18,9 +29,14 @@
     <app-menu [menus]="menus$ | async"> </app-menu>
   </mat-drawer>
   <mat-drawer-content>
-    <div fxLayout="column" fxLayoutAlign="stretch stretch" fxLayoutGap="0px">
-      <app-breadcrumb></app-breadcrumb>
-      <router-outlet></router-outlet>
+    <div class="app-wrapper">
+      <div fxLayout="column" fxLayoutAlign="stretch stretch" fxLayoutGap="0px">
+        <app-breadcrumb
+          [breadcrumbs]="menus$ | async"
+          *ngIf="(menus$ | async)?.length"
+        ></app-breadcrumb>
+        <router-outlet></router-outlet>
+      </div>
     </div>
   </mat-drawer-content>
 </mat-drawer-container>

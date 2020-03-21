@@ -9,5 +9,5 @@ export interface MenuItem {
   icon: string;
   children: MenuItem[];
   access: UserRoles[];
-  group: string;
+  placement: "sidebar" | "breadcrumb" | "both";
 }

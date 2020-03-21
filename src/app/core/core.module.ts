@@ -11,12 +11,16 @@ import { UiModule } from "./ui.module";
 import { NgPipesModule } from "angular-pipes";
 import { AppDashboardComponent } from "./components/app-dashboard/app-dashboard.component";
 import { RouterModule } from "@angular/router";
+import { AppState } from "./store/app.state";
+import { environment } from "@env/environment";
 
 @NgModule({
   declarations: [ShellComponent, AuthComponent, AppDashboardComponent],
   imports: [
     CommonModule,
-    NgxsModule.forRoot(),
+    NgxsModule.forRoot([AppState], {
+      developmentMode: !environment.production
+    }),
     HttpClientModule,
     UiModule,
     NgPipesModule,

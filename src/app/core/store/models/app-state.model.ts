@@ -6,16 +6,16 @@ export interface AppStateModel {
   auth: AuthStateModel;
   breadcrumb: Partial<MenuItem>[];
 }
-
+export const AppAuthStateDefaults: AuthStateModel = {
+  token: null,
+  refresh: null,
+  tokenExpireAt: null,
+  error: null,
+  authenticating: false,
+  user: null
+};
 export const AppStateDefaults: AppStateModel = {
   menus: [],
-  auth: {
-    token: null,
-    refresh: null,
-    tokenExpireAt: null,
-    error: null,
-    authenticating: false,
-    user: null
-  },
+  auth: AppAuthStateDefaults,
   breadcrumb: null
 };

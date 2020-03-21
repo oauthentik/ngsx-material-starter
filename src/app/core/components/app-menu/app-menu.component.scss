@@ -13,11 +13,14 @@
     }
   }
   button.menu-entry {
-    @include no-round();
+    @include rounded();
     @include flex-row();
     @include stretch();
-    width: 100%;
     font-weight: 600;
+    height: $menu-item-heigth;
+    margin: $menu-item-margin-y $menu-item-margin-x;
+    width: calc(100% - #{2 * $menu-item-margin-x});
+    box-shadow: $menu-item-boxshadow;
     font-family: $font-secondary;
     .menu-icon {
       margin-right: 0.5em;

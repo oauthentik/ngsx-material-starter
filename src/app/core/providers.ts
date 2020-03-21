@@ -2,7 +2,13 @@ import { NotificationsService } from "./services/notifications/notifications.ser
 import { LocalStorageService } from "./services/local-storage/local-storage.service";
 import { AnimationsService } from "./services/animations/animations.service";
 import { AuthService } from "./services/auth/auth.service";
-import { APP_NAME, APP_LOGO, APP_IMAGES, BASE_HREF } from "./../config/di";
+import {
+  APP_NAME,
+  APP_LOGO,
+  APP_IMAGES,
+  BASE_HREF,
+  APP_ROUTES
+} from "./../config/di";
 import { environment } from "@env/environment";
 import { Provider } from "@angular/core";
 import { API } from "../config/di";
@@ -11,6 +17,8 @@ import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { logoutPlugin } from "./store/plugins/clean-on-logout";
 import { NGXS_PLUGINS } from "@ngxs/store";
 import { JwtInterceptService } from "./services";
+import { AuthGuardService } from "./guards/auth-guard.service";
+import { AppRoutes } from "@app/config/routes";
 
 export const providers: Provider[] = [
   {
@@ -30,12 +38,16 @@ export const providers: Provider[] = [
     useValue: "/"
   },
   {
+    provide: APP_ROUTES,
+    useValue: AppRoutes
+  },
+  {
     provide: APP_LOGO,
     useValue: `assets/logo.svg`
   },
   {
     provide: APP_IMAGES,
-    useValue: `assets/imgs.svg`
+    useValue: `assets/imgs`
   },
   AuthService,
   AnimationsService,
@@ -50,5 +62,6 @@ export const providers: Provider[] = [
     provide: NGXS_PLUGINS,
     useValue: logoutPlugin,
     multi: true
-  }
+  },
+  AuthGuardService
 ];

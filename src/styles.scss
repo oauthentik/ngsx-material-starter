@@ -3,7 +3,7 @@ $material-icons-font-path: "~material-icons/iconfont/";
 @import "material-icons/iconfont/material-icons.scss";
 @import "~@angular/material/theming";
 @include mat-core();
-
+@import "mixins";
 @import "theme/all";
 $theme-primary: mat-palette($mat-indigo);
 $theme-accent: mat-palette($mat-yellow, A200, A100, A400);
@@ -23,10 +23,6 @@ html {
   overflow-y: auto;
 }
 mat-toolbar.app-toolbar {
-  display: flex;
-  flex-direction: row;
-  align-items: stretch;
-  justify-content: start;
   height: $app-toolbar-height;
   max-height: $app-toolbar-height;
   min-height: $app-toolbar-height;
@@ -51,3 +47,9 @@ mat-toolbar.app-toolbar {
   margin: 0;
   padding: 5px 10px;
 }
+.app-wrapper {
+  padding: $spacing;
+}
+@include cards();
+@include typography();
+@include bugfixes();

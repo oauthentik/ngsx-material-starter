@@ -1,97 +1,90 @@
 <mat-card class="auth-card">
-  <h4 class="mat-h2 text-center">
+  <h4 class="mat-title">
     <span>
       Se connecter
     </span>
   </h4>
-  <div *ngIf="error | async" class="alert alert-danger mat-body-2 small">
+  <div *ngIf="error | async" class="mat-warn mat-caption">
     Mot de passe / Login incorrect
   </div>
-  <div
-    [@flash]="form.invalid && form.touched"
-    *ngIf="form.invalid && form.touched && submittedCount"
-    class="alert alert-danger mat-body-2 small"
-  >
+  <div *ngIf="form.invalid && form.touched" class="mat-warn mat-caption">
     Veuillez saisir les champs requis
   </div>
   <mat-card-content>
-    <form (ngSubmit)="login()" [formGroup]="form" fxFlex="100%">
-      <div
-        fxLayout="column"
-        fxLayoutAlign="space-between stretch"
-        fxLayoutGap="10px"
-      >
-        <mat-form-field>
-          <mat-label>
-            Nom utilisateur
-          </mat-label>
-          <mat-icon matPrefix color="primary">account_circle</mat-icon>
-          <input
-            matInput
-            class="pl-2"
-            formControlName="username"
-            aria-autocomplete="false"
-          />
-          <mat-error
-            *ngIf="
-              form.get('username')?.hasError('required') &&
-              form.get('username').touched
-            "
-          >
-            Ce champs est requis
-          </mat-error>
-        </mat-form-field>
-
-        <mat-form-field>
-          <mat-label>
-            Mot de passe
-          </mat-label>
-          <mat-icon matPrefix color="primary">lock</mat-icon>
-          <input
-            matInput
-            class="pl-2"
-            [formControlName]="'password'"
-            autocomplete="current-password"
-            [attr.type]="visiblePwd ? 'text' : 'password'"
-          />
-          <button
-            type="button"
-            [color]="visiblePwd ? 'warn' : 'primary'"
-            matSuffix
-            mat-icon-button
-            (click)="visiblePwd = !visiblePwd"
-          >
-            <mat-icon>{{
-              visiblePwd ? "visibility_off" : "visibility"
-            }}</mat-icon>
-          </button>
-          <mat-error
-            *ngIf="
-              form.get('password')?.hasError('required') &&
-              form.get('password').touched
-            "
-          >
-            Ce champs est requis
-          </mat-error>
-        </mat-form-field>
-
-        <button
-          mat-raised-button
-          class="btn-lg btn-dark"
-          [disabled]="isAuthenticating | async"
+    <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
+      <form (ngSubmit)="login()" [formGroup]="form" fxFlex="100%">
+        <div
+          fxLayout="column"
+          fxLayoutAlign="space-between stretch"
+          fxLayoutGap="10px"
         >
-          Se connecter
-        </button>
+          <mat-form-field>
+            <mat-label>
+              Nom utilisateur
+            </mat-label>
+            <mat-icon matPrefix color="primary">account_circle</mat-icon>
+            <input
+              matInput
+              class="pl-2"
+              formControlName="username"
+              aria-autocomplete="false"
+            />
+            <mat-error
+              *ngIf="
+                form.get('username')?.hasError('required') &&
+                form.get('username').touched
+              "
+            >
+              Ce champs est requis
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field>
+            <mat-label>
+              Mot de passe
+            </mat-label>
+            <mat-icon matPrefix color="primary">lock</mat-icon>
+            <input
+              matInput
+              class="pl-2"
+              [formControlName]="'password'"
+              autocomplete="current-password"
+              [attr.type]="visiblePwd ? 'text' : 'password'"
+            />
+            <button
+              type="button"
+              [color]="visiblePwd ? 'warn' : 'primary'"
+              matSuffix
+              mat-icon-button
+              (click)="visiblePwd = !visiblePwd"
+            >
+              <mat-icon>{{
+                visiblePwd ? "visibility_off" : "visibility"
+              }}</mat-icon>
+            </button>
+            <mat-error
+              *ngIf="
+                form.get('password')?.hasError('required') &&
+                form.get('password').touched
+              "
+            >
+              Ce champs est requis
+            </mat-error>
+          </mat-form-field>
+
+          <button
+            mat-raised-button
+            color="primary"
+            [disabled]="isAuthenticating | async"
+          >
+            <strong>Se connecter</strong>
+          </button>
+        </div>
+      </form>
+      <div fxLayout="row" fxLayoutAlign="center center" fxLayoutGap="10px">
+        <div class="mat-caption">Tout droits réservés au {{ appName }}</div>
+        <img [src]="appLogo" alt="AppLogo" width="30px" />
       </div>
-    </form>
-    <div
-      fxLayout="row"
-      fxLayoutAlign="center center"
-      fxLayoutGap="10px"
-      class="mt-2"
-    >
-      <div class="mat-caption">Tout droits réservés au {{ appName }}</div>
-      <img [src]="appLogo" alt="AppLogo" width="100px" />
     </div>
   </mat-card-content>
 </mat-card>
