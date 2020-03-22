@@ -42,6 +42,6 @@ So change it to your real values
 3. Adding a beautifull generic dashboards
 4. More control
 
-## Liscence
+## Licence
 
 Apache 2
