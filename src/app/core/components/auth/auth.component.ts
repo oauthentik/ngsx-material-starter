@@ -31,6 +31,8 @@ export class AuthComponent implements OnInit {
   @Select(AuthState.authErrors) error$: Observable<string | null>;
   @Select(AuthState.isAuthenticating) isAuthenticating$: Observable<boolean>;
   visiblePwd: boolean;
+  year = new Date().getFullYear();
+
   form: FormGroup;
   constructor(
     private _fb: FormBuilder,
