@@ -12,7 +12,7 @@ import {
 } from "@ngxs/store";
 import { tap } from "rxjs/operators";
 import { AuthService } from "../services/auth/auth.service";
-import { Login, Logout } from "./actions/auth.action";
+import { Login, Logout, RefreshToken } from "./actions/auth.action";
 import { Navigate } from "@ngxs/router-plugin";
 import {
   AppAuthStateDefaults,
@@ -52,7 +52,6 @@ export class AuthState {
     const authState: AuthStateModel = this.store.selectSnapshot(
       AUTH_STATE_TOKEN
     );
-
     return authState ? authState.token : null;
   }
   isTokenExpired() {
@@ -73,13 +72,15 @@ export class AuthState {
     return token && !this.isTokenExpired();
   }
   @Action(Login)
-  login(ctx: StateContext<AppStateModel>, payload: LoginPayload) {
+  login(ctx: StateContext<AuthStateModel>, action: Login) {
+    const payload: LoginPayload = action.payload;
     ctx.patchState({
-      auth: { authenticating: true, ...ctx.getState().auth }
+      authenticating: true,
+      ...ctx.getState()
     });
     return this.authService.login(payload).pipe(
       tap(auth => {
-        ctx.patchState({ auth });
+        ctx.patchState({ ...auth });
         if (this.isAuthorized()) {
           this.store.dispatch(new Navigate([this.baseHref]));
         }
@@ -87,8 +88,16 @@ export class AuthState {
     );
   }
   @Action(Logout)
-  logout(ctx: StateContext<AppStateModel>) {
-    ctx.setState(AppStateDefaults);
+  logout(ctx: StateContext<AuthStateModel>) {
+    ctx.setState(AppAuthStateDefaults);
     this.store.dispatch(new Navigate([this.baseHref, this.appRoutes.Login]));
+  }
+
+  @Action(RefreshToken)
+  refreshToken(ctx: StateContext<AuthStateModel>, action: RefreshToken) {
+    ctx.patchState({
+      refresh: action.payload
+    });
+    this.store.dispatch(new Navigate([this.baseHref]));
   }
 }

@@ -6,8 +6,9 @@ export class Login {
 export class Logout {
   static readonly type = "[Auth] Logout";
 }
-export class SaveCredentials {
-  static readonly type = "[Auth] SaveCredentials";
+export class RefreshToken {
+  static readonly type = "[Auth] RefreshToken";
+  constructor(public payload: string) {}
 }
 export class ClearCredentials {
   static readonly type = "[Auth] ClearCredentials";

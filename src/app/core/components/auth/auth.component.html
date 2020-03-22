@@ -28,7 +28,7 @@
         >
           <mat-form-field>
             <mat-label>
-              Nom utilisateur
+              Username
             </mat-label>
             <mat-icon matPrefix color="primary">account_circle</mat-icon>
             <input
@@ -43,13 +43,13 @@
                 form.get('username').touched
               "
             >
-              Ce champs est requis
+              {{ messageService.getMessageText('forms.required')}}
             </mat-error>
           </mat-form-field>
 
           <mat-form-field>
             <mat-label>
-              Mot de passe
+              Password
             </mat-label>
             <mat-icon matPrefix color="primary">lock</mat-icon>
             <input
@@ -76,7 +76,7 @@
                 form.get('password').touched
               "
             >
-              Ce champs est requis
+              {{ messageService.getMessageText('forms.required')}}
             </mat-error>
           </mat-form-field>
 

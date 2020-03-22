@@ -10,7 +10,8 @@ import {
 import { Store } from "@ngxs/store";
 import { Logout } from "../store/actions/auth.action";
 import { AppStateModel } from "../store/models/app-state.model";
-import { APP_STATE_TOKEN } from "../store/app.state";
+import { AUTH_STATE_TOKEN } from "../store/auth.state";
+import { AuthStateModel } from "../store/models/auth.model";
 
 @Injectable({
   providedIn: "root"
@@ -20,8 +21,10 @@ export class AuthGuardService implements CanActivate, CanLoad {
   path: ActivatedRouteSnapshot[];
   route: ActivatedRouteSnapshot;
   private tokenExpired() {
-    const snapshot: AppStateModel = this.store.selectSnapshot(APP_STATE_TOKEN);
-    const expiryAt: number = snapshot.auth.tokenExpireAt;
+    const snapshot: AuthStateModel = this.store.selectSnapshot(
+      AUTH_STATE_TOKEN
+    );
+    const expiryAt: number = snapshot.tokenExpireAt;
     return !expiryAt || (expiryAt && expiryAt > Date.now());
   }
   private canAccess() {

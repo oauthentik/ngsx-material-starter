@@ -3,13 +3,11 @@ import { UserRoles } from "@app/models/user";
 import { Action, State, StateContext, StateToken } from "@ngxs/store";
 import { LoadAppMenu } from "./actions/menu.actions";
 import { AppStateDefaults, AppStateModel } from "./models/app-state.model";
-import { AuthState } from "./auth.state";
 export const APP_STATE_TOKEN = new StateToken<AppStateModel>("app_state");
 
 @State<AppStateModel>({
   name: APP_STATE_TOKEN,
-  defaults: AppStateDefaults,
-  children: [AuthState]
+  defaults: AppStateDefaults
 })
 export class AppState {
   @Action(LoadAppMenu)

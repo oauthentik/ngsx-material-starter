@@ -32,9 +32,9 @@ export class AuthService {
           if (data) {
             return of({
               user: this.decodeToken(data.access),
-              token: data.access,
-              refresh: data.refresh,
-              tokenExpireAt: data.expire_at,
+              token: data.token,
+              refresh: data.token,
+              tokenExpireAt: data.expiresIn,
               authenticating: false,
               error: null
             }) as Observable<AuthStateModel>;
@@ -50,7 +50,9 @@ export class AuthService {
           return of({
             ...AppAuthStateDefaults,
             authenticating: false,
-            error: err.message
+            error: err.status === 401?  this.messageService.getMessageText(
+              "auth.invalid-credentials"
+            ): `${err.status} - ${err.message}`
           });
         })
       );
