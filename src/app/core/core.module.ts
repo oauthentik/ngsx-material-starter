@@ -15,6 +15,7 @@ import { AppState } from "./store/app.state";
 import { environment } from "@env/environment";
 import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { AuthState } from "./store/auth.state";
+import { MessagesModule } from "./components/message/message.module";
 
 @NgModule({
   declarations: [ShellComponent, AuthComponent, AppDashboardComponent],
@@ -28,6 +29,7 @@ import { AuthState } from "./store/auth.state";
     UiModule,
     NgPipesModule,
     AppMenuModule,
+    MessagesModule,
     BreadcrumbModule,
     RouterModule
   ],

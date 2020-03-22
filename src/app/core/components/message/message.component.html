@@ -1,0 +1,12 @@
+<div class="message-content" *ngIf="message || text">
+  <mat-icon>{{ messageTypeIcons[messageType] }}</mat-icon>
+  <strong>
+    &nbsp;
+    {{ message || text }}
+  </strong>
+</div>
+<div class="message-dismiss" *ngIf="dismissable">
+  <button mat-icon-button (click)="dissmiss()">
+    <mat-icon inline="true">close</mat-icon>
+  </button>
+</div>

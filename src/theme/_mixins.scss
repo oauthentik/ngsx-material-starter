@@ -77,3 +77,21 @@
     margin-right: 1em;
   }
 }
+@mixin messages {
+  .app-error {
+    color: white;
+    background-color: $app-error;
+  }
+  .app-warning {
+    color: black;
+    background-color: $app-warning;
+  }
+  .app-success {
+    color: black;
+    background-color: $app-success;
+  }
+  .app-info {
+    color: black;
+    background-color: $app-info;
+  }
+}

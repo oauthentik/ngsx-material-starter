@@ -8,7 +8,9 @@ import {
   APP_IMAGES,
   BASE_HREF,
   APP_ROUTES,
-  APP_MESSAGES
+  APP_MESSAGES,
+  MESSAGE_TYPE_CLASS,
+  MESSAGE_TYPE_ICONS
 } from "./../config/di";
 import { environment } from "@env/environment";
 import { Provider } from "@angular/core";
@@ -20,7 +22,11 @@ import { NGXS_PLUGINS } from "@ngxs/store";
 import { AuthGuardService } from "./guards/auth-guard.service";
 import { AppRoutes } from "@app/config/routes";
 import { AppImages } from "@app/config/images";
-import { appMessages } from "@app/config/messages";
+import {
+  appMessages,
+  messageTypeIcons,
+  messageTypeClasses
+} from "@app/config/messages";
 import { MessageService } from "./services/message.service";
 import { JwtInterceptService } from "./services/jwt-intercept/jwt-intercept.service";
 
@@ -56,6 +62,14 @@ export const providers: Provider[] = [
   {
     provide: APP_MESSAGES,
     useValue: appMessages
+  },
+  {
+    provide: MESSAGE_TYPE_CLASS,
+    useValue: messageTypeClasses
+  },
+  {
+    provide: MESSAGE_TYPE_ICONS,
+    useValue: messageTypeIcons
   },
   AuthService,
   AnimationsService,

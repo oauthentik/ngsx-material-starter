@@ -50,6 +50,10 @@ mat-toolbar.app-toolbar {
 .app-wrapper {
   padding: $spacing;
 }
+.hidden {
+  display: none !important;
+}
 @include cards();
 @include typography();
 @include bugfixes();
+@include messages();

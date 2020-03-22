@@ -14,6 +14,7 @@ import { Login } from "@app/core/store/actions/auth.action";
 import { APP_NAME, APP_LOGO, APP_IMAGES } from "@app/config/di";
 import { AppImage, AppImagesEnum } from "@app/config/images";
 import { MessageService } from "@app/core/services/message.service";
+import { MessageType } from "@app/models/message";
 
 @Component({
   selector: "app-auth",
@@ -26,7 +27,7 @@ export class AuthComponent implements OnInit {
   public get background(): string {
     return this.appImgs[AppImagesEnum.LoginBackground];
   }
-
+  messageTypes = MessageType;
   @Select(AuthState.authErrors) error$: Observable<string | null>;
   @Select(AuthState.isAuthenticating) isAuthenticating$: Observable<boolean>;
   visiblePwd: boolean;

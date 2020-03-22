@@ -20,3 +20,9 @@ export const APP_ROUTES: InjectionToken<AppRoutes> = new InjectionToken(
 export const APP_MESSAGES: InjectionToken<Message[]> = new InjectionToken(
   "APP_MESSAGES"
 );
+export const MESSAGE_TYPE_ICONS: InjectionToken<any> = new InjectionToken(
+  "APP_MESSAGE_TYPE_ICONS"
+);
+export const MESSAGE_TYPE_CLASS: InjectionToken<any> = new InjectionToken(
+  "APP_MESSAGE_TYPE_CLASS"
+);

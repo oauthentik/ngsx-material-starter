@@ -1,5 +1,17 @@
 import { Message, MessageType } from "@app/models/message";
+export const messageTypeClasses = {
+  [MessageType.Error]: "app-error",
+  [MessageType.Warning]: "app-warning",
+  [MessageType.Success]: "app-success",
+  [MessageType.Info]: "app-info"
+};
 
+export const messageTypeIcons = {
+  [MessageType.Error]: "error",
+  [MessageType.Warning]: "warning",
+  [MessageType.Success]: "checkmark_circle",
+  [MessageType.Info]: "info"
+};
 export let appMessages: Message[] = [
   {
     type: MessageType.Error,

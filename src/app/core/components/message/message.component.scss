@@ -1,0 +1,17 @@
+@import "variables";
+@import "mixins";
+:host {
+  @include flex-row();
+  margin: 0.5 * $spacing auto;
+  .message-content {
+    @include flex-row();
+    @include start();
+    padding: $spacing * 0.6;
+  }
+  .message-dismiss {
+    max-width: 40px;
+    margin-left: auto;
+    @include center();
+    @include flex-column();
+  }
+}

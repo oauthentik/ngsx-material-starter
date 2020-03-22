@@ -5,10 +5,18 @@
     </span>
   </h4>
   <div *ngIf="error$ | async as error" class="mat-caption">
-    {{ error }}
+    <app-message
+      [messageType]="messageTypes.Error"
+      [text]="error"
+      [dismissable]="true"
+    ></app-message>
   </div>
+
   <div *ngIf="form.invalid && form.touched" class="mat-warn mat-caption">
-    {{ messageService.getMessageText("forms.required") }}
+    <app-message
+      [message]="'forms.required'"
+      [dismissable]="true"
+    ></app-message>
   </div>
   <mat-card-content>
     <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
