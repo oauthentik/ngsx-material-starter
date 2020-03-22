@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  api: { host: `localhost:3000`, url: `localhost:3000/api` },
+  api: { host: `http://localhost:3000`, url: `http://localhost:3000/api` },
   appLogo: `assets/logo.svg`,
   appBackground: `assets/imgs/bg.jpg`,
   appLoginBackground: `assets/imgs/login-bg.jpg`,

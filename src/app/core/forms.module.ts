@@ -17,6 +17,7 @@ import {
   MAT_DATE_LOCALE
 } from "@angular/material";
 import { NgxMatSelectSearchModule } from "ngx-mat-select-search";
+import { NgxsFormPluginModule } from "@ngxs/form-plugin";
 
 @NgModule({
   imports: [
@@ -33,7 +34,8 @@ import { NgxMatSelectSearchModule } from "ngx-mat-select-search";
     MatNativeDateModule,
     MatInputModule,
     MatDatepickerModule,
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule,
+    NgxsFormPluginModule
   ],
   exports: [
     FormsModule,

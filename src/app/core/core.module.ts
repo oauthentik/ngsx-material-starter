@@ -16,6 +16,7 @@ import { environment } from "@env/environment";
 import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { AuthState, AUTH_STATE_TOKEN } from "./store/auth.state";
 import { MessagesModule } from "./components/message/message.module";
+import { NgxsFormPluginModule } from "@ngxs/form-plugin";
 import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
 
 @NgModule({
@@ -27,6 +28,7 @@ import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
     }),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     NgxsStoragePluginModule.forRoot({ key: AUTH_STATE_TOKEN.getName() }),
+    NgxsFormPluginModule.forRoot(),
     HttpClientModule,
     UiModule,
     NgPipesModule,
