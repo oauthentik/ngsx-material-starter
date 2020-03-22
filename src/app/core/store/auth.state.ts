@@ -2,7 +2,14 @@ import { Inject } from "@angular/core";
 import { Router } from "@angular/router";
 import { APP_ROUTES, BASE_HREF } from "@app/config/di";
 import { AppRoutes } from "@app/config/routes";
-import { Action, Selector, State, StateContext, StateToken } from "@ngxs/store";
+import {
+  Action,
+  Selector,
+  State,
+  StateContext,
+  StateToken,
+  Store
+} from "@ngxs/store";
 import { tap } from "rxjs/operators";
 import { AuthService } from "../services/auth/auth.service";
 import { Login, Logout } from "./actions/auth.action";
@@ -11,11 +18,12 @@ import {
   AppStateDefaults,
   AppStateModel
 } from "./models/app-state.model";
-import { LoginPayload } from "./models/auth.model";
+import { LoginPayload, AuthStateModel } from "./models/auth.model";
 export const APP_STATE_TOKEN = new StateToken<AppStateModel>("app_state");
+export const AUTH_STATE_TOKEN = new StateToken<AuthStateModel>("auth");
 
 @State({
-  name: "auth",
+  name: AUTH_STATE_TOKEN,
   defaults: AppAuthStateDefaults
 })
 export class AuthState {
@@ -35,21 +43,44 @@ export class AuthState {
   constructor(
     private authService: AuthService,
     private router: Router,
+    private store: Store,
     @Inject(BASE_HREF) private baseHref,
     @Inject(APP_ROUTES) private appRoutes: typeof AppRoutes
   ) {}
+
+  getAuthorizationToken() {
+    const authState: AuthStateModel = this.store.selectSnapshot(
+      AUTH_STATE_TOKEN
+    );
+
+    return authState ? authState.token : null;
+  }
+  isTokenExpired() {
+    const authState: AuthStateModel = this.store.selectSnapshot(
+      AUTH_STATE_TOKEN
+    );
+
+    return authState && authState.tokenExpireAt > Date.now();
+  }
+  getRefreshToken() {
+    const authState: AuthStateModel = this.store.selectSnapshot(
+      AUTH_STATE_TOKEN
+    );
+    return authState ? authState.refresh : null;
+  }
+  isAuthorized() {
+    const token = this.getAuthorizationToken() || this.getRefreshToken();
+    return token && !this.isTokenExpired();
+  }
   @Action(Login)
   login(ctx: StateContext<AppStateModel>, payload: LoginPayload) {
-    console.log("loginng yeah");
-
     ctx.patchState({
       auth: { authenticating: true, ...ctx.getState().auth }
     });
     return this.authService.login(payload).pipe(
       tap(auth => {
-        console.log("In auth service ", auth.error);
         ctx.patchState({ auth });
-        if (!auth.error && auth.user) {
+        if (this.isAuthorized()) {
           this.router.navigate([this.baseHref]);
         }
       })
@@ -57,11 +88,7 @@ export class AuthState {
   }
   @Action(Logout)
   logout(ctx: StateContext<AppStateModel>) {
-    return this.authService.logout().pipe(
-      tap(ok => {
-        ctx.setState(AppStateDefaults);
-        this.router.navigate([this.baseHref, this.appRoutes.Login]);
-      })
-    );
+    ctx.setState(AppStateDefaults);
+    this.router.navigate([this.baseHref, this.appRoutes.Login]);
   }
 }

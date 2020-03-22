@@ -14,8 +14,9 @@ import { RouterModule } from "@angular/router";
 import { AppState } from "./store/app.state";
 import { environment } from "@env/environment";
 import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
-import { AuthState } from "./store/auth.state";
+import { AuthState, AUTH_STATE_TOKEN } from "./store/auth.state";
 import { MessagesModule } from "./components/message/message.module";
+import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
 
 @NgModule({
   declarations: [ShellComponent, AuthComponent, AppDashboardComponent],
@@ -25,6 +26,7 @@ import { MessagesModule } from "./components/message/message.module";
       developmentMode: !environment.production
     }),
     NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
+    NgxsStoragePluginModule.forRoot({ key: AUTH_STATE_TOKEN.getName() }),
     HttpClientModule,
     UiModule,
     NgPipesModule,

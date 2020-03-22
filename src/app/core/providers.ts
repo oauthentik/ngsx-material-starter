@@ -1,5 +1,4 @@
 import { NotificationsService } from "./services/notifications/notifications.service";
-import { LocalStorageService } from "./services/local-storage/local-storage.service";
 import { AnimationsService } from "./services/animations/animations.service";
 import { AuthService } from "./services/auth/auth.service";
 import {
@@ -73,7 +72,6 @@ export const providers: Provider[] = [
   },
   AuthService,
   AnimationsService,
-  LocalStorageService,
   NotificationsService,
   MessageService,
   {
