@@ -25,6 +25,7 @@
     "@angular/router": "~7.0.0",
     "@ngxs/form-plugin": "^3.6.2",
     "@ngxs/logger-plugin": "^3.6.2-dev.master-fbdefca",
+    "@ngxs/router-plugin": "^3.6.2",
     "@ngxs/schematics": "0.0.1-alpha.5",
     "@ngxs/storage-plugin": "^3.6.2",
     "@ngxs/store": "^3.6.2-dev.master-fbdefca",

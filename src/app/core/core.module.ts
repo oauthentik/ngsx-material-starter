@@ -19,25 +19,27 @@ import { MessagesModule } from "./components/message/message.module";
 import { NgxsFormPluginModule } from "@ngxs/form-plugin";
 import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
 import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
+import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
 
 @NgModule({
   declarations: [ShellComponent, AuthComponent, AppDashboardComponent],
   imports: [
     CommonModule,
+    RouterModule,
     NgxsModule.forRoot([AppState, AuthState], {
       developmentMode: !environment.production
     }),
     // NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
-    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
+    NgxsRouterPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({ key: AUTH_STATE_TOKEN.getName() }),
     NgxsFormPluginModule.forRoot(),
+    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
     HttpClientModule,
     UiModule,
     NgPipesModule,
     AppMenuModule,
     MessagesModule,
-    BreadcrumbModule,
-    RouterModule
+    BreadcrumbModule
   ],
   exports: [ShellComponent, AuthComponent, AppDashboardComponent],
   providers: providers

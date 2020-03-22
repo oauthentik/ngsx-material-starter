@@ -13,6 +13,7 @@ import {
 import { tap } from "rxjs/operators";
 import { AuthService } from "../services/auth/auth.service";
 import { Login, Logout } from "./actions/auth.action";
+import { Navigate } from "@ngxs/router-plugin";
 import {
   AppAuthStateDefaults,
   AppStateDefaults,
@@ -42,7 +43,6 @@ export class AuthState {
   }
   constructor(
     private authService: AuthService,
-    private router: Router,
     private store: Store,
     @Inject(BASE_HREF) private baseHref,
     @Inject(APP_ROUTES) private appRoutes: typeof AppRoutes
@@ -81,7 +81,7 @@ export class AuthState {
       tap(auth => {
         ctx.patchState({ auth });
         if (this.isAuthorized()) {
-          this.router.navigate([this.baseHref]);
+          this.store.dispatch(new Navigate([this.baseHref]));
         }
       })
     );
@@ -89,6 +89,6 @@ export class AuthState {
   @Action(Logout)
   logout(ctx: StateContext<AppStateModel>) {
     ctx.setState(AppStateDefaults);
-    this.router.navigate([this.baseHref, this.appRoutes.Login]);
+    this.store.dispatch(new Navigate([this.baseHref, this.appRoutes.Login]));
   }
 }

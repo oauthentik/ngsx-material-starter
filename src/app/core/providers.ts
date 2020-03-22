@@ -28,6 +28,8 @@ import {
 } from "@app/config/messages";
 import { MessageService } from "./services/message.service";
 import { JwtInterceptService } from "./services/jwt-intercept/jwt-intercept.service";
+import { RouterStateSerializer } from "@ngxs/router-plugin";
+import { CustomRouterStateSerializer } from "./serializers";
 
 export const providers: Provider[] = [
   {
@@ -84,5 +86,6 @@ export const providers: Provider[] = [
     useValue: logoutPlugin,
     multi: true
   },
+  { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
   AuthGuardService
 ];
