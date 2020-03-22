@@ -18,6 +18,7 @@ import { AuthState, AUTH_STATE_TOKEN } from "./store/auth.state";
 import { MessagesModule } from "./components/message/message.module";
 import { NgxsFormPluginModule } from "@ngxs/form-plugin";
 import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
+import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 
 @NgModule({
   declarations: [ShellComponent, AuthComponent, AppDashboardComponent],
@@ -26,7 +27,8 @@ import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
     NgxsModule.forRoot([AppState, AuthState], {
       developmentMode: !environment.production
     }),
-    NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
+    // NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
+    NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
     NgxsStoragePluginModule.forRoot({ key: AUTH_STATE_TOKEN.getName() }),
     NgxsFormPluginModule.forRoot(),
     HttpClientModule,
