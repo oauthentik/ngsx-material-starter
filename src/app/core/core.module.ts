@@ -13,7 +13,6 @@ import { AppDashboardComponent } from "./components/app-dashboard/app-dashboard.
 import { RouterModule } from "@angular/router";
 import { AppState } from "./store/app.state";
 import { environment } from "@env/environment";
-import { NgxsLoggerPluginModule } from "@ngxs/logger-plugin";
 import { AuthState, AUTH_STATE_TOKEN } from "./store/auth.state";
 import { MessagesModule } from "./components/message/message.module";
 import { NgxsFormPluginModule } from "@ngxs/form-plugin";
@@ -29,7 +28,6 @@ import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
     NgxsModule.forRoot([AppState, AuthState], {
       developmentMode: !environment.production
     }),
-    // NgxsLoggerPluginModule.forRoot({ disabled: environment.production }),
     NgxsRouterPluginModule.forRoot(),
     NgxsStoragePluginModule.forRoot({ key: AUTH_STATE_TOKEN.getName() }),
     NgxsFormPluginModule.forRoot(),

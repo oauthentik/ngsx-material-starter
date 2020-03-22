@@ -1,27 +1,47 @@
-# LmsNg
+# Angular 7, Ngxs and Angular Material Starter
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
+This project is a clean started for your projects, use it to build bigger and better architectured projects with your prefered style
+it uses the mix of [NGXS](https://www.ngxs.io) and [Angular Material](https://material.angular.io/) and the magic of clean code :).
+it was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
 
-## Development server
+## Getting started
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+`git clone https://github.com/oauthentik/ngsx-material-starter.git new-project && cd new-project && ng serve`
 
-## Code scaffolding
+## Dependencies
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+This Starter project is based on the packages:
 
-## Build
+- Angular 7.x.x
+- Angular Material 7.x.x
+- Angular flex layout 7.0.0
+- Ngxs 3.6.x (with it's Forms, Storage, Router and ReduxDevTools plugins)
+- Ngx Mat Select Search 1.8.x
+  NB: Having to upgrade your angular to a major version may have some issues
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+## Theming
 
-## Running unit tests
+No additional css frameworks are added to this project. and i prefer to keeps things clean better than stuffed (large build size nightmare)
+I used the Sass variables in the theme folder to specify some of the apearence in the Angular material.
+other styles are specified in the styles.scss file.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+## Configurations
+In addition to the production flag in the Environment file i added 
+i added the attributes below:
+` api: { host: 'http://localhost:3000', url: 'http://localhost:3000/api' },
+  appLogo: 'assets/logo.svg',
+  appBackground: 'assets/imgs/bg.jpg',
+  appLoginBackground: 'assets/imgs/login-bg.jpg',
+  appName: "Angular Boilerplate"
+  `
+So change it to your real values 
+## Upcoming Improvments
 
-## Running end-to-end tests
+1. Adding a material table enhanced library for less code (MatDatatable (Using the same Mat Table but with more features: Advanced column filtering, Interfacing columns, Decorators, configurations... ))
+2. Adding a navigation dialog strategy (Dialogs with routes)
+3. Adding a beautifull generic dashboards
+4. More control
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+## Liscence
 
-## Further help
-
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+Apache 2

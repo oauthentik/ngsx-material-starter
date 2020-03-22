@@ -1,5 +1,5 @@
 {
-  "name": "lms-ng",
+  "name": "ngsx-material-starte",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -24,11 +24,9 @@
     "@angular/platform-browser-dynamic": "~7.0.0",
     "@angular/router": "~7.0.0",
     "@ngxs/form-plugin": "^3.6.2",
-    "@ngxs/logger-plugin": "^3.6.2-dev.master-fbdefca",
     "@ngxs/router-plugin": "^3.6.2",
-    "@ngxs/schematics": "0.0.1-alpha.5",
     "@ngxs/storage-plugin": "^3.6.2",
-    "@ngxs/store": "^3.6.2-dev.master-fbdefca",
+    "@ngxs/store": "^3.6.2",
     "angular-pipes": "^9.0.2",
     "core-js": "^2.5.4",
     "file-saver": "^2.0.1",
