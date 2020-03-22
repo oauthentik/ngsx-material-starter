@@ -12,12 +12,6 @@
     ></app-message>
   </div>
 
-  <div *ngIf="form.invalid && form.touched" class="mat-warn mat-caption">
-    <app-message
-      [message]="'forms.required'"
-      [dismissable]="true"
-    ></app-message>
-  </div>
   <mat-card-content>
     <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
       <form (ngSubmit)="login()" [formGroup]="form" fxFlex="100%">
@@ -43,7 +37,7 @@
                 form.get('username').touched
               "
             >
-              {{ messageService.getMessageText('forms.required')}}
+              {{ messageService.getMessageText("forms.required") }}
             </mat-error>
           </mat-form-field>
 
@@ -76,7 +70,7 @@
                 form.get('password').touched
               "
             >
-              {{ messageService.getMessageText('forms.required')}}
+              {{ messageService.getMessageText("forms.required") }}
             </mat-error>
           </mat-form-field>
 

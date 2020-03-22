@@ -4,11 +4,12 @@ import { AuthStateModel } from "../../store/models/auth.model";
 import { Api } from "@app/models/api";
 import * as jwt_decode from "jwt-decode";
 import { of, Observable } from "rxjs";
-import { switchMap, catchError } from "rxjs/operators";
+import { switchMap, catchError, mergeMap } from "rxjs/operators";
 import { API } from "@app/config/di";
 import { AppAuthStateDefaults } from "../../store/models/app-state.model";
 import { MessageService } from "@app/core/services/message.service";
 import { Store } from "@ngxs/store";
+import { User } from "@app/models/user";
 
 @Injectable({
   providedIn: "root"
@@ -20,6 +21,9 @@ export class AuthService {
     @Inject(API) private api: Api,
     private store: Store
   ) {}
+  getUser(id: any) {
+    return this.http.get<User>(`${this.api.url}/${this.api.index.Users}/${id}`);
+  }
 
   login(credentials) {
     return this.http
@@ -31,7 +35,7 @@ export class AuthService {
         switchMap((data: any) => {
           if (data) {
             return of({
-              user: this.decodeToken(data.access),
+              user: this.decodeToken(data.token),
               token: data.token,
               refresh: data.token,
               tokenExpireAt: data.expiresIn,
@@ -50,9 +54,10 @@ export class AuthService {
           return of({
             ...AppAuthStateDefaults,
             authenticating: false,
-            error: err.status === 401?  this.messageService.getMessageText(
-              "auth.invalid-credentials"
-            ): `${err.status} - ${err.message}`
+            error:
+              err.status === 401
+                ? this.messageService.getMessageText("auth.invalid-credentials")
+                : `${err.status} - ${err.message}`
           });
         })
       );
@@ -63,12 +68,6 @@ export class AuthService {
   }
 
   decodeToken(token) {
-    try {
-      return jwt_decode(token);
-    } catch (error) {
-      return null;
-    } finally {
-      return null;
-    }
+    return jwt_decode(token);
   }
 }

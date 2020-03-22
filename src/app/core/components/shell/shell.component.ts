@@ -10,6 +10,7 @@ import { Observable } from "rxjs";
 import { MenuItem } from "@app/models/menu";
 import { Logout } from "@app/core/store/actions/auth.action";
 import { AuthStateModel } from "@app/core/store/models/auth.model";
+import { AuthState } from "@app/core/store/auth.state";
 
 @Component({
   selector: "app-shell",
@@ -25,7 +26,7 @@ export class ShellComponent implements OnInit {
     public store: Store
   ) {}
   @Select() menus$: Observable<MenuItem[]>;
-  @Select() auth$: Observable<AuthStateModel>;
+  @Select(AuthState) auth$: Observable<AuthStateModel>;
   ngOnInit() {}
   logout() {
     this.store.dispatch(new Logout());
