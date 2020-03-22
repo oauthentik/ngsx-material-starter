@@ -7,7 +7,8 @@ import {
   APP_LOGO,
   APP_IMAGES,
   BASE_HREF,
-  APP_ROUTES
+  APP_ROUTES,
+  APP_MESSAGES
 } from "./../config/di";
 import { environment } from "@env/environment";
 import { Provider } from "@angular/core";
@@ -16,10 +17,12 @@ import { API_ROUTES } from "../config/api-index";
 import { HTTP_INTERCEPTORS } from "@angular/common/http";
 import { logoutPlugin } from "./store/plugins/clean-on-logout";
 import { NGXS_PLUGINS } from "@ngxs/store";
-import { JwtInterceptService } from "./services";
 import { AuthGuardService } from "./guards/auth-guard.service";
 import { AppRoutes } from "@app/config/routes";
 import { AppImages } from "@app/config/images";
+import { appMessages } from "@app/config/messages";
+import { MessageService } from "./services/message.service";
+import { JwtInterceptService } from "./services/jwt-intercept/jwt-intercept.service";
 
 export const providers: Provider[] = [
   {
@@ -50,10 +53,15 @@ export const providers: Provider[] = [
     provide: APP_IMAGES,
     useValue: AppImages
   },
+  {
+    provide: APP_MESSAGES,
+    useValue: appMessages
+  },
   AuthService,
   AnimationsService,
   LocalStorageService,
   NotificationsService,
+  MessageService,
   {
     provide: HTTP_INTERCEPTORS,
     multi: true,

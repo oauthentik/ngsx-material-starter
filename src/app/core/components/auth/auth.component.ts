@@ -9,10 +9,11 @@ import { Validators, FormBuilder, FormGroup } from "@angular/forms";
 import { Observable } from "rxjs";
 import { markFormGroupTouched } from "@app/utils/forms.utils";
 import { Select, Store } from "@ngxs/store";
-import { AuthState } from "@app/core/store/app.state";
+import { AuthState } from "@app/core/store/auth.state";
 import { Login } from "@app/core/store/actions/auth.action";
 import { APP_NAME, APP_LOGO, APP_IMAGES } from "@app/config/di";
 import { AppImage, AppImagesEnum } from "@app/config/images";
+import { MessageService } from "@app/core/services/message.service";
 
 @Component({
   selector: "app-auth",
@@ -26,13 +27,14 @@ export class AuthComponent implements OnInit {
     return this.appImgs[AppImagesEnum.LoginBackground];
   }
 
-  @Select(AuthState.authErrors) error: Observable<Error | null>;
-  @Select(AuthState.isAuthenticating) isAuthenticating: Observable<boolean>;
+  @Select(AuthState.authErrors) error$: Observable<string | null>;
+  @Select(AuthState.isAuthenticating) isAuthenticating$: Observable<boolean>;
   visiblePwd: boolean;
   form: FormGroup;
   constructor(
     private _fb: FormBuilder,
     private store: Store,
+    public messageService: MessageService,
     @Inject(APP_NAME) public appName: string,
     @Inject(APP_LOGO) public appLogo: string,
     @Inject(APP_IMAGES) public appImgs: AppImage

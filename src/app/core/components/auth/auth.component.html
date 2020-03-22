@@ -4,11 +4,11 @@
       Se connecter
     </span>
   </h4>
-  <div *ngIf="error | async as e" class="mat-error mat-caption">
-    {{ e.message }}
+  <div *ngIf="error$ | async as error" class="mat-caption">
+    {{ error }}
   </div>
   <div *ngIf="form.invalid && form.touched" class="mat-warn mat-caption">
-    Veuillez saisir les champs requis
+    {{ messageService.getMessageText("forms.required") }}
   </div>
   <mat-card-content>
     <div fxLayout="column" fxLayoutAlign="start stretch" fxLayoutGap="10px">
@@ -75,7 +75,7 @@
           <button
             mat-raised-button
             color="primary"
-            [disabled]="isAuthenticating | async"
+            [disabled]="isAuthenticating$ | async"
           >
             <strong>Se connecter</strong>
           </button>

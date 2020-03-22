@@ -1,4 +1,5 @@
 import { User } from "@app/models/user";
+import { Message } from "@angular/compiler/src/i18n/i18n_ast";
 
 export interface AuthStateModel {
   user: User;
@@ -6,7 +7,7 @@ export interface AuthStateModel {
   refresh: string;
   tokenExpireAt: number;
   authenticating: boolean;
-  error: Error | null;
+  error: string | null;
 }
 export interface LoginPayload {
   username: string;

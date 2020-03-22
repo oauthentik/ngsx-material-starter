@@ -1,12 +1,12 @@
 import { Injectable } from "@angular/core";
 import {
   ActivatedRouteSnapshot,
+  CanActivate,
   CanLoad,
   Route,
   RouterStateSnapshot,
   UrlSegment
 } from "@angular/router";
-import { CanActivate } from "@angular/router/src/utils/preactivation";
 import { Store } from "@ngxs/store";
 import { Logout } from "../store/actions/auth.action";
 import { AppStateModel } from "../store/models/app-state.model";

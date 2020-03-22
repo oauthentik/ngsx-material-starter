@@ -1,14 +1,15 @@
 import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
-import { LocalStorageService } from "../local-storage/local-storage.service";
+import { API_ROUTES } from "@app/config/api-index";
 import { AuthStateModel } from "@app/core/store/models/auth.model";
 import { Api } from "@app/models/api";
 import * as jwt_decode from "jwt-decode";
-import { Observable, of } from "rxjs";
-import { catchError, switchMap, tap } from "rxjs/operators";
-import { API } from "src/app/config/di";
-import { API_ROUTES } from "@app/config/api-index";
+import { of, Observable } from "rxjs";
+import { tap, switchMap, catchError } from "rxjs/operators";
+import { API } from "@app/config/di";
+import { LocalStorageService } from "../local-storage/local-storage.service";
 import { AppAuthStateDefaults } from "@app/core/store/models/app-state.model";
+import { MessageService } from "@app/core/services/message.service";
 
 @Injectable({
   providedIn: "root"
@@ -17,13 +18,14 @@ export class AuthService {
   constructor(
     private http: HttpClient,
     private localStorageService: LocalStorageService,
+    private messageService: MessageService,
     @Inject(API) private api: Api
   ) {}
 
   login(credentials) {
     return this.http
       .post<AuthStateModel>(
-        `${this.api.url}/${this.api.index[API_ROUTES.AuthLogin]}`,
+        `${this.api.url}/${this.api.index.AuthLogin}`,
         credentials
       )
       .pipe(
@@ -34,20 +36,28 @@ export class AuthService {
           }
         }),
         switchMap((data: any) => {
+          if (data) {
+            return of({
+              user: this.decodeToken(data.access),
+              token: data.access,
+              refresh: data.refresh,
+              tokenExpireAt: data.expire_at,
+              authenticating: false,
+              error: null
+            }) as Observable<AuthStateModel>;
+          }
           return of({
-            user: this.decodeToken(data.access),
-            token: data.access,
-            refresh: data.refresh,
-            tokenExpireAt: data.expire_at,
-            authenticating: false,
-            error: null
-          }) as Observable<AuthStateModel>;
+            ...AppAuthStateDefaults,
+            error: this.messageService.getMessageText(
+              "auth.invalid-credentials"
+            )
+          });
         }),
         catchError(err => {
           return of({
             ...AppAuthStateDefaults,
             authenticating: false,
-            error: err
+            error: err.message
           });
         })
       );
@@ -72,7 +82,7 @@ export class AuthService {
   decodeToken(token = this.getAuthorizationToken()) {
     try {
       return jwt_decode(token);
-    } catch (Error) {
+    } catch (error) {
       return null;
     } finally {
       return null;

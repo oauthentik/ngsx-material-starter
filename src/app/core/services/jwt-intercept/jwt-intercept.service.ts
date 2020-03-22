@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { Store } from "@ngxs/store";
 import { HttpRequest, HttpHandler, HttpEvent } from "@angular/common/http";
 import { Observable } from "rxjs";
-import { AppStateModel } from "@app/core/store/models/app-state.model";
+import { APP_STATE_TOKEN } from "@app/core/store/app.state";
 @Injectable({
   providedIn: "root"
 })
@@ -13,9 +13,7 @@ export class JwtInterceptService {
     req: HttpRequest<any>,
     next: HttpHandler
   ): Observable<HttpEvent<any>> {
-    const token = this.store.selectSnapshot<string>(
-      (state: AppStateModel) => state.auth.token
-    );
+    const token = this.store.selectSnapshot(APP_STATE_TOKEN).auth.token;
     req = req.clone({
       setHeaders: {
         Authorization: `Bearer ${token}`
