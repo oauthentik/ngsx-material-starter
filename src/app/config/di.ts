@@ -2,6 +2,7 @@ import { InjectionToken } from "@angular/core";
 import { AppRoutes } from "./routes";
 import { Api } from "@app/models/api";
 import { Message } from "@app/models/message";
+import { appIcons } from "./icons";
 
 export const API: InjectionToken<Api> = new InjectionToken("APP_API");
 export const AVATAR: InjectionToken<string> = new InjectionToken("APP_AVATAR");
@@ -12,6 +13,9 @@ export const BASE_HREF: InjectionToken<string> = new InjectionToken(
 );
 export const APP_IMAGES: InjectionToken<string[]> = new InjectionToken(
   "APP_IMAGES"
+);
+export const APP_ICONS: InjectionToken<typeof appIcons> = new InjectionToken(
+  "APP_ICONS"
 );
 
 export const APP_ROUTES: InjectionToken<AppRoutes> = new InjectionToken(

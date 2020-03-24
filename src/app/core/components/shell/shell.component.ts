@@ -4,14 +4,13 @@ import {
   Inject,
   ChangeDetectionStrategy
 } from "@angular/core";
-import { APP_LOGO, APP_NAME, BASE_HREF } from "@app/config/di";
+import { APP_LOGO, APP_NAME, BASE_HREF, APP_ICONS } from "@app/config/di";
 import { Select, Store } from "@ngxs/store";
 import { Observable } from "rxjs";
 import { MenuItem } from "@app/models/menu";
 import { Logout } from "@app/core/store/actions/auth.action";
 import { AuthStateModel } from "@app/core/store/models/auth.model";
 import { AuthState } from "@app/core/store/auth.state";
-
 @Component({
   selector: "app-shell",
   templateUrl: "./shell.component.html",
@@ -27,6 +26,7 @@ export class ShellComponent implements OnInit {
   ) {}
   @Select() menus$: Observable<MenuItem[]>;
   @Select(AuthState) auth$: Observable<AuthStateModel>;
+
   ngOnInit() {}
   logout() {
     this.store.dispatch(new Logout());

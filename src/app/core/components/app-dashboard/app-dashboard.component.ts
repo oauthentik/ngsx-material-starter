@@ -1,16 +1,33 @@
-import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  ChangeDetectionStrategy,
+  Inject
+} from "@angular/core";
+import { Select, Store } from "@ngxs/store";
+import { AppState } from "@app/core/store/app.state";
+import { Observable } from "rxjs";
+import { Dashboard } from "@app/models/dashboard";
+import { LoadAppDashboard } from "@app/core/store/actions/menu.actions";
+import { AUTH_STATE_TOKEN } from "@app/core/store/auth.state";
+import { AppIcons } from "@app/models/icons";
+import { APP_ICONS } from "@app/config/di";
 
 @Component({
-  selector: 'app-app-dashboard',
-  templateUrl: './app-dashboard.component.html',
-  styleUrls: ['./app-dashboard.component.scss'],
+  selector: "app-app-dashboard",
+  templateUrl: "./app-dashboard.component.html",
+  styleUrls: ["./app-dashboard.component.scss"],
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppDashboardComponent implements OnInit {
-
-  constructor() { }
+  constructor(public store: Store, @Inject(APP_ICONS) public icons: AppIcons) {}
+  @Select() dashboard$: Observable<Dashboard>;
 
   ngOnInit() {
+    this.store.dispatch(
+      new LoadAppDashboard(
+        this.store.selectSnapshot(AUTH_STATE_TOKEN).user.role
+      )
+    );
   }
-
 }

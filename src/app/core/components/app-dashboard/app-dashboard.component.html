@@ -1,3 +1,29 @@
-<p>
-  app-dashboard works!
-</p>
+<mat-grid-list
+  *ngIf="dashboard$ | async as dashboard"
+  [cols]="'3'"
+  [rowHeight]="'300px'"
+>
+  <mat-grid-tile
+    *ngFor="
+      let widget of dashboard.widgets
+        | where: ['layout.placement', 'top']
+        | orderBy: ['layout', 'order']
+    "
+    [colspan]="widget.layout.xAxisRatio * 100"
+    [rowspan]="widget.layout.yAxisRatio * 100"
+    {{widget.title}}
+  >
+    <mat-card>
+      <mat-card-title>
+        <mat-icon>{{ icons.widgets[widget.type] }}</mat-icon>
+        {{ widget.title }}</mat-card-title
+      >
+      <mat-card-content>
+        {{ widget.content }}
+      </mat-card-content>
+      <mat-card-actions>
+        <a [routerLink]="[widget.url]">Show More</a>
+      </mat-card-actions>
+    </mat-card>
+  </mat-grid-tile>
+</mat-grid-list>

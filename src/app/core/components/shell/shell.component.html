@@ -1,5 +1,10 @@
 <mat-toolbar class="app-toolbar mat-elevation-z5">
-  <div fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="10px">
+  <div
+    class="full-width"
+    fxLayout="row"
+    fxLayoutAlign="start space-between"
+    fxLayoutGap="10px"
+  >
     <button
       class="sidenav-toggle"
       (click)="drawer.toggle()"
@@ -8,24 +13,31 @@
     >
       <mat-icon>menu</mat-icon>
     </button>
-    <div fxLayout="row" fxLayoutAlign="start center" fxLayoutGap="10px">
+    <div
+      fxFlex="auto"
+      fxLayout="row"
+      fxLayoutAlign="start center"
+      fxLayoutGap="10px"
+    >
       <a [routerLink]="[baseHref]" class="app-logo-container">
         <img [src]="appLogo" alt="App Logo" class="app-logo" />
       </a>
       <strong class="toolbar-title"> {{ appName }}</strong>
     </div>
-    <button
-      *ngIf="(auth$ | async)?.user"
-      matTooltip="Logout"
-      (click)="logout()"
-      mat-icon-button
-    >
-      <mat-icon>power_settings_new</mat-icon>
-    </button>
+    <div>
+      <button
+        *ngIf="(auth$ | async)?.user"
+        matTooltip="Logout"
+        (click)="logout()"
+        mat-icon-button
+      >
+        <mat-icon>power_settings_new</mat-icon>
+      </button>
+    </div>
   </div>
 </mat-toolbar>
-<mat-drawer-container class="app-drwwer-container">
-  <mat-drawer #drawer mode="push" opened>
+<mat-drawer-container hasBackdrop="false" class="app-drwwer-container">
+  <mat-drawer #drawer mode="push" disableClose opened>
     <app-menu [menus]="menus$ | async"> </app-menu>
   </mat-drawer>
   <mat-drawer-content>

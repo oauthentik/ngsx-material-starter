@@ -1,6 +1,10 @@
 @mixin fill {
   flex: 1 1 auto;
 }
+@mixin full-width {
+  @include fill();
+  width: 100%;
+}
 @mixin flex {
   display: flex;
 }

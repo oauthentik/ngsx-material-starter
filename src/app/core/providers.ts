@@ -9,7 +9,8 @@ import {
   APP_ROUTES,
   APP_MESSAGES,
   MESSAGE_TYPE_CLASS,
-  MESSAGE_TYPE_ICONS
+  MESSAGE_TYPE_ICONS,
+  APP_ICONS
 } from "./../config/di";
 import { environment } from "@env/environment";
 import { Provider } from "@angular/core";
@@ -26,6 +27,7 @@ import {
   messageTypeIcons,
   messageTypeClasses
 } from "@app/config/messages";
+import { appIcons } from "@app/config/icons";
 import { MessageService } from "./services/message.service";
 import { JwtInterceptService } from "./services/jwt-intercept/jwt-intercept.service";
 import { RouterStateSerializer } from "@ngxs/router-plugin";
@@ -59,6 +61,10 @@ export const providers: Provider[] = [
   {
     provide: APP_IMAGES,
     useValue: AppImages
+  },
+  {
+    provide: APP_ICONS,
+    useValue: appIcons
   },
   {
     provide: APP_MESSAGES,

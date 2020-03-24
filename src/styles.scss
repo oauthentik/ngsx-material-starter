@@ -53,6 +53,9 @@ mat-toolbar.app-toolbar {
 .hidden {
   display: none !important;
 }
+.full-width {
+  @include full-width();
+}
 @include cards();
 @include typography();
 @include bugfixes();
