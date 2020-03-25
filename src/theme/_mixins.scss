@@ -99,3 +99,10 @@
     background-color: $app-info;
   }
 }
+@mixin widgets {
+  .app-widget-list {
+    @include flex-row();
+    flex-wrap: wrap;
+    padding: 1em;
+  }
+}

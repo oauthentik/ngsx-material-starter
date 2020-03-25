@@ -1,0 +1,73 @@
+<ul
+  fxLayout="column"
+  fxLayoutAlign="start stretch"
+  fxLayoutGap="5px"
+  cdkScrollable
+  class="menu-list"
+>
+  <button mat-button class="menu-entry" [routerLink]="[basePath]">
+    <mat-icon class="menu-icon">dashboard</mat-icon> Dashboard
+  </button>
+  <ng-container *ngFor="let item of menus">
+    <ng-container *ngIf="!item.children?.length">
+      <ng-container
+        *ngTemplateOutlet="single; context: { $implicit: item }"
+      ></ng-container>
+    </ng-container>
+    <ng-container *ngIf="item.children?.length">
+      <ng-container
+        *ngTemplateOutlet="multi; context: { $implicit: item }"
+      ></ng-container>
+    </ng-container>
+  </ng-container>
+</ul>
+<ng-template #single let-singleItem>
+  <button
+    mat-button
+    [routerLink]="singleItem.slugs"
+    [queryParams]="singleItem.queryParams || {}"
+    class="menu-entry"
+  >
+    <mat-icon class="menu-icon" *ngIf="singleItem.icon" inline="true">{{
+      singleItem.icon
+    }}</mat-icon>
+    <span>
+      {{ singleItem.label }}
+    </span>
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </button>
+</ng-template>
+<ng-template #multi let-multipleMenu>
+  <mat-accordion>
+    <mat-expansion-panel
+      fxLayout="column"
+      fxLayoutAlign="start stretch"
+      fxLayoutGap="5px"
+      cdkScrollable
+      #panel
+      class="menu-list has-children"
+    >
+      <mat-expansion-panel-header>
+        <mat-icon class="menu-icon" *ngIf="multipleMenu.icon" inline="true">{{
+          multipleMenu.icon
+        }}</mat-icon>
+        <span> {{ multipleMenu.label }}</span>
+        <mat-icon>{{
+          panel.expanded ? "keyboard_arrow_down" : "keyboard_arrow_right"
+        }}</mat-icon>
+      </mat-expansion-panel-header>
+      <ng-container *ngFor="let sub of multipleMenu.children">
+        <ng-container *ngIf="!sub.children?.length">
+          <ng-container
+            *ngTemplateOutlet="single; context: { $implicit: sub }"
+          ></ng-container>
+        </ng-container>
+        <ng-container *ngIf="sub.children?.length">
+          <ng-container
+            *ngTemplateOutlet="multi; context: { $implicit: sub }"
+          ></ng-container>
+        </ng-container>
+      </ng-container>
+    </mat-expansion-panel>
+  </mat-accordion>
+</ng-template>

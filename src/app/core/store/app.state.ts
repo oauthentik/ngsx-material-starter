@@ -11,6 +11,19 @@ export const APP_STATE_TOKEN = new StateToken<AppStateModel>("app_state");
   defaults: AppStateDefaults
 })
 export class AppState {
+  @Selector()
+  static getMenus(state: AppStateModel) {
+    return state.menus;
+  }
+
+  @Selector()
+  static getBreadcrumbs(state: AppStateModel) {
+    return state.breadcrumb;
+  }
+  @Selector()
+  static getDashboard(state: AppStateModel) {
+    return state.dashboard;
+  }
   @Action(LoadAppMenu)
   loadAppMenu(ctx: StateContext<AppStateModel>, role: UserRoles) {
     ctx.patchState({

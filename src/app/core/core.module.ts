@@ -19,6 +19,7 @@ import { NgxsFormPluginModule } from "@ngxs/form-plugin";
 import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
 import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
+import { WidgetModule } from "@app/shared/components/widget/widget.module";
 
 @NgModule({
   declarations: [ShellComponent, AuthComponent, AppDashboardComponent],
@@ -34,6 +35,7 @@ import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
     NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
     HttpClientModule,
     UiModule,
+    WidgetModule,
     NgPipesModule,
     AppMenuModule,
     MessagesModule,

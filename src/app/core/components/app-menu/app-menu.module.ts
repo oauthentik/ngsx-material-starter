@@ -2,22 +2,11 @@ import { AppMenuService } from "./app-menu.service";
 import { AppMenuComponent } from "./app-menu.component";
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import {
-  MatButtonModule,
-  MatIconModule,
-  MatExpansionModule
-} from "@angular/material";
-import { RouterModule } from "@angular/router";
+import { MenuModule } from "@app/shared/components/menu/menu.module";
 
 @NgModule({
   declarations: [AppMenuComponent],
-  imports: [
-    CommonModule,
-    RouterModule,
-    MatExpansionModule,
-    MatButtonModule,
-    MatIconModule
-  ],
+  imports: [CommonModule, MenuModule],
   exports: [AppMenuComponent],
   providers: [AppMenuService]
 })

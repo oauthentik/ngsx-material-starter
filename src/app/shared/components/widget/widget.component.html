@@ -1,0 +1,64 @@
+<mat-card [routerLink]="[widget.url ? widget.url : '#']">
+  <mat-card-title *ngIf="widget.title" class="app-widget__title">
+    <mat-icon>{{ icons.widgets[widget.type] }}</mat-icon>
+    {{ widget.title }}</mat-card-title
+  >
+  <mat-card-content>
+    <ng-container [ngSwitch]="widget.type">
+      <ng-container *ngSwitchCase="widgetEnum.Text">
+        <ng-container [ngSwitch]="widget.content?.type">
+          <ng-container *ngSwitchCase="textTypes.Brut">
+            {{ widget.content.content }}
+          </ng-container>
+          <ng-container *ngSwitchCase="textTypes.HTML">
+            {{ widget.content.content | safe: "html" }}
+          </ng-container>
+          <ng-container *ngSwitchCase="textTypes.Markdown">
+            {{ widget.content.content | safe: "html" }}
+          </ng-container>
+        </ng-container>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="widgetEnum.Statistic">
+        <strong class="mat-heading">
+          <mat-icon *ngIf="widget.content.icon">{{
+            widget.content.icon
+          }}</mat-icon>
+          {{ widget.content.value || "--" }}
+        </strong>
+        <small class="mat-caption">
+          {{ widget.content.name || "Unspecified" }}
+        </small>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="widgetEnum.Menu">
+        <app-menu [menus]="widget.content"></app-menu>
+      </ng-container>
+      <ng-container *ngSwitchCase="widgetEnum.Feed">
+        <ng-container [ngSwitch]="widget.content.type">
+          <ng-container *ngSwitchCase="feedTypes.Audio">
+            <audio [src]="widget.content.content | safe: 'url'"></audio>
+          </ng-container>
+          <ng-container *ngSwitchCase="feedTypes.Video">
+            <video [src]="widget.content.content | safe: 'url'"></video>
+          </ng-container>
+          <ng-container *ngSwitchCase="feedTypes.Embed">
+            <iframe
+              width="100%"
+              height="100%"
+              [src]="widget.content.content | safe: 'url'"
+              frameborder="0"
+            ></iframe>
+          </ng-container>
+          <ng-container *ngSwitchCase="feedTypes.Gallery">
+            <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="4px">
+              <div *ngFor="let item of widget.content?.content" fxFlex="120px">
+                <img [src]="item | safe: 'url'" alt="" class="img-contain" />
+              </div>
+            </div>
+          </ng-container>
+        </ng-container>
+      </ng-container>
+    </ng-container>
+  </mat-card-content>
+</mat-card>

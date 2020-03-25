@@ -1,0 +1,33 @@
+@import "variables";
+@import "mixins";
+:host {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 auto;
+  .menu-list {
+    padding: 0;
+    &.has-children {
+      padding: 0 0 10px 0;
+    }
+  }
+  button.menu-entry {
+    @include rounded();
+    @include flex-row();
+    @include stretch();
+    font-weight: 600;
+    height: $menu-item-heigth;
+    margin: $menu-item-margin-y $menu-item-margin-x;
+    width: calc(100% - #{2 * $menu-item-margin-x});
+    box-shadow: $menu-item-boxshadow;
+    font-family: $font-secondary;
+    .menu-icon {
+      margin-right: 0.5em;
+    }
+    ::ng-deep .mat-buttom-wrapper {
+      @include fill();
+      @include flex-row();
+      @include center();
+    }
+  }
+}
