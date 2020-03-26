@@ -115,7 +115,7 @@
 @mixin widgets {
   .app-widget {
     position: relative;
-    box-shadow: $shadow;
+    box-shadow: $shadow-md;
     padding: 0;
     @include flex-column();
     .app-widget__icon {
@@ -144,6 +144,7 @@
     @include flex-row();
     @include fill();
     @include scrol();
+    padding: 0 $spacing;
     flex-wrap: wrap;
   }
 }
