@@ -1,6 +1,6 @@
 # Angular 7, Ngxs and Angular Material Starter
 
-This project is a clean started for your projects, use it to build bigger and better architectured projects with your prefered style
+This project is a clean starter for your projects, use it to build bigger and better architectured projects with your prefered style
 it uses the mix of [NGXS](https://www.ngxs.io) and [Angular Material](https://material.angular.io/) and the magic of clean code :).
 it was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
 
@@ -26,15 +26,12 @@ I used the Sass variables in the theme folder to specify some of the apearence i
 other styles are specified in the styles.scss file.
 
 ## Configurations
-In addition to the production flag in the Environment file i added 
+
+In addition to the production flag in the Environment file i added
 i added the attributes below:
-` api: { host: 'http://localhost:3000', url: 'http://localhost:3000/api' },
-  appLogo: 'assets/logo.svg',
-  appBackground: 'assets/imgs/bg.jpg',
-  appLoginBackground: 'assets/imgs/login-bg.jpg',
-  appName: "Angular Boilerplate"
-  `
-So change it to your real values 
+`api: { host: 'http://localhost:3000', url: 'http://localhost:3000/api' }, appLogo: 'assets/logo.svg', appBackground: 'assets/imgs/bg.jpg', appLoginBackground: 'assets/imgs/login-bg.jpg', appName: "Angular Boilerplate"`
+So change it to your real values
+
 ## Upcoming Improvments
 
 1. Adding a material table enhanced library for less code (MatDatatable (Using the same Mat Table but with more features: Advanced column filtering, Interfacing columns, Decorators, configurations... ))
