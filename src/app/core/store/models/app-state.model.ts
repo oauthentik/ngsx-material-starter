@@ -5,6 +5,7 @@ import { AuthStateModel } from "./auth.model";
 export interface AppStateModel {
   menus: Partial<MenuItem>[];
   dashboard: Dashboard;
+  about: string;
   breadcrumb: Partial<MenuItem>[];
 }
 export const AppAuthStateDefaults: AuthStateModel = {
@@ -17,6 +18,7 @@ export const AppAuthStateDefaults: AuthStateModel = {
 };
 export const AppStateDefaults: AppStateModel = {
   menus: [],
+  about: "",
   dashboard: {
     widgets: []
   },

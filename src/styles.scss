@@ -67,6 +67,10 @@ router-outlet {
   padding: $container-spacing;
   background-color: $default-bg;
 }
+p {
+  text-align: left;
+  word-break: keep-all;
+}
 .hidden {
   display: none !important;
 }

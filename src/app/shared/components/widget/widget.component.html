@@ -10,7 +10,7 @@
       <ng-container *ngSwitchCase="widgetEnum.Text">
         <ng-container [ngSwitch]="widget.content?.type">
           <ng-container *ngSwitchCase="textTypes.Brut">
-            {{ widget.content.content }}
+            <p>{{ widget.content.content }}</p>
           </ng-container>
           <ng-container *ngSwitchCase="textTypes.HTML">
             {{ widget.content.content | safe: "html" }}

@@ -4,6 +4,9 @@ import { Action, State, StateContext, StateToken, Selector } from "@ngxs/store";
 import { LoadAppMenu, LoadAppDashboard } from "./actions/menu.actions";
 import { AppStateDefaults, AppStateModel } from "./models/app-state.model";
 import { dashboards } from "@app/config/dashboards";
+import { HttpClient } from "@angular/common/http";
+import { tap } from "rxjs/operators";
+import { Text } from "@app/models/dashboard";
 export const APP_STATE_TOKEN = new StateToken<AppStateModel>("app_state");
 
 @State<AppStateModel>({
@@ -24,6 +27,7 @@ export class AppState {
   static getDashboard(state: AppStateModel) {
     return state.dashboard;
   }
+  constructor(private http: HttpClient) {}
   @Action(LoadAppMenu)
   loadAppMenu(ctx: StateContext<AppStateModel>, role: UserRoles) {
     ctx.patchState({
@@ -36,8 +40,13 @@ export class AppState {
     ctx: StateContext<AppStateModel>,
     { role = UserRoles.Guest }
   ) {
-    ctx.patchState({
-      dashboard: { ...dashboards[role] }
-    });
+    return this.http.get<any>("/assets/about.json").pipe(
+      tap(blob => {
+        (dashboards[role].widgets[0].content as Text).content = blob.content;
+        ctx.patchState({
+          dashboard: { ...dashboards[role] }
+        });
+      })
+    );
   }
 }

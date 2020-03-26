@@ -141,6 +141,9 @@
       @include flex-column();
       @include fill();
       padding: $spacing * 0.5;
+      p {
+        padding: $spacing * 0.5;
+      }
     }
   }
   .app-widget-list {

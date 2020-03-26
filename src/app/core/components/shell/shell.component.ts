@@ -4,7 +4,7 @@ import {
   Inject,
   ChangeDetectionStrategy
 } from "@angular/core";
-import { APP_LOGO, APP_NAME, BASE_HREF, APP_ICONS } from "@app/config/di";
+import { APP_LOGO, APP_NAME, BASE_HREF } from "@app/config/di";
 import { Select, Store } from "@ngxs/store";
 import { Observable } from "rxjs";
 import { MenuItem } from "@app/models/menu";
