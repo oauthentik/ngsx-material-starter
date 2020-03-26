@@ -114,6 +114,7 @@
 }
 @mixin widgets {
   .app-widget {
+    background-color: #fff;
     position: relative;
     box-shadow: $shadow-md;
     padding: 0;
@@ -130,7 +131,7 @@
       font-weight: 900;
       margin: 0;
       margin-bottom: $spacing * 0.5;
-      padding: $spacing * 0.5;
+      padding: $spacing;
       padding-bottom: 0;
       @include flex-row();
       @include start();

@@ -36,7 +36,11 @@
     </div>
   </div>
 </mat-toolbar>
-<mat-drawer-container hasBackdrop="false" class="app-drwwer-container">
+<mat-drawer-container
+  hasBackdrop="false"
+  class="app-drwwer-container"
+  [style.backgroundImage]="'assets/imgs/app-bg-pattern.png'"
+>
   <mat-drawer #drawer mode="push" disableClose opened>
     <app-menu [menus]="menus$ | async"> </app-menu>
   </mat-drawer>

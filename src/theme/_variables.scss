@@ -1,7 +1,6 @@
 /*  Globals */
 // -- Apearence
-$background-image: url("assets/app-bg.jpg");
-$default-bg: #fff;
+$default-bg: #d4e6f5;
 $default-fg: #000;
 $app-error: rgb(250, 11, 11);
 $app-success: rgb(83, 241, 83);
@@ -40,6 +39,9 @@ $menu-item-margin-y: 10px;
 $menu-item-padding-x: 1em;
 $menu-item-padding-y: 1em;
 $menu-item-boxshadow: $shadow;
+
+/* Widgets */
+
 /* Cards */
 $layout: flex;
 /* Dialog */

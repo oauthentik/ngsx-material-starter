@@ -65,6 +65,7 @@ router-outlet {
   @include flex-column();
   @include fill();
   padding: $container-spacing;
+  background-color: $default-bg;
 }
 .hidden {
   display: none !important;
