@@ -20,5 +20,6 @@ export class MenuComponent implements OnInit {
   arrowIcon: Icon = { name: "keyboard_arrow_right", type: IconType.Material };
   dashboardIcon: Icon = { name: "dashboard", type: IconType.Material };
   @Input() menus: MenuItem[];
+  @Input() theme: string;
   ngOnInit() {}
 }

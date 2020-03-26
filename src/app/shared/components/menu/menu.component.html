@@ -5,7 +5,12 @@
   cdkScrollable
   class="menu-list"
 >
-  <button mat-button class="menu-entry" [routerLink]="[basePath]">
+  <button
+    mat-button
+    [color]="theme"
+    class="menu-entry"
+    [routerLink]="[basePath]"
+  >
     <app-icon class="menu-icon" [icon]="dashboardIcon"></app-icon> Dashboard
   </button>
   <ng-container *ngFor="let item of menus">
@@ -24,6 +29,7 @@
 <ng-template #single let-singleItem>
   <a
     mat-button
+    [color]="theme"
     [href]="singleItem.slugs | join: '/'"
     target="newtab"
     *ngIf="singleItem.redirect"
@@ -41,6 +47,7 @@
   </a>
   <button
     mat-button
+    [color]="theme"
     [routerLink]="singleItem.slugs"
     [queryParams]="singleItem.queryParams || {}"
     class="menu-entry"
