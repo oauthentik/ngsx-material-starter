@@ -2,15 +2,14 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  Inject
+  Inject,
+  ElementRef
 } from "@angular/core";
 import { Select, Store } from "@ngxs/store";
 import { Observable } from "rxjs";
 import { Dashboard } from "@app/models/dashboard";
 import { LoadAppDashboard } from "@app/core/store/actions/menu.actions";
 import { AUTH_STATE_TOKEN } from "@app/core/store/auth.state";
-import { AppIcons } from "@app/models/icons";
-import { APP_ICONS } from "@app/config/di";
 import { AppState } from "@app/core/store/app.state";
 
 @Component({
@@ -20,7 +19,7 @@ import { AppState } from "@app/core/store/app.state";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class AppDashboardComponent implements OnInit {
-  constructor(public store: Store, @Inject(APP_ICONS) public icons: AppIcons) {}
+  constructor(public store: Store, public el: ElementRef) {}
   @Select(AppState.getDashboard) dashboard$: Observable<Dashboard>;
 
   ngOnInit() {

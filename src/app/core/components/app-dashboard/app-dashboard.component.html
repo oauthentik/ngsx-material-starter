@@ -4,6 +4,7 @@
   fxLayout="row"
   fxLayoutAlign="space-between start"
   fxLayoutGap="20px"
+  [style.height.px]="el.nativeElement.offsetHeight"
 >
   <app-widget
     [widget]="widget"
@@ -13,6 +14,5 @@
         | orderBy: ['layout', 'order']
     "
     fxFlex="calc({{ widget.layout.xAxisRatio * 100 }}%  - 20px)"
-    [style.min-height.%]="widget.layout.yAxisRatio * 100"
   ></app-widget>
 </div>

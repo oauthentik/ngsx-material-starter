@@ -3,7 +3,8 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   Input,
-  Inject
+  Inject,
+  HostBinding
 } from "@angular/core";
 import { Widget, WidgetEnum, FeedType, TextType } from "@app/models/dashboard";
 
@@ -16,6 +17,11 @@ import { Widget, WidgetEnum, FeedType, TextType } from "@app/models/dashboard";
 export class WidgetComponent implements OnInit {
   constructor() {}
   @Input() widget: Widget | any;
+  @HostBinding("style.height.%")
+  public get maxheight(): number {
+    return this.widget.layout.yAxisRatio * 100;
+  }
+
   readonly widgetEnum = WidgetEnum;
   readonly feedTypes = FeedType;
   readonly textTypes = TextType;

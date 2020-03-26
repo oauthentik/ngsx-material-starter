@@ -117,6 +117,7 @@
     position: relative;
     box-shadow: $shadow-md;
     padding: 0;
+    @include fill();
     @include flex-column();
     .app-widget__icon {
       margin-right: $spacing * 0.5;
@@ -130,6 +131,7 @@
       margin: 0;
       margin-bottom: $spacing * 0.5;
       padding: $spacing * 0.5;
+      padding-bottom: 0;
       @include flex-row();
       @include start();
     }
