@@ -20,6 +20,7 @@ import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
 import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
 import { WidgetModule } from "@app/shared/components/widget/widget.module";
+import { MenuModule } from "@app/shared/components/menu/menu.module";
 
 @NgModule({
   declarations: [ShellComponent, AuthComponent, AppDashboardComponent],
@@ -37,6 +38,7 @@ import { WidgetModule } from "@app/shared/components/widget/widget.module";
     UiModule,
     WidgetModule,
     NgPipesModule,
+    MenuModule,
     AppMenuModule,
     MessagesModule,
     BreadcrumbModule
