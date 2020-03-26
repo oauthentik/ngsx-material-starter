@@ -1,4 +1,5 @@
 import { Menu } from "@app/types/menu";
+import { Icon } from "./icons";
 
 export interface Statistics {
   name: string;
@@ -50,6 +51,7 @@ export enum WidgetEnum {
 export interface Widget {
   title: string;
   type: WidgetEnum;
+  icon: Icon;
   content: Statistics | Feed | SvgMap | Menu[] | Text;
   layout: Partial<WidgetLayout>;
   url: string;

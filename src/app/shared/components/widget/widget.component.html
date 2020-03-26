@@ -3,9 +3,16 @@
   [attr.href]="widget.url ? (widget.url | safe: 'url') : '#'"
 >
   <h4 *ngIf="widget.title" class="app-widget__title">
-    <mat-icon class="app-widget__icon">{{
-      icons.widgets[widget.type]
-    }}</mat-icon>
+    <mat-icon
+      *ngIf="widget.icon?.type === 'material'"
+      class="app-widget__icon"
+      >{{ icons.getIcon[widget.icon.name] }}</mat-icon
+    >
+    <fa-icon
+      *ngIf="widget.icon?.type === 'fontawesome'"
+      [icon]="icons.getIcon[widget.icon.name]"
+      class="app-widget__icon"
+    ></fa-icon>
     <span>
       {{ widget.title }}
     </span>

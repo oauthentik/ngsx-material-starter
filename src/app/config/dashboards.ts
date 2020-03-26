@@ -8,17 +8,19 @@ import {
 } from "@app/models/dashboard";
 import { WidgetLayouts } from "./layouts";
 import { environment } from "@env/environment";
-const aboutWidget: Widget = {
+const aboutWidget: Partial<Widget> = {
   title: "Welcome to " + environment.appName,
   type: WidgetEnum.Text,
   layout: { ...WidgetLayouts.Third, order: 0 },
   content: { type: TextType.Brut, content: `` },
+  icon: { name: "info", type: "material" },
   url: "/about"
 };
-const embedWidget: Widget = {
+const embedWidget: Partial<Widget> = {
   title: "More about Ngxs",
   type: WidgetEnum.Feed,
   layout: { ...WidgetLayouts.Third, order: 0 },
+  icon: { name: "info", type: "material" },
   content: {
     type: FeedType.Embed,
     content: "https://www.youtube.com/embed/SGj11j4hxmg"
@@ -28,6 +30,7 @@ const embedWidget: Widget = {
 const linksWidget: Partial<Widget> = {
   title: "Links",
   type: WidgetEnum.Menu,
+  icon: { name: "link", type: "material" },
   layout: { ...WidgetLayouts.Third, order: 0 },
   content: [
     {
