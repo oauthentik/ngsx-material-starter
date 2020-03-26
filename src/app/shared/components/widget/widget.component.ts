@@ -6,8 +6,6 @@ import {
   Inject
 } from "@angular/core";
 import { Widget, WidgetEnum, FeedType, TextType } from "@app/models/dashboard";
-import { APP_ICONS } from "@app/config/di";
-import { AppIcons } from "@app/models/icons";
 
 @Component({
   selector: "app-widget",
@@ -16,7 +14,7 @@ import { AppIcons } from "@app/models/icons";
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class WidgetComponent implements OnInit {
-  constructor(@Inject(APP_ICONS) public icons: AppIcons) {}
+  constructor() {}
   @Input() widget: Widget | any;
   readonly widgetEnum = WidgetEnum;
   readonly feedTypes = FeedType;

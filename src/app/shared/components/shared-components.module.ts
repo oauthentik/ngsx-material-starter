@@ -4,16 +4,23 @@ import { LoadingIndicatorComponent } from "./loading-indicator/loading-indicator
 import { MatProgressSpinnerModule } from "@angular/material";
 import { SharedPipesModule } from "../pipes/pipes.module";
 import { MenuModule } from "./menu/menu.module";
+import { IconModule } from "./icon/icon.module";
 
 @NgModule({
-  declarations: [LoadingIndicatorComponent],
+  declarations: [LoadingIndicatorComponent, IconModule],
   imports: [
     CommonModule,
+    IconModule,
     MatProgressSpinnerModule,
     MenuModule,
     SharedPipesModule
   ],
-  exports: [LoadingIndicatorComponent, MenuModule, SharedPipesModule],
+  exports: [
+    LoadingIndicatorComponent,
+    IconModule,
+    MenuModule,
+    SharedPipesModule
+  ],
   providers: []
 })
 export class SharedComponentsModule {}

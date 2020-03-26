@@ -8,6 +8,7 @@ import {
 import { RouterModule } from "@angular/router";
 import { MenuComponent } from "./menu.component";
 import { NgPipesModule } from "angular-pipes";
+import { IconModule } from "../icon/icon.module";
 
 @NgModule({
   declarations: [MenuComponent],
@@ -16,8 +17,8 @@ import { NgPipesModule } from "angular-pipes";
     RouterModule,
     NgPipesModule,
     MatExpansionModule,
-    MatButtonModule,
-    MatIconModule
+    IconModule,
+    MatButtonModule
   ],
   exports: [MenuComponent]
 })

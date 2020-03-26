@@ -1,7 +1,19 @@
-import { appIcons } from "@app/config/icons";
+import { IconName } from "@fortawesome/fontawesome-svg-core";
 
-export type AppIcons = typeof appIcons;
+export type AppIcons = Icon | string;
+
+export enum IconType {
+  FontAwesome = "fontawesome",
+  Material = "material"
+}
+export enum IconSize {
+  Default = 0,
+  Medium,
+  Large,
+  XLarge
+}
 export interface Icon {
-  name: string;
-  type: "fontawesome" | "material";
+  name: string | IconName;
+  type: IconType;
+  size?: IconSize;
 }

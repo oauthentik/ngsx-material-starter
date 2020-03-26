@@ -3,16 +3,7 @@
   [attr.href]="widget.url ? (widget.url | safe: 'url') : '#'"
 >
   <h4 *ngIf="widget.title" class="app-widget__title">
-    <mat-icon
-      *ngIf="widget.icon?.type === 'material'"
-      class="app-widget__icon"
-      >{{ icons.getIcon[widget.icon.name] }}</mat-icon
-    >
-    <fa-icon
-      *ngIf="widget.icon?.type === 'fontawesome'"
-      [icon]="icons.getIcon[widget.icon.name]"
-      class="app-widget__icon"
-    ></fa-icon>
+    <app-icon [icon]="widget.icon"></app-icon>
     <span>
       {{ widget.title }}
     </span>
@@ -35,9 +26,6 @@
 
       <ng-container *ngSwitchCase="widgetEnum.Statistic">
         <strong class="mat-heading">
-          <mat-icon *ngIf="widget.content.icon">{{
-            widget.content.icon
-          }}</mat-icon>
           {{ widget.content.value || "--" }}
         </strong>
         <small class="mat-caption">

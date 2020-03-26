@@ -21,6 +21,9 @@ import { NgxsReduxDevtoolsPluginModule } from "@ngxs/devtools-plugin";
 import { NgxsRouterPluginModule } from "@ngxs/router-plugin";
 import { WidgetModule } from "@app/shared/components/widget/widget.module";
 import { MenuModule } from "@app/shared/components/menu/menu.module";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { appIcons } from "@app/config/icons";
 
 @NgModule({
   declarations: [ShellComponent, AuthComponent, AppDashboardComponent],
@@ -41,7 +44,8 @@ import { MenuModule } from "@app/shared/components/menu/menu.module";
     MenuModule,
     AppMenuModule,
     MessagesModule,
-    BreadcrumbModule
+    BreadcrumbModule,
+    FontAwesomeModule
   ],
   exports: [ShellComponent, AuthComponent, AppDashboardComponent],
   providers: providers
@@ -51,5 +55,6 @@ export class CoreModule {
     if (parentModule) {
       throw new Error("Core module already injected");
     }
+    library.add(...appIcons);
   }
 }
