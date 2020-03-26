@@ -7,12 +7,14 @@
   flex: 1 1 auto;
   .menu-list {
     padding: 0;
+    margin: 0;
     &.has-children {
       padding: 0 0 10px 0;
     }
   }
-  button.menu-entry {
-    @include rounded();
+  button.menu-entry,
+  a.menu-entry {
+    @include rounded-sm();
     @include flex-row();
     @include stretch();
     font-weight: 600;

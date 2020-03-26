@@ -55,8 +55,16 @@ mat-toolbar.app-toolbar {
   margin: 0;
   padding: 5px 10px;
 }
-.app-wrapper {
-  padding: $spacing;
+router-outlet {
+  display: none;
+  & + * {
+    @include fill();
+  }
+}
+.mat-drawer-content.app-wrapper {
+  @include flex-column();
+  @include fill();
+  padding: $container-spacing;
 }
 .hidden {
   display: none !important;

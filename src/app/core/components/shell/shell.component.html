@@ -40,15 +40,11 @@
   <mat-drawer #drawer mode="push" disableClose opened>
     <app-menu [menus]="menus$ | async"> </app-menu>
   </mat-drawer>
-  <mat-drawer-content>
-    <div class="app-wrapper">
-      <div fxLayout="column" fxLayoutAlign="stretch stretch" fxLayoutGap="0px">
-        <app-breadcrumb
-          [breadcrumbs]="menus$ | async"
-          *ngIf="(menus$ | async)?.length"
-        ></app-breadcrumb>
-        <router-outlet></router-outlet>
-      </div>
-    </div>
+  <mat-drawer-content class="app-wrapper">
+    <app-breadcrumb
+      [breadcrumbs]="menus$ | async"
+      *ngIf="(menus$ | async)?.length"
+    ></app-breadcrumb>
+    <router-outlet></router-outlet>
   </mat-drawer-content>
 </mat-drawer-container>

@@ -21,9 +21,9 @@ const embedWidget: Widget = {
   layout: { ...WidgetLayouts.Third, order: 0 },
   content: {
     type: FeedType.Embed,
-    content: "https://www.youtube.com/watch?v=SGj11j4hxmg"
+    content: "https://www.youtube.com/embed/SGj11j4hxmg"
   },
-  url: "/about"
+  url: "https://www.youtube.com/watch?v=SGj11j4hxmg"
 };
 const linksWidget: Partial<Widget> = {
   title: "Links",
@@ -55,6 +55,6 @@ export const dashboards: Partial<{ [key in UserRoles]: Dashboard }> = {
     widgets: [aboutWidget]
   },
   [UserRoles.Moderator]: {
-    widgets: [aboutWidget, linksWidget]
+    widgets: [aboutWidget, linksWidget, embedWidget]
   }
 };

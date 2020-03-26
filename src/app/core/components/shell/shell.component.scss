@@ -6,7 +6,6 @@
   .app-drwwer-container {
     @include flex-column();
     @include fill();
-    display: flex;
     background-color: $default-bg;
     color: $default-fg;
   }

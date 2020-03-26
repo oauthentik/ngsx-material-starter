@@ -1,7 +1,7 @@
 import { NgModule } from "@angular/core";
 import { CommonModule } from "@angular/common";
 import { WidgetComponent } from "./widget.component";
-import { MatCardModule, MatIconModule } from "@angular/material";
+import { MatIconModule } from "@angular/material";
 import { MenuModule } from "../menu/menu.module";
 import { SharedPipesModule } from "@app/shared/pipes/pipes.module";
 import { RouterModule } from "@angular/router";
@@ -10,7 +10,6 @@ import { RouterModule } from "@angular/router";
   declarations: [WidgetComponent],
   imports: [
     CommonModule,
-    MatCardModule,
     MatIconModule,
     MenuModule,
     RouterModule,

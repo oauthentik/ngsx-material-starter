@@ -1,9 +1,16 @@
-<mat-card [routerLink]="[widget.url ? widget.url : '#']">
-  <mat-card-title *ngIf="widget.title" class="app-widget__title">
-    <mat-icon>{{ icons.widgets[widget.type] }}</mat-icon>
-    {{ widget.title }}</mat-card-title
-  >
-  <mat-card-content>
+<section
+  class="app-widget"
+  [attr.href]="widget.url ? (widget.url | safe: 'url') : '#'"
+>
+  <h4 *ngIf="widget.title" class="app-widget__title">
+    <mat-icon class="app-widget__icon">{{
+      icons.widgets[widget.type]
+    }}</mat-icon>
+    <span>
+      {{ widget.title }}
+    </span>
+  </h4>
+  <div class="app-widget__content">
     <ng-container [ngSwitch]="widget.type">
       <ng-container *ngSwitchCase="widgetEnum.Text">
         <ng-container [ngSwitch]="widget.content?.type">
@@ -37,28 +44,34 @@
       <ng-container *ngSwitchCase="widgetEnum.Feed">
         <ng-container [ngSwitch]="widget.content.type">
           <ng-container *ngSwitchCase="feedTypes.Audio">
-            <audio [src]="widget.content.content | safe: 'url'"></audio>
+            <audio [src]="widget.content.content | safe: 'resourceUrl'"></audio>
           </ng-container>
           <ng-container *ngSwitchCase="feedTypes.Video">
-            <video [src]="widget.content.content | safe: 'url'"></video>
+            <video [src]="widget.content.content | safe: 'resourceUrl'"></video>
           </ng-container>
           <ng-container *ngSwitchCase="feedTypes.Embed">
             <iframe
               width="100%"
-              height="100%"
-              [src]="widget.content.content | safe: 'url'"
+              frameborder="0"
+              allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+              allowfullscreen
+              [src]="widget.content.content | safe: 'resourceUrl'"
               frameborder="0"
             ></iframe>
           </ng-container>
           <ng-container *ngSwitchCase="feedTypes.Gallery">
             <div fxLayout="row" fxLayoutAlign="start start" fxLayoutGap="4px">
               <div *ngFor="let item of widget.content?.content" fxFlex="120px">
-                <img [src]="item | safe: 'url'" alt="" class="img-contain" />
+                <img
+                  [src]="item | safe: 'resourceUrl'"
+                  alt=""
+                  class="img-contain"
+                />
               </div>
             </div>
           </ng-container>
         </ng-container>
       </ng-container>
     </ng-container>
-  </mat-card-content>
-</mat-card>
+  </div>
+</section>

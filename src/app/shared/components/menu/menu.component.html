@@ -22,11 +22,27 @@
   </ng-container>
 </ul>
 <ng-template #single let-singleItem>
+  <a
+    mat-button
+    [href]="singleItem.slugs | join: '/'"
+    target="newtab"
+    *ngIf="singleItem.redirect"
+    class="menu-entry"
+  >
+    <mat-icon class="menu-icon" *ngIf="singleItem.icon" inline="true">{{
+      singleItem.icon
+    }}</mat-icon>
+    <span>
+      {{ singleItem.label }}
+    </span>
+    <mat-icon>keyboard_arrow_right</mat-icon>
+  </a>
   <button
     mat-button
     [routerLink]="singleItem.slugs"
     [queryParams]="singleItem.queryParams || {}"
     class="menu-entry"
+    *ngIf="!singleItem.redirect"
   >
     <mat-icon class="menu-icon" *ngIf="singleItem.icon" inline="true">{{
       singleItem.icon

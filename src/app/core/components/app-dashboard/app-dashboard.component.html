@@ -1,5 +1,10 @@
-{{ (dashboard$ | async).widgets | json }}
-<div *ngIf="dashboard$ | async as dashboard" class="app-widget-list">
+<div
+  *ngIf="dashboard$ | async as dashboard"
+  class="app-widget-list"
+  fxLayout="row"
+  fxLayoutAlign="space-between start"
+  fxLayoutGap="20px"
+>
   <app-widget
     [widget]="widget"
     *ngFor="
@@ -7,7 +12,7 @@
         | where: ['layout.placement', 'top']
         | orderBy: ['layout', 'order']
     "
-    [fxFlex]="widget.layout.xAxisRatio * 100"
-    [style.height.%]="widget.layout.yAxisRatio * 100"
+    fxFlex="calc({{ widget.layout.xAxisRatio * 100 }}%  - 20px)"
+    [style.min-height.%]="widget.layout.yAxisRatio * 100"
   ></app-widget>
 </div>

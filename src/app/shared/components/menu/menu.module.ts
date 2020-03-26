@@ -7,12 +7,14 @@ import {
 } from "@angular/material";
 import { RouterModule } from "@angular/router";
 import { MenuComponent } from "./menu.component";
+import { NgPipesModule } from "angular-pipes";
 
 @NgModule({
   declarations: [MenuComponent],
   imports: [
     CommonModule,
     RouterModule,
+    NgPipesModule,
     MatExpansionModule,
     MatButtonModule,
     MatIconModule

@@ -36,10 +36,23 @@
   @include stretch();
 }
 @mixin rounded {
-  border-radius: 20px;
+  border-radius: 50%;
+}
+@mixin rounded-sm {
+  border-radius: $round-sm;
+}
+@mixin rounded-md {
+  border-radius: $round-md;
+}
+@mixin rounded-lg {
+  border-radius: $round-lg;
 }
 @mixin no-round {
   border-radius: 0;
+}
+@mixin scrol {
+  overflow: hidden;
+  overflow-y: auto;
 }
 
 @mixin cards {
@@ -100,9 +113,37 @@
   }
 }
 @mixin widgets {
+  .app-widget {
+    position: relative;
+    box-shadow: $shadow;
+    padding: 0;
+    @include flex-column();
+    .app-widget__icon {
+      margin-right: $spacing * 0.5;
+    }
+    *.app-widget__title {
+      opacity: 0.8;
+      font-family: $font-secondary;
+      font-size: 120%;
+      line-height: 1.6;
+      font-weight: 900;
+      margin: 0;
+      margin-bottom: $spacing * 0.5;
+      padding: $spacing * 0.5;
+      @include flex-row();
+      @include start();
+    }
+    .app-widget__content {
+      font-family: $font-primary;
+      @include flex-column();
+      @include fill();
+      padding: $spacing * 0.5;
+    }
+  }
   .app-widget-list {
     @include flex-row();
+    @include fill();
+    @include scrol();
     flex-wrap: wrap;
-    padding: 1em;
   }
 }
