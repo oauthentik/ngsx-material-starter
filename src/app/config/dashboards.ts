@@ -14,8 +14,7 @@ const aboutWidget: Partial<Widget> = {
   type: WidgetEnum.Text,
   layout: { ...WidgetLayouts.Third, order: 0 },
   content: { type: TextType.Brut, content: `` },
-  icon: { name: "info", type: IconType.Material },
-  url: "/about"
+  icon: { name: "info", type: IconType.Material }
 };
 const embedWidget: Partial<Widget> = {
   title: "More about Ngxs",
@@ -25,8 +24,7 @@ const embedWidget: Partial<Widget> = {
   content: {
     type: FeedType.Embed,
     content: "https://www.youtube.com/embed/SGj11j4hxmg"
-  },
-  url: "https://www.youtube.com/watch?v=SGj11j4hxmg"
+  }
 };
 const linksWidget: Partial<Widget> = {
   title: "Links",

@@ -54,7 +54,6 @@ export interface Widget {
   icon: Icon;
   content: Statistics | Feed | SvgMap | Menu[] | Text;
   layout: Partial<WidgetLayout>;
-  url: string;
 }
 export interface WidgetLayout {
   placement: "top" | "middle" | "bottom";

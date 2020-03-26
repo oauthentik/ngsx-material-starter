@@ -1,7 +1,4 @@
-<section
-  class="app-widget"
-  [attr.href]="widget.url ? (widget.url | safe: 'url') : '#'"
->
+<section class="app-widget">
   <h4 *ngIf="widget.title" class="app-widget__title">
     <app-icon [icon]="widget.icon"></app-icon>
     <span>
