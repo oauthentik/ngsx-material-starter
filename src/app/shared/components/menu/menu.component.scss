@@ -16,7 +16,7 @@
   a.menu-entry {
     @include rounded-sm();
     @include flex-row();
-    @include stretch();
+    @include center();
     font-weight: 600;
     height: $menu-item-heigth;
     margin: $menu-item-margin-y $menu-item-margin-x;
