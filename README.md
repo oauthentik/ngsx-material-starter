@@ -1,6 +1,7 @@
 # Angular 7, Ngxs and Angular Material Starter
 
-![alt text](./previews/dashboard.png "Project dashboard preview")
+![Login preview](./previews/login.png "Project login preview")
+![Dashboard with sample widgets preview](./previews/dashboard.png "Project dashboard preview")
 
 This project is a clean starter for your projects, use it to build bigger and better architectured projects with your prefered style
 it uses the mix of [NGXS](https://www.ngxs.io) and [Angular Material](https://material.angular.io/) and the magic of clean code :).
