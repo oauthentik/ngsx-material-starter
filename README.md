@@ -7,6 +7,12 @@ This project is a clean starter for your projects, use it to build bigger and be
 it uses the mix of [NGXS](https://www.ngxs.io) and [Angular Material](https://material.angular.io/) and the magic of clean code :).
 it was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.0.5.
 
+## Demo (Stackblitz)
+
+Visit [Stackblitz](https://stackblitz.com/edit/ngxs-material-starter) for your demo
+
+`git clone https://github.com/oauthentik/ngsx-material-starter.git new-project && cd new-project && ng serve`
+
 ## Getting started
 
 `git clone https://github.com/oauthentik/ngsx-material-starter.git new-project && cd new-project && ng serve`

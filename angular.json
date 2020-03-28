@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngsx-material-starte": {
+    "ngsx-material-starter": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -18,7 +18,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/ngsx-material-starte",
+            "outputPath": "dist/ngsx-material-starter",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -60,18 +60,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngsx-material-starte:build"
+            "browserTarget": "ngsx-material-starter:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngsx-material-starte:build:production"
+              "browserTarget": "ngsx-material-starter:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngsx-material-starte:build"
+            "browserTarget": "ngsx-material-starter:build"
           }
         },
         "test": {
@@ -95,7 +95,7 @@
         }
       }
     },
-    "ngsx-material-starte-e2e": {
+    "ngsx-material-starter-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "prefix": "",
@@ -104,11 +104,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "ngsx-material-starte:serve"
+            "devServerTarget": "ngsx-material-starter:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngsx-material-starte:serve:production"
+              "devServerTarget": "ngsx-material-starter:serve:production"
             }
           }
         },
@@ -122,5 +122,5 @@
       }
     }
   },
-  "defaultProject": "ngsx-material-starte"
+  "defaultProject": "ngsx-material-starter"
 }
