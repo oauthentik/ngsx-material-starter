@@ -1,15 +1,15 @@
 import { HttpClient } from "@angular/common/http";
 import { Inject, Injectable } from "@angular/core";
-import { AuthStateModel } from "../../store/models/auth.model";
-import { Api } from "@app/models/api";
-import * as jwt_decode from "jwt-decode";
-import { of, Observable } from "rxjs";
-import { switchMap, catchError, mergeMap } from "rxjs/operators";
 import { API } from "@app/config/di";
-import { AppAuthStateDefaults } from "../../store/models/app-state.model";
 import { MessageService } from "@app/core/services/message.service";
-import { Store } from "@ngxs/store";
+import { Api } from "@app/models/api";
 import { User } from "@app/models/user";
+import { Store } from "@ngxs/store";
+import * as jwt_decode from "jwt-decode";
+import { Observable, of } from "rxjs";
+import { catchError, switchMap } from "rxjs/operators";
+import { AuthStateModel } from "../../store/models/auth.model";
+import { AppAuthStateDefaults } from "@app/core/store/auth.state";
 
 @Injectable({
   providedIn: "root"
