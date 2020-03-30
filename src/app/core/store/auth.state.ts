@@ -13,13 +13,18 @@ import {
 import { tap, switchMap, catchError } from "rxjs/operators";
 import { AuthService } from "../services/auth/auth.service";
 import { Login, Logout, RefreshToken } from "./actions/auth.action";
-import { AppAuthStateDefaults, AppStateModel } from "./models/app-state.model";
 import { AuthStateModel, LoginPayload } from "./models/auth.model";
 import { NotificationsService } from "../services/notifications/notifications.service";
 import { of } from "rxjs";
-export const APP_STATE_TOKEN = new StateToken<AppStateModel>("app_state");
 export const AUTH_STATE_TOKEN = new StateToken<AuthStateModel>("auth");
-
+export const AppAuthStateDefaults: AuthStateModel = {
+  token: null,
+  refresh: null,
+  tokenExpireAt: null,
+  error: null,
+  authenticating: false,
+  user: null
+};
 @State({
   name: AUTH_STATE_TOKEN,
   defaults: AppAuthStateDefaults
