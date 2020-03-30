@@ -1,3 +1,7 @@
+<ng-template #wcontent>
+  <ng-content></ng-content>
+</ng-template>
+
 <section class="app-widget">
   <h4 *ngIf="widget.title" class="app-widget__title">
     <app-icon [icon]="widget.icon"></app-icon>
@@ -13,7 +17,9 @@
             <p>{{ widget.content.content }}</p>
           </ng-container>
           <ng-container *ngSwitchCase="textTypes.HTML">
-            {{ widget.content.content | safe: "html" }}
+            <ng-container *ngIf="widget.content.content; else wcontent">
+              {{ widget.content.content | safe: "html" }}
+            </ng-container>
           </ng-container>
           <ng-container *ngSwitchCase="textTypes.Markdown">
             {{ widget.content.content | safe: "html" }}

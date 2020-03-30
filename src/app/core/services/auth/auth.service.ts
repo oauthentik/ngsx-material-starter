@@ -24,7 +24,9 @@ export class AuthService {
   getUser(id: any) {
     return this.http.get<User>(`${this.api.url}/${this.api.index.Users}/${id}`);
   }
-
+  getUsers() {
+    return this.http.get<User[]>(`${this.api.url}/${this.api.index.Users}`);
+  }
   login(credentials) {
     return this.http
       .post<AuthStateModel>(

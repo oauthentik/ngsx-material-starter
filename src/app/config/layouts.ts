@@ -10,12 +10,12 @@ export const WidgetLayouts: Partial<
   },
   Third: {
     placement: "top",
-    xAxisRatio: 0.3,
+    xAxisRatio: 1 / 3,
     yAxisRatio: 0.6
   },
   Quarter: {
     placement: "top",
-    xAxisRatio: 0.4,
+    xAxisRatio: 1 / 4,
     yAxisRatio: 0.6
   }
 };

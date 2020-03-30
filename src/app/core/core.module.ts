@@ -24,13 +24,15 @@ import { MenuModule } from "@app/shared/components/menu/menu.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { appIcons } from "@app/config/icons";
+import { MatTableAdvancedModule } from "mat-table-advanced";
+import { UsersState } from "./store/users.state";
 
 @NgModule({
   declarations: [ShellComponent, AuthComponent, AppDashboardComponent],
   imports: [
     CommonModule,
     RouterModule,
-    NgxsModule.forRoot([AppState, AuthState], {
+    NgxsModule.forRoot([AppState, AuthState, UsersState], {
       developmentMode: !environment.production
     }),
     NgxsRouterPluginModule.forRoot(),
@@ -40,6 +42,7 @@ import { appIcons } from "@app/config/icons";
     HttpClientModule,
     UiModule,
     WidgetModule,
+    MatTableAdvancedModule.forRoot(),
     NgPipesModule,
     MenuModule,
     AppMenuModule,

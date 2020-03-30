@@ -120,6 +120,39 @@
           }
         }
       }
+    },
+    "mat-table-advanced": {
+      "root": "projects/mat-table-advanced",
+      "sourceRoot": "projects/mat-table-advanced/src",
+      "projectType": "library",
+      "prefix": "ngx",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/mat-table-advanced/tsconfig.lib.json",
+            "project": "projects/mat-table-advanced/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/mat-table-advanced/src/test.ts",
+            "tsConfig": "projects/mat-table-advanced/tsconfig.spec.json",
+            "karmaConfig": "projects/mat-table-advanced/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/mat-table-advanced/tsconfig.lib.json",
+              "projects/mat-table-advanced/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**"]
+          }
+        }
+      }
     }
   },
   "defaultProject": "ngsx-material-starter"

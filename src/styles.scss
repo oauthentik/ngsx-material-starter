@@ -11,6 +11,7 @@ $theme-warn: mat-palette($mat-red, A200);
 $theme-pallete: mat-light-theme($theme-primary, $theme-accent, $theme-warn);
 
 @include angular-material-theme($theme-pallete);
+
 body,
 html {
   font-family: $font-primary;
@@ -33,17 +34,14 @@ mat-toolbar.app-toolbar {
   display: flex;
 }
 .app-logo {
-  object-fit: contain;
+  @include img-contain();
   margin: auto;
-  max-width: 100%;
 }
 .img-cover {
-  max-width: 140%;
-  object-fit: cover;
+  @include img-cover();
 }
 .img-contain {
-  object-fit: contain;
-  max-width: 100%;
+  @include img-contain();
 }
 .toolbar-title {
   justify-content: center;

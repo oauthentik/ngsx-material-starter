@@ -15,4 +15,10 @@
     "
     fxFlex="calc({{ widget.layout.xAxisRatio * 100 }}%  - 20px)"
   ></app-widget>
+  <app-widget [widget]="usersWidget" style="margin-top: 10px;">
+    <ngx-mat-table-advanced
+      [columns]="userModelColumns"
+      [data]="users$ | async"
+    ></ngx-mat-table-advanced>
+  </app-widget>
 </div>

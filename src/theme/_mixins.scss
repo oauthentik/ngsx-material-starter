@@ -5,6 +5,14 @@
   @include fill();
   width: 100%;
 }
+@mixin img-contain {
+  object-fit: contain;
+  max-width: 100%;
+}
+@mixin img-cover {
+  max-width: 140%;
+  object-fit: cover;
+}
 @mixin flex {
   display: flex;
 }
@@ -149,7 +157,6 @@
   .app-widget-list {
     @include flex-row();
     @include fill();
-    @include scrol();
     padding: 0 $spacing;
     flex-wrap: wrap;
   }
