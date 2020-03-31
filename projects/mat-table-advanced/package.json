@@ -1,6 +1,11 @@
 {
   "name": "mat-table-advanced",
-  "version": "0.0.1",
+  "version": "1.0.1",
+  "license": "Apache-2.0",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/oauthentik/ngsx-material-starter/tree/master/projects/mat-table-advanced"
+  },
   "peerDependencies": {
     "angular-pipes": "^9.0.2",
     "@angular/common": "^7.0.0",
