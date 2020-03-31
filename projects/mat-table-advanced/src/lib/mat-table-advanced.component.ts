@@ -11,7 +11,8 @@ import {
   ChangeDetectionStrategy,
   AfterContentInit,
   AfterViewInit,
-  OnChanges
+  OnChanges,
+  ChangeDetectorRef
 } from "@angular/core";
 import { ColumnModel } from "./models/column.model";
 import { SelectionModel } from "@angular/cdk/collections";
@@ -75,7 +76,7 @@ export class MatTableAdvancedComponent
   });
   readonly selectionColumnName = "selection";
   searchControl: FormControl;
-  constructor() {
+  constructor(public cdr: ChangeDetectorRef) {
     this.searchControl = new FormControl();
   }
   ngAfterViewInit(): void {
@@ -91,7 +92,7 @@ export class MatTableAdvancedComponent
   }
   ngOnChanges(changes) {
     if (changes["data"]) {
-      const source = changes["data"].currentValue || [];
+      const source = this.data || [];
       this.dataSource = new MatTableDataSource(source);
       if (this.options.paging && !this.dataSource.paginator) {
         this.dataSource.paginator = this.paginator;
@@ -100,7 +101,9 @@ export class MatTableAdvancedComponent
         this._originalData = cloneDeep(source);
       }
     }
-    this.buildColumns();
+    if (changes["columns"]) {
+      this.buildColumns();
+    }
   }
   isAllSelected() {
     const numSelected = this.selection.selected.length;
@@ -113,9 +116,7 @@ export class MatTableAdvancedComponent
       ? this.selection.clear()
       : this.dataSource.data.forEach(row => this.selection.select(row));
   }
-  ngOnInit() {
-    console.log(this.dataSource);
-  }
+  ngOnInit() {}
 
   applyFilter(filterValue: string) {
     this.dataSource.filterPredicate = (object, filter) => {
@@ -173,6 +174,9 @@ export class MatTableAdvancedComponent
   notInHidden = item => !this.hiddenColumns.includes(item.key);
 
   private buildColumns() {
+    if (!this.columns) {
+      return;
+    }
     this.sortColumns();
     if (this.options.actions) {
       if (!this.columns.find(col => col.key.includes(this.actionsColumn.key))) {

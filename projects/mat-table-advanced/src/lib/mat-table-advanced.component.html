@@ -132,33 +132,6 @@
         </ng-template>
       </td>
     </ng-container>
-    <ng-template #propTypeOutput let-column="column" let-value="value">
-      <ng-container [ngSwitch]="column.propertyType">
-        <span class="text-center" *ngSwitchCase="'String'" [title]="value">
-          {{ value || options.placeholder }}
-        </span>
-        <span class="text-center" *ngSwitchCase="'Number'">
-          <ng-container *ngIf="column.format">
-            {{ (value | number: column.format) || options.placeholder }}
-          </ng-container>
-          <ng-container *ngIf="!column.format">
-            {{ value || options.placeholder }}
-          </ng-container>
-        </span>
-        <span class="text-center" *ngSwitchCase="'Date'">
-          {{ (value | date: column.format) || options.placeholder }}
-        </span>
-        <span class="text-center" *ngSwitchDefault>
-          <ng-container *ngIf="column.propertyAccessor">
-            <span [innerHTML]="value"></span>
-          </ng-container>
-          <ng-container *ngIf="!column.propertyAccessor">
-            {{ value || options.placeholder }}
-          </ng-container>
-          <!-- Default type -->
-        </span>
-      </ng-container>
-    </ng-template>
 
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr
@@ -168,6 +141,33 @@
     ></tr>
   </table>
 
+  <ng-template #propTypeOutput let-column="column" let-value="value">
+    <ng-container [ngSwitch]="column.propertyType">
+      <span class="text-center" *ngSwitchCase="'String'" [title]="value">
+        {{ value || options.placeholder }}
+      </span>
+      <span class="text-center" *ngSwitchCase="'Number'">
+        <ng-container *ngIf="column.format">
+          {{ (value | number: column.format) || options.placeholder }}
+        </ng-container>
+        <ng-container *ngIf="!column.format">
+          {{ value || options.placeholder }}
+        </ng-container>
+      </span>
+      <span class="text-center" *ngSwitchCase="'Date'">
+        {{ (value | date: column.format) || options.placeholder }}
+      </span>
+      <span class="text-center" *ngSwitchDefault>
+        <ng-container *ngIf="column.propertyAccessor">
+          <span [innerHTML]="value"></span>
+        </ng-container>
+        <ng-container *ngIf="!column.propertyAccessor">
+          {{ value || options.placeholder }}
+        </ng-container>
+        <!-- Default type -->
+      </span>
+    </ng-container>
+  </ng-template>
   <ng-container *ngIf="!dataSource.data.length">
     <ng-container *ngIf="noDataTemplate; else emptyDataTmp">
       <ng-container *ngTemplateOutlet="noDataTemplate"></ng-container>
