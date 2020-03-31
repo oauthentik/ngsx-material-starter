@@ -29,7 +29,7 @@
 </div>
 <ng-container *ngIf="(loading | isDefined) && !loading; else loadingTmp">
   <table
-    *ngIf="columns && columns.length && dataSource"
+    *ngIf="columns && columns.length"
     mat-table
     [dataSource]="dataSource"
     matSort

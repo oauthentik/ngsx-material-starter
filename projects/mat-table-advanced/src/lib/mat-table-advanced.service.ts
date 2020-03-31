@@ -5,8 +5,8 @@ import { tableSymbol } from "./decorators/table";
   providedIn: "root"
 })
 export class MatTableAdvancedService {
-  getColumnsOfType<T>(type: T) {
-    return (type as any).prototype[tableSymbol].columns;
+  getColumnsOfType<T extends { new (...args: any[]): {} }>(type: T) {
+    return type.prototype[tableSymbol].columns;
   }
   constructor() {}
 }

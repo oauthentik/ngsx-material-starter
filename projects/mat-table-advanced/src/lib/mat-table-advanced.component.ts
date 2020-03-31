@@ -113,7 +113,9 @@ export class MatTableAdvancedComponent
       ? this.selection.clear()
       : this.dataSource.data.forEach(row => this.selection.select(row));
   }
-  ngOnInit() {}
+  ngOnInit() {
+    console.log(this.dataSource);
+  }
 
   applyFilter(filterValue: string) {
     this.dataSource.filterPredicate = (object, filter) => {
