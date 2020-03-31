@@ -24,6 +24,8 @@ import {
   NgxMatTableOptionsDefaults
 } from "./models/ngx-mat-table-options.model";
 import { FormControl } from "@angular/forms";
+import { tap } from "rxjs/operators";
+import { Observable } from "rxjs";
 @Component({
   selector: "ngx-mat-table-advanced",
   templateUrl: "./mat-table-advanced.component.html",
@@ -76,8 +78,16 @@ export class MatTableAdvancedComponent
   });
   readonly selectionColumnName = "selection";
   searchControl: FormControl;
+  filter$: Observable<string>;
   constructor(public cdr: ChangeDetectorRef) {
     this.searchControl = new FormControl();
+    this.filter$ = this.searchControl.valueChanges.pipe(
+      tap(val => {
+        if (this.options.search) {
+          this.applyFilter(val);
+        }
+      })
+    );
   }
   ngAfterViewInit(): void {
     if (this.options.paging && this.dataSource) {
@@ -119,6 +129,10 @@ export class MatTableAdvancedComponent
   ngOnInit() {}
 
   applyFilter(filterValue: string) {
+    if ((filterValue || "") === "" || (filterValue || "") === undefined) {
+      this.dataSource.filteredData = this.data;
+      return;
+    }
     this.dataSource.filterPredicate = (object, filter) => {
       return this.columns
         .map(column => {
@@ -133,8 +147,13 @@ export class MatTableAdvancedComponent
               return String(columnValue).includes(filter);
             case "String":
               return String(columnValue)
+                .trim()
                 .toLowerCase()
-                .includes(filter.toLowerCase().trim());
+                .includes(
+                  String(filter)
+                    .toLowerCase()
+                    .trim()
+                );
             case "Number":
             case "Object":
               return columnValue === filter;
@@ -142,7 +161,7 @@ export class MatTableAdvancedComponent
         })
         .find(ok => ok);
     };
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    this.dataSource.filter = filterValue;
   }
   sortData(sort: Sort) {
     const isAsc = sort.direction === "asc";

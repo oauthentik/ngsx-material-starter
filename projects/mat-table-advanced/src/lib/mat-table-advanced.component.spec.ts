@@ -25,9 +25,6 @@ describe("MatTableAdvancedComponent", () => {
     component = fixture.componentInstance;
     component.cdr.detectChanges();
   });
-  afterEach(() => {
-    fixture.destroy();
-  });
   describe("Basic Implementation", () => {
     const prepareColumns = () => {
       component.columns = service.getColumnsOfType(MockClass);
@@ -82,11 +79,23 @@ describe("MatTableAdvancedComponent", () => {
         tableBody.querySelectorAll("tr")
       );
       expect(rows.length).toEqual(mockData.length);
-      const cells = rows[0].querySelectorAll("td");
-      component.columns.forEach((col, i) => {
-        expect(cells[i]).toBeTruthy();
-        expect(cells[i].textContent.trim()).toContain(mockData[i][col.key]);
+      mockData.forEach((row, i) => {
+        const cells = Array.from(rows[i].querySelectorAll("td"));
+        component.columns.forEach((col, j) => {
+          expect(cells[j]).toBeTruthy();
+          expect(cells[j].textContent.trim()).toContain(mockData[i][col.key]);
+        });
       });
+    });
+    it("should filter data using search input", () => {
+      prepareColumns();
+      prepareData();
+      component.searchControl.setValue(21);
+      component.cdr.detectChanges();
+      const rows: HTMLTableRowElement[] = Array.from(
+        fixture.nativeElement.querySelectorAll("table tbody tr")
+      );
+      expect(rows.length).toEqual(1);
     });
     // End of Test cases
   });

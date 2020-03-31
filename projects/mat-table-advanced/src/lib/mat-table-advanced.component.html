@@ -11,11 +11,9 @@
   </div>
   <mat-form-field class="ngx-mat-table-search" *ngIf="options?.search">
     <mat-icon color="accent" matPrefix>search</mat-icon>
-    <input
-      (onChange)="applyFilter($event)"
-      matInput
-      [formControl]="searchControl"
-    />
+    <input matInput [formControl]="searchControl" />
+    <ng-container *ngIf="filter$ | async"></ng-container>
+
     <button
       *ngIf="searchControl.dirty"
       mat-icon-button
