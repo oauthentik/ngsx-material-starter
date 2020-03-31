@@ -1,9 +1,7 @@
 import { TestBed } from "@angular/core/testing";
 
 import { MatTableAdvancedService } from "./mat-table-advanced.service";
-import { Table } from "./decorators/table";
-import { Column } from "./decorators/column";
-import { mockColumnOptions, MockClass } from "./mocks";
+import { MockClass } from "./mocks";
 describe("MatTableAdvancedService", () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
@@ -25,7 +23,8 @@ describe("MatTableAdvancedService", () => {
     const columns = service.getColumnsOfType(MockClass);
     expect(service.getColumnsOfType).toHaveBeenCalledWith(MockClass);
     expect(columns).toBeTruthy();
-    expect(columns.length).toEqual(1);
-    expect(columns[0]).toEqual(mockColumnOptions);
+    expect(columns.length).toEqual(2);
+    expect(columns[0].key).toEqual("foo");
+    expect(columns[1].key).toEqual("bar");
   });
 });
