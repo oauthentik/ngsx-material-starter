@@ -71,7 +71,7 @@ export class MatTableAdvancedComponent
   displayedColumns: string[];
   private _originalData: any[] = [];
   private _options: NgxMatTableOptions;
-  private readonly actionsColumn = new ColumnModel({
+  readonly actionsColumn = new ColumnModel({
     key: "actions",
     order: 99,
     verboseName: "Actions"
@@ -199,7 +199,14 @@ export class MatTableAdvancedComponent
     this.sortColumns();
     if (this.options.actions) {
       if (!this.columns.find(col => col.key.includes(this.actionsColumn.key))) {
-        this.columns = [...this.columns, this.actionsColumn];
+        this.columns = [
+          ...this.columns,
+          {
+            ...this.actionsColumn,
+            verboseName:
+              this.options.actionsLabel || this.actionsColumn.verboseName
+          }
+        ];
       }
     }
     this.displayedColumns = this.columns

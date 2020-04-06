@@ -5,8 +5,8 @@
   *ngIf="options?.search || options?.title || legend"
   class="ngx-mat-table-header"
 >
-  <h4 class="mat-title" *ngIf="title">{{ title }}</h4>
-  <div class="mat-caption" *ngIf="legend">
+  <h4 class="ngx-mat-table-title mat-title" *ngIf="title">{{ title }}</h4>
+  <div class="ngx-mat-table-legned mat-caption" *ngIf="legend">
     <ng-container *ngTemplateOutlet="legend"></ng-container>
   </div>
   <mat-form-field class="ngx-mat-table-search" *ngIf="options?.search">
@@ -36,7 +36,11 @@
   >
     <ng-container *ngIf="options?.selection">
       <ng-container [matColumnDef]="selectionColumnName">
-        <th mat-header-cell *matHeaderCellDef>
+        <th
+          mat-header-cell
+          *matHeaderCellDef
+          class="mat-{{ selectionColumnName }}-column"
+        >
           <mat-checkbox
             (change)="$event ? masterToggle() : null"
             [checked]="selection.hasValue() && isAllSelected()"
@@ -59,17 +63,12 @@
       *ngFor="let column of columns | where: notInHidden; let i = index"
     >
       <ng-container *ngIf="column.canSort; else noSort">
-        <th
-          mat-header-cell
-          *matHeaderCellDef
-          class="center-align"
-          [mat-sort-header]="column.key"
-        >
+        <th mat-header-cell *matHeaderCellDef [mat-sort-header]="column.key">
           {{ column.verboseName }}
         </th>
       </ng-container>
       <ng-template #noSort>
-        <th mat-header-cell *matHeaderCellDef class="center-align">
+        <th mat-header-cell *matHeaderCellDef>
           {{ column.verboseName }}
         </th>
       </ng-template>
@@ -104,7 +103,6 @@
               "
             >
               <ng-container
-                class="text-center"
                 *ngTemplateOutlet="
                   propTypeOutput;
                   context: {
@@ -141,10 +139,10 @@
 
   <ng-template #propTypeOutput let-column="column" let-value="value">
     <ng-container [ngSwitch]="column.propertyType">
-      <span class="text-center" *ngSwitchCase="'String'" [title]="value">
+      <span *ngSwitchCase="'String'" [title]="value">
         {{ value || options.placeholder }}
       </span>
-      <span class="text-center" *ngSwitchCase="'Number'">
+      <span *ngSwitchCase="'Number'">
         <ng-container *ngIf="column.format">
           {{ (value | number: column.format) || options.placeholder }}
         </ng-container>
@@ -152,10 +150,10 @@
           {{ value || options.placeholder }}
         </ng-container>
       </span>
-      <span class="text-center" *ngSwitchCase="'Date'">
+      <span *ngSwitchCase="'Date'">
         {{ (value | date: column.format) || options.placeholder }}
       </span>
-      <span class="text-center" *ngSwitchDefault>
+      <span *ngSwitchDefault>
         <ng-container *ngIf="column.propertyAccessor">
           <span [innerHTML]="value"></span>
         </ng-container>
@@ -167,14 +165,16 @@
     </ng-container>
   </ng-template>
   <ng-container *ngIf="!dataSource.data.length">
-    <ng-container *ngIf="noDataTemplate; else emptyDataTmp">
-      <ng-container *ngTemplateOutlet="noDataTemplate"></ng-container>
-    </ng-container>
+    <div class="ngx-mat-table-empty">
+      <ng-container *ngIf="noDataTemplate; else emptyDataTmp">
+        <ng-container *ngTemplateOutlet="noDataTemplate"></ng-container>
+      </ng-container>
+    </div>
   </ng-container>
 </ng-container>
 <ng-template #emptyDataTmp>
   <small>
-    <mat-icon inline="true">warning</mat-icon>
+    <mat-icon color="warn" inline="true">warning</mat-icon>
     {{ options.emptyDataText }}
   </small>
 </ng-template>
@@ -185,7 +185,7 @@
   </ng-container>
   <mat-card class="ngx-mat-table-loading-data" *ngIf="!loadingTemplate">
     <mat-spinner [mode]="'indeterminate'"> </mat-spinner>
-    <mat-card-footer class="text-center">
+    <mat-card-footer>
       {{ options.loadingText }}
     </mat-card-footer>
   </mat-card>
