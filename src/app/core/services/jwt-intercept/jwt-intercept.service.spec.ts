@@ -1,7 +1,7 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from "@angular/core/testing";
-import { JwtInterceptService } from "..";
+import { JwtInterceptService } from "./jwt-intercept.service";
 
 describe("Service: JwtIntercept", () => {
   beforeEach(() => {
@@ -10,7 +10,7 @@ describe("Service: JwtIntercept", () => {
     });
   });
 
-  it("should ...", inject(
+  it("should inject the service", inject(
     [JwtInterceptService],
     (service: JwtInterceptService) => {
       expect(service).toBeTruthy();
