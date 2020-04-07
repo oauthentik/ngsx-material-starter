@@ -127,7 +127,7 @@ class MockNotificationsService {
   closeLoading() {}
   private show(message: string, configuration: MatSnackBarConfig) {}
 }
-export const mockProviders: Provider[] = [
+export const mockCommonProviders: Provider[] = [
   {
     provide: API,
     useValue: {
@@ -160,6 +160,9 @@ export const mockProviders: Provider[] = [
     provide: APP_ICONS,
     useValue: appIcons,
   },
+];
+export const mockProviders: Provider[] = [
+  mockCommonProviders,
   {
     provide: APP_MESSAGES,
     useValue: appMessages,
