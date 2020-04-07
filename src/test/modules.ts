@@ -11,16 +11,21 @@ import { AppState } from "@app/core/store/app.state";
 import { AuthState } from "@app/core/store/auth.state";
 import { UsersState } from "@app/core/store/users.state";
 import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
-
-export const mockCoreModules: any[] = [
+export const mockStartupModules: any[] = [
   CommonModule,
   FlexLayoutModule,
   NoopAnimationsModule,
   RouterTestingModule,
   NgPipesModule,
+];
+export const mockStoreModules: any[] = [
+  NgxsModule.forRoot([AppState, AuthState, UsersState]),
+  NgxsStoragePluginModule.forRoot({ key: AuthState }),
+];
+export const mockCoreModules: any[] = [
+  ...mockStartupModules,
   UiModule,
   MatAdvancedTableModule,
   WidgetModule,
-  NgxsModule.forRoot([AppState, AuthState, UsersState]),
-  NgxsStoragePluginModule.forRoot({ key: AuthState }),
+  ...mockStoreModules,
 ];
