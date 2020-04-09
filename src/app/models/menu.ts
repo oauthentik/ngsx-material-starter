@@ -1,4 +1,5 @@
 import { UserRoles } from "./user";
+import { Icon } from "./icons";
 
 export interface MenuItem {
   id: string;
@@ -6,7 +7,7 @@ export interface MenuItem {
   disabled: boolean;
   slugs: any[];
   queryParams: any;
-  icon: string;
+  icon: Icon;
   children: MenuItem[];
   access: UserRoles[];
   placement: "sidebar" | "breadcrumb" | "both";
