@@ -14,6 +14,7 @@
     "
     fxFlex="calc({{ widget.layout.xAxisRatio * 100 }}%  - 20px)"
     [style.height.px]="widget.layout.xAxisRatio * dashboardHeight"
+    [style.max-height.px]="widget.layout.xAxisRatio * dashboardHeight"
   ></app-widget>
   <app-widget [widget]="usersWidget" style="margin-top: 10px;">
     <ngx-mat-table-advanced
