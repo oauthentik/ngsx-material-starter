@@ -2,7 +2,7 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  ElementRef
+  ElementRef,
 } from "@angular/core";
 import { Select, Store } from "@ngxs/store";
 import { Observable } from "rxjs";
@@ -21,7 +21,7 @@ import { ColumnModel } from "projects/mat-table-advanced/src/lib/models/column.m
   selector: "app-dashboard",
   templateUrl: "./app-dashboard.component.html",
   styleUrls: ["./app-dashboard.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppDashboardComponent implements OnInit {
   constructor(
@@ -31,11 +31,16 @@ export class AppDashboardComponent implements OnInit {
   ) {}
   @Select(AppState.getDashboard) dashboard$: Observable<Dashboard>;
   @Select(UsersState) users$: Observable<User[]>;
+
+  public get dashboardHeight(): number {
+    return this.el.nativeElement.getBoundingClientRect().height + 120; // Extra margin for navbar and  paddings
+  }
+
   usersWidget: Partial<Widget> = {
     title: "DataTables",
     type: WidgetEnum.Text,
     layout: WidgetLayouts.Fill,
-    content: { type: TextType.HTML, content: null }
+    content: { type: TextType.HTML, content: null },
   };
   userModelColumns: ColumnModel[];
   ngOnInit() {

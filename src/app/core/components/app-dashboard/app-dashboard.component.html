@@ -4,7 +4,6 @@
   fxLayout="row"
   fxLayoutAlign="space-between start"
   fxLayoutGap="20px"
-  [style.height.px]="el.nativeElement.offsetHeight"
 >
   <app-widget
     [widget]="widget"
@@ -14,6 +13,7 @@
         | orderBy: ['layout', 'order']
     "
     fxFlex="calc({{ widget.layout.xAxisRatio * 100 }}%  - 20px)"
+    [style.height.px]="widget.layout.xAxisRatio * dashboardHeight"
   ></app-widget>
   <app-widget [widget]="usersWidget" style="margin-top: 10px;">
     <ngx-mat-table-advanced
