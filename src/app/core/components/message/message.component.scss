@@ -6,6 +6,7 @@
   .message-content {
     @include flex-row();
     @include start();
+    @include fill();
     padding: $spacing * 0.6;
   }
   .message-dismiss {
