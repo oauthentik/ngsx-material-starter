@@ -8,7 +8,7 @@ import { MatAdvancedTableModule } from "mat-table-advanced";
 import { WidgetModule } from "@app/shared/components/widget/widget.module";
 import { NgxsModule } from "@ngxs/store";
 import { AppState } from "@app/core/store/app.state";
-import { AuthState } from "@app/core/store/auth.state";
+import { AuthState, AUTH_STATE_TOKEN } from "@app/core/store/auth.state";
 import { UsersState } from "@app/core/store/users.state";
 import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
 export const mockStartupModules: any[] = [
@@ -20,7 +20,7 @@ export const mockStartupModules: any[] = [
 ];
 export const mockStoreModules: any[] = [
   NgxsModule.forRoot([AppState, AuthState, UsersState]),
-  NgxsStoragePluginModule.forRoot({ key: AuthState }),
+  NgxsStoragePluginModule.forRoot({ key: AUTH_STATE_TOKEN.getName() }),
 ];
 export const mockCoreModules: any[] = [
   ...mockStartupModules,
