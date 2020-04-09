@@ -2,7 +2,7 @@
   <ng-content></ng-content>
 </ng-template>
 
-<section class="app-widget">
+<section *ngIf="widget" class="app-widget">
   <h4 *ngIf="widget.title" class="app-widget__title">
     <app-icon [icon]="widget.icon"></app-icon>
     <span>
@@ -50,7 +50,7 @@
           <ng-container *ngSwitchCase="feedTypes.Embed">
             <iframe
               width="100%"
-              style="height:calc(100% * 16/9)"
+              style="height: calc(100% * 16 / 9);"
               frameborder="0"
               allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
               allowfullscreen

@@ -4,21 +4,21 @@ import {
   ChangeDetectionStrategy,
   Input,
   Inject,
-  HostBinding
+  HostBinding,
 } from "@angular/core";
 import {
   Widget,
   WidgetEnum,
   FeedType,
   TextType,
-  WidgetLayout
+  WidgetLayout,
 } from "@app/models/dashboard";
 
 @Component({
   selector: "app-widget",
   templateUrl: "./widget.component.html",
   styleUrls: ["./widget.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class WidgetComponent implements OnInit {
   constructor() {}
@@ -26,7 +26,9 @@ export class WidgetComponent implements OnInit {
 
   @HostBinding("style.height.%")
   public get maxheight(): number {
-    return this.widget.layout.yAxisRatio * 100;
+    return this.widget && this.widget.layout
+      ? this.widget.layout.yAxisRatio * 100
+      : 50;
   }
 
   readonly widgetEnum = WidgetEnum;
