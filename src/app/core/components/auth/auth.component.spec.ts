@@ -14,23 +14,8 @@ import { Store } from "@ngxs/store";
 import { Logout } from "@app/core/store/actions/auth.action";
 import { By } from "@angular/platform-browser";
 import { ChangeDetectionStrategy, DebugElement } from "@angular/core";
+import { click } from "@test/utils";
 
-export const ButtonClickEvents = {
-  left: { button: 0 },
-  right: { button: 2 },
-};
-
-export function click(
-  el: DebugElement | HTMLElement,
-  eventObj: any = ButtonClickEvents.left
-): void {
-  if (el instanceof HTMLElement) {
-    el.click();
-    el.dispatchEvent(new MouseEvent("click", {}));
-  } else {
-    el.triggerEventHandler("click", eventObj);
-  }
-}
 describe("AuthComponent", () => {
   let component: AuthComponent;
   let fixture: ComponentFixture<AuthComponent>;
