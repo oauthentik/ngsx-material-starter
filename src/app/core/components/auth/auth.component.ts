@@ -3,7 +3,7 @@ import {
   OnInit,
   ChangeDetectionStrategy,
   Inject,
-  HostBinding
+  HostBinding,
 } from "@angular/core";
 import { Validators, FormBuilder, FormGroup } from "@angular/forms";
 import { Observable } from "rxjs";
@@ -20,13 +20,9 @@ import { MessageType } from "@app/models/message";
   selector: "app-auth",
   templateUrl: "./auth.component.html",
   styleUrls: ["./auth.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AuthComponent implements OnInit {
-  @HostBinding("style.background-image")
-  public get background(): string {
-    return this.appImgs[AppImagesEnum.LoginBackground];
-  }
   messageTypes = MessageType;
   @Select(AuthState.authErrors) error$: Observable<string | null>;
   @Select(AuthState.isAuthenticating) isAuthenticating$: Observable<boolean>;
@@ -44,7 +40,7 @@ export class AuthComponent implements OnInit {
   ) {
     this.form = this._fb.group({
       username: ["", Validators.required],
-      password: ["", Validators.required]
+      password: ["", Validators.required],
     });
   }
   ngOnInit() {}
