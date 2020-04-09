@@ -3,7 +3,4 @@
   @include flex-column();
   @include fill();
   margin-bottom: 1em;
-  .app-widget__content {
-    @include scroll();
-  }
 }

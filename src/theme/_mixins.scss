@@ -126,6 +126,7 @@
     position: relative;
     box-shadow: $shadow-md;
     padding: 0;
+    max-height: 100%;
     @include fill();
     @include flex-column();
     .app-widget__icon {
@@ -146,6 +147,7 @@
     }
     .app-widget__content {
       font-family: $font-primary;
+      @include scroll();
       @include flex-column();
       @include fill();
       padding: $spacing * 0.5;
