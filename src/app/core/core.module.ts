@@ -33,10 +33,10 @@ import { UsersState } from "./store/users.state";
     CommonModule,
     RouterModule,
     NgxsModule.forRoot([AppState, AuthState, UsersState], {
-      developmentMode: !environment.production
+      developmentMode: !environment.production,
     }),
     NgxsRouterPluginModule.forRoot(),
-    NgxsStoragePluginModule.forRoot({ key: AuthState }),
+    NgxsStoragePluginModule.forRoot({ key: AUTH_STATE_TOKEN.getName() }),
     NgxsFormPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
     HttpClientModule,
@@ -48,10 +48,10 @@ import { UsersState } from "./store/users.state";
     AppMenuModule,
     MessagesModule,
     BreadcrumbModule,
-    FontAwesomeModule
+    FontAwesomeModule,
   ],
   exports: [ShellComponent, AuthComponent, AppDashboardComponent],
-  providers: providers
+  providers: providers,
 })
 export class CoreModule {
   constructor(@SkipSelf() @Optional() parentModule: CoreModule) {
