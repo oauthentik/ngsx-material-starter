@@ -65,22 +65,22 @@ describe("AuthComponent", () => {
       fixture.debugElement.query(By.css("input[formControlName='password']"))
     ).toBeTruthy();
   });
-  it("should call login method on Login button click", fakeAsync(() => {
+  it("should call login method on Login button click", () => {
     submitBtn = fixture.debugElement.query(By.css(`button[type="submit"]`));
     spyOn(component, "login").and.callThrough();
     click(submitBtn);
-    tick();
     fixture.detectChanges();
     expect(component.login).toHaveBeenCalled();
-  }));
-  it("should fail to submit invalid form", fakeAsync(() => {
+  });
+  it("should fail to submit invalid form", () => {
     click(submitBtn);
-    tick();
     fixture.detectChanges();
     expect(component.form.invalid).toBeTruthy();
-    expect(component.form.errors).toContain({
-      username: { required: true },
-      password: { required: true },
+    expect(component.form.controls.username.errors).toEqual({
+      required: true,
     });
-  }));
+    expect(component.form.controls.password.errors).toEqual({
+      required: true,
+    });
+  });
 });
