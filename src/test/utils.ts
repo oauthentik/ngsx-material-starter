@@ -6,12 +6,9 @@ export const ButtonClickEvents = {
 };
 export function click(
   el: DebugElement | HTMLElement,
-  eventObj: any = ButtonClickEvents.left
+  eventObj: any = new MouseEvent("click", {})
 ): void {
-  if (el instanceof HTMLElement) {
-    el.click();
-    el.dispatchEvent(new MouseEvent("click", {}));
-  } else {
-    el.triggerEventHandler("click", eventObj);
-  }
+  const htmlEl = el instanceof HTMLElement ? el : el.nativeElement;
+  htmlEl.click();
+  htmlEl.dispatchEvent(eventObj);
 }
