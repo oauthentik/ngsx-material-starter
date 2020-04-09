@@ -2,7 +2,7 @@ import { Injectable } from "@angular/core";
 import { tableSymbol } from "./decorators/table";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class MatTableAdvancedService {
   getColumnsOfType<T extends { new (...args: any[]): {} }>(type: T) {

@@ -2,7 +2,7 @@ import {
   Component,
   OnInit,
   Inject,
-  ChangeDetectionStrategy
+  ChangeDetectionStrategy,
 } from "@angular/core";
 import { APP_LOGO, APP_NAME, BASE_HREF } from "@app/config/di";
 import { Select, Store } from "@ngxs/store";
@@ -15,7 +15,7 @@ import { AuthState } from "@app/core/store/auth.state";
   selector: "app-shell",
   templateUrl: "./shell.component.html",
   styleUrls: ["./shell.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ShellComponent implements OnInit {
   constructor(

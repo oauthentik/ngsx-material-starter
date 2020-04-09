@@ -5,7 +5,7 @@ import {
   CanLoad,
   Route,
   RouterStateSnapshot,
-  UrlSegment
+  UrlSegment,
 } from "@angular/router";
 import { Store } from "@ngxs/store";
 import { Logout } from "../store/actions/auth.action";
@@ -14,7 +14,7 @@ import { AUTH_STATE_TOKEN } from "../store/auth.state";
 import { AuthStateModel } from "../store/models/auth.model";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class AuthGuardService implements CanActivate, CanLoad {
   constructor(private store: Store) {}

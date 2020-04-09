@@ -4,7 +4,7 @@ import {
   WidgetEnum,
   Widget,
   TextType,
-  FeedType
+  FeedType,
 } from "@app/models/dashboard";
 import { WidgetLayouts } from "./layouts";
 import { environment } from "@env/environment";
@@ -14,7 +14,7 @@ const aboutWidget: Partial<Widget> = {
   type: WidgetEnum.Text,
   layout: { ...WidgetLayouts.Third, order: 0 },
   content: { type: TextType.Brut, content: `` },
-  icon: { name: "info", type: IconType.Material }
+  icon: { name: "info", type: IconType.Material },
 };
 const embedWidget: Partial<Widget> = {
   title: "More about Ngxs",
@@ -23,8 +23,8 @@ const embedWidget: Partial<Widget> = {
   icon: { name: "info", type: IconType.Material },
   content: {
     type: FeedType.Embed,
-    content: "https://www.youtube.com/embed/SGj11j4hxmg"
-  }
+    content: "https://www.youtube.com/embed/SGj11j4hxmg",
+  },
 };
 const linksWidget: Partial<Widget> = {
   title: "Links",
@@ -36,27 +36,27 @@ const linksWidget: Partial<Widget> = {
       label: "Github",
       icon: { type: IconType.FontAwesome, name: "fab-github" },
       slugs: ["https://github.com/oauthentik/ngsx-material-starter"],
-      redirect: true
+      redirect: true,
     },
     {
       label: "Linkedin",
       icon: { type: IconType.FontAwesome, name: "fab-linkedin" },
       slugs: ["https://www.linkedin.com/in/othmane-elalaoui-banouzi/"],
-      redirect: true
+      redirect: true,
     },
     {
       label: "Instagram",
       icon: { type: IconType.FontAwesome, name: "fab-instagram" },
       slugs: ["https://www.instagram.com/banouzi/"],
-      redirect: true
-    }
-  ]
+      redirect: true,
+    },
+  ],
 };
 export const dashboards: Partial<{ [key in UserRoles]: Dashboard }> = {
   [UserRoles.Guest]: {
-    widgets: [aboutWidget]
+    widgets: [aboutWidget],
   },
   [UserRoles.Moderator]: {
-    widgets: [aboutWidget, linksWidget, embedWidget]
-  }
+    widgets: [aboutWidget, linksWidget, embedWidget],
+  },
 };

@@ -5,7 +5,7 @@ import {
   Inject,
   Input,
   HostBinding,
-  NgZone
+  NgZone,
 } from "@angular/core";
 import { MessageService } from "@app/core/services/message.service";
 import { MESSAGE_TYPE_CLASS, MESSAGE_TYPE_ICONS } from "@app/config/di";
@@ -15,7 +15,7 @@ import { MessageType } from "@app/models/message";
   selector: "app-message",
   templateUrl: "./message.component.html",
   styleUrls: ["./message.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MessageComponent implements OnInit {
   constructor(

@@ -2,7 +2,7 @@ export enum MessageType {
   Error = -1,
   Info,
   Warning,
-  Success
+  Success,
 }
 export interface Message {
   id: string;

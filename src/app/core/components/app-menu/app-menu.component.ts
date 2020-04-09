@@ -3,7 +3,7 @@ import {
   Component,
   Inject,
   Input,
-  OnInit
+  OnInit,
 } from "@angular/core";
 import { BASE_HREF } from "@app/config/di";
 import { MenuItem } from "@app/models/menu";
@@ -12,7 +12,7 @@ import { MenuItem } from "@app/models/menu";
   selector: "app-main-menu",
   templateUrl: "./app-menu.component.html",
   styleUrls: ["./app-menu.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class AppMenuComponent implements OnInit {
   constructor(@Inject(BASE_HREF) public basePath: string) {}

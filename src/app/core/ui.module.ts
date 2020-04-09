@@ -23,7 +23,7 @@ import {
   MatTableModule,
   MatProgressSpinnerModule,
   MatPaginatorModule,
-  MatSortModule
+  MatSortModule,
 } from "@angular/material";
 import { FlexLayoutModule } from "@angular/flex-layout";
 import { FormsUIModule } from "./forms.module";
@@ -77,7 +77,7 @@ import { CdkTableModule } from "@angular/cdk/table";
     FormsUIModule,
     // Third parties
     ImgFallbackModule,
-    CKEditorModule
+    CKEditorModule,
   ],
   exports: [
     // Material
@@ -117,8 +117,8 @@ import { CdkTableModule } from "@angular/cdk/table";
     // Core
     FormsUIModule,
     // Third parties
-    CKEditorModule
+    CKEditorModule,
   ],
-  declarations: []
+  declarations: [],
 })
 export class UiModule {}

@@ -5,7 +5,7 @@ import { MessageService } from "@app/core/services/message.service";
 import {
   MatCardModule,
   MatIconModule,
-  MatButtonModule
+  MatButtonModule,
 } from "@angular/material";
 
 @NgModule({
@@ -15,8 +15,8 @@ import {
   providers: [
     {
       provide: MessageService,
-      useExisting: MessageService
-    }
-  ]
+      useExisting: MessageService,
+    },
+  ],
 })
 export class MessagesModule {}

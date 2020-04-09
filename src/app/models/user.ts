@@ -9,7 +9,7 @@ export interface User {
 }
 export enum UserRoles {
   Moderator = "admin",
-  Guest = "guest"
+  Guest = "guest",
 }
 @Table
 export class UserModel {
@@ -17,7 +17,7 @@ export class UserModel {
     verboseName: "User ID",
     canSort: true,
     sortBy: "desc",
-    format: null
+    format: null,
   })
   id: number;
   @Column({ verboseName: "User name", canSort: true })

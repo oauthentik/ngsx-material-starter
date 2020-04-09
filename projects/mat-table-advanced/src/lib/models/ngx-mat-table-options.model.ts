@@ -24,5 +24,5 @@ export const NgxMatTableOptionsDefaults: NgxMatTableOptions = {
   loadingText: "Please wait",
   emptyDataText: "No Data available",
   actions: false,
-  actionsLabel: "Actions"
+  actionsLabel: "Actions",
 };

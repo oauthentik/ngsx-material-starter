@@ -14,7 +14,7 @@ import {
   MAT_FORM_FIELD_DEFAULT_OPTIONS,
   MatDatepickerModule,
   MatNativeDateModule,
-  MAT_DATE_LOCALE
+  MAT_DATE_LOCALE,
 } from "@angular/material";
 import { NgxMatSelectSearchModule } from "ngx-mat-select-search";
 import { NgxsFormPluginModule } from "@ngxs/form-plugin";
@@ -35,7 +35,7 @@ import { NgxsFormPluginModule } from "@ngxs/form-plugin";
     MatInputModule,
     MatDatepickerModule,
     NgxMatSelectSearchModule,
-    NgxsFormPluginModule
+    NgxsFormPluginModule,
   ],
   exports: [
     FormsModule,
@@ -50,17 +50,17 @@ import { NgxsFormPluginModule } from "@ngxs/form-plugin";
     MatSlideToggleModule,
     MatNativeDateModule,
     MatDatepickerModule,
-    NgxMatSelectSearchModule
+    NgxMatSelectSearchModule,
   ],
   providers: [
     {
       provide: MAT_LABEL_GLOBAL_OPTIONS,
-      useValue: { float: "auto" }
+      useValue: { float: "auto" },
     },
     {
       provide: MAT_FORM_FIELD_DEFAULT_OPTIONS,
-      useValue: { appearance: "outline" }
-    }
-  ]
+      useValue: { appearance: "outline" },
+    },
+  ],
 })
 export class FormsUIModule {}

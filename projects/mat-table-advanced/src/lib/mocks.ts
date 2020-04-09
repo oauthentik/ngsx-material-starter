@@ -10,5 +10,5 @@ export class MockClass {
 }
 export const mockData = [
   { foo: "Test value", bar: 21 },
-  { foo: "Mock value", bar: 23 }
+  { foo: "Mock value", bar: 23 },
 ];

@@ -5,7 +5,7 @@ import { CommonModule } from "@angular/common";
 import {
   MatButtonModule,
   MatIconModule,
-  MatMenuModule
+  MatMenuModule,
 } from "@angular/material";
 import { RouterModule } from "@angular/router";
 
@@ -16,9 +16,9 @@ import { RouterModule } from "@angular/router";
     RouterModule,
     MatButtonModule,
     MatMenuModule,
-    MatIconModule
+    MatIconModule,
   ],
   exports: [BreadcrumbComponent],
-  providers: [BreadcrumbService]
+  providers: [BreadcrumbService],
 })
 export class BreadcrumbModule {}

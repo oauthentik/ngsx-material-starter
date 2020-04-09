@@ -10,7 +10,7 @@ export enum FeedType {
   Gallery,
   Embed,
   Audio,
-  Video
+  Video,
 }
 export interface Feed {
   type: FeedType;
@@ -29,12 +29,12 @@ export interface SvgMap {
 export enum WidgetSize {
   Fill = "Fill",
   Third = "Third",
-  Quarter = "Quarter"
+  Quarter = "Quarter",
 }
 export enum TextType {
   HTML,
   Markdown,
-  Brut
+  Brut,
 }
 export interface Text {
   type: TextType;
@@ -46,7 +46,7 @@ export enum WidgetEnum {
   Feed,
   Menu,
   Map,
-  Graph
+  Graph,
 }
 export interface Widget {
   title: string;

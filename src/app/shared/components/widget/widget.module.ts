@@ -13,9 +13,9 @@ import { IconModule } from "../icon/icon.module";
     IconModule,
     MenuModule,
     RouterModule,
-    SharedPipesModule
+    SharedPipesModule,
   ],
   exports: [WidgetComponent],
-  providers: []
+  providers: [],
 })
 export class WidgetModule {}

@@ -17,7 +17,7 @@ import {
   MatSelectModule,
   MatSliderModule,
   MatSortModule,
-  MatTableModule
+  MatTableModule,
 } from "@angular/material";
 import { NgPipesModule } from "angular-pipes";
 import { MatCellTemplateDirective } from "./directives/mat-cell-template.directive";
@@ -46,22 +46,22 @@ import { MatTableAdvancedService } from "./mat-table-advanced.service";
     MatRadioModule,
     MatListModule,
     MatSliderModule,
-    MatAutocompleteModule
+    MatAutocompleteModule,
   ],
   providers: [],
-  exports: [MatTableAdvancedComponent, MatCellTemplateDirective]
+  exports: [MatTableAdvancedComponent, MatCellTemplateDirective],
 })
 export class MatAdvancedTableModule {
   public static forRoot(): ModuleWithProviders {
     return {
       ngModule: MatAdvancedTableModule,
-      providers: [MatTableAdvancedService]
+      providers: [MatTableAdvancedService],
     };
   }
   public static forChild(): ModuleWithProviders {
     return {
       ngModule: MatAdvancedTableModule,
-      providers: []
+      providers: [],
     };
   }
 }

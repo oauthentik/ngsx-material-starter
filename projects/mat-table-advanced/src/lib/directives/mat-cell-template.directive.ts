@@ -1,7 +1,7 @@
 import { Directive, Input, TemplateRef } from "@angular/core";
 
 @Directive({
-  selector: "[ngxMatCellTemplate]"
+  selector: "[ngxMatCellTemplate]",
 })
 export class MatCellTemplateDirective {
   constructor() {}

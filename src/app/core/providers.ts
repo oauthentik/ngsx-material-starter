@@ -10,7 +10,7 @@ import {
   APP_MESSAGES,
   MESSAGE_TYPE_CLASS,
   MESSAGE_TYPE_ICONS,
-  APP_ICONS
+  APP_ICONS,
 } from "./../config/di";
 import { environment } from "@env/environment";
 import { Provider } from "@angular/core";
@@ -25,7 +25,7 @@ import { AppImages } from "@app/config/images";
 import {
   appMessages,
   messageTypeIcons,
-  messageTypeClasses
+  messageTypeClasses,
 } from "@app/config/messages";
 import { appIcons } from "@app/config/icons";
 import { MessageService } from "./services/message.service";
@@ -39,44 +39,44 @@ export const providers: Provider[] = [
     useValue: {
       url: environment.api.url,
       host: environment.api.host,
-      index: API_ROUTES
-    }
+      index: API_ROUTES,
+    },
   },
   {
     provide: APP_NAME,
-    useValue: environment.appName
+    useValue: environment.appName,
   },
   {
     provide: BASE_HREF,
-    useValue: "/"
+    useValue: "/",
   },
   {
     provide: APP_ROUTES,
-    useValue: AppRoutes
+    useValue: AppRoutes,
   },
   {
     provide: APP_LOGO,
-    useValue: environment.appLogo
+    useValue: environment.appLogo,
   },
   {
     provide: APP_IMAGES,
-    useValue: AppImages
+    useValue: AppImages,
   },
   {
     provide: APP_ICONS,
-    useValue: appIcons
+    useValue: appIcons,
   },
   {
     provide: APP_MESSAGES,
-    useValue: appMessages
+    useValue: appMessages,
   },
   {
     provide: MESSAGE_TYPE_CLASS,
-    useValue: messageTypeClasses
+    useValue: messageTypeClasses,
   },
   {
     provide: MESSAGE_TYPE_ICONS,
-    useValue: messageTypeIcons
+    useValue: messageTypeIcons,
   },
   AuthService,
   AnimationsService,
@@ -85,13 +85,13 @@ export const providers: Provider[] = [
   {
     provide: HTTP_INTERCEPTORS,
     multi: true,
-    useClass: JwtInterceptService
+    useClass: JwtInterceptService,
   },
   {
     provide: NGXS_PLUGINS,
     useValue: logoutPlugin,
-    multi: true
+    multi: true,
   },
   { provide: RouterStateSerializer, useClass: CustomRouterStateSerializer },
-  AuthGuardService
+  AuthGuardService,
 ];

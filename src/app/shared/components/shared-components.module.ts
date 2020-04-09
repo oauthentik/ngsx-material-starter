@@ -13,14 +13,14 @@ import { IconModule } from "./icon/icon.module";
     IconModule,
     MatProgressSpinnerModule,
     MenuModule,
-    SharedPipesModule
+    SharedPipesModule,
   ],
   exports: [
     LoadingIndicatorComponent,
     IconModule,
     MenuModule,
-    SharedPipesModule
+    SharedPipesModule,
   ],
-  providers: []
+  providers: [],
 })
 export class SharedComponentsModule {}

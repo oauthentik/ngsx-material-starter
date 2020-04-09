@@ -12,7 +12,7 @@ import {
   AfterContentInit,
   AfterViewInit,
   OnChanges,
-  ChangeDetectorRef
+  ChangeDetectorRef,
 } from "@angular/core";
 import { ColumnModel } from "./models/column.model";
 import { SelectionModel } from "@angular/cdk/collections";
@@ -21,7 +21,7 @@ import { MatCellTemplateDirective } from "./directives/mat-cell-template.directi
 import { cloneDeep, orderBy, sortBy } from "lodash";
 import {
   NgxMatTableOptions,
-  NgxMatTableOptionsDefaults
+  NgxMatTableOptionsDefaults,
 } from "./models/ngx-mat-table-options.model";
 import { FormControl } from "@angular/forms";
 import { tap } from "rxjs/operators";
@@ -30,7 +30,7 @@ import { Observable } from "rxjs";
   selector: "ngx-mat-table-advanced",
   templateUrl: "./mat-table-advanced.component.html",
   styleUrls: ["./mat-table-advanced.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class MatTableAdvancedComponent
   implements OnInit, AfterContentInit, AfterViewInit, OnChanges {
@@ -43,7 +43,7 @@ export class MatTableAdvancedComponent
     this._options = v
       ? {
           ...NgxMatTableOptionsDefaults,
-          ...v
+          ...v,
         }
       : NgxMatTableOptionsDefaults;
   }
@@ -74,7 +74,7 @@ export class MatTableAdvancedComponent
   readonly actionsColumn = new ColumnModel({
     key: "actions",
     order: 99,
-    verboseName: "Actions"
+    verboseName: "Actions",
   });
   readonly selectionColumnName = "selection";
   searchControl: FormControl;
@@ -82,7 +82,7 @@ export class MatTableAdvancedComponent
   constructor(public cdr: ChangeDetectorRef) {
     this.searchControl = new FormControl();
     this.filter$ = this.searchControl.valueChanges.pipe(
-      tap(val => {
+      tap((val) => {
         if (this.options.search) {
           this.applyFilter(val);
         }
@@ -95,9 +95,9 @@ export class MatTableAdvancedComponent
     }
   }
   ngAfterContentInit() {
-    this.templates = this._templates.toArray().map(tmp => ({
+    this.templates = this._templates.toArray().map((tmp) => ({
       template: tmp.template,
-      name: tmp.name
+      name: tmp.name,
     }));
   }
   ngOnChanges(changes) {
@@ -124,7 +124,7 @@ export class MatTableAdvancedComponent
   masterToggle() {
     this.isAllSelected()
       ? this.selection.clear()
-      : this.dataSource.data.forEach(row => this.selection.select(row));
+      : this.dataSource.data.forEach((row) => this.selection.select(row));
   }
   ngOnInit() {}
 
@@ -135,7 +135,7 @@ export class MatTableAdvancedComponent
     }
     this.dataSource.filterPredicate = (object, filter) => {
       return this.columns
-        .map(column => {
+        .map((column) => {
           const columnType = column.propertyType;
           const columnValue = column.propertyAccessor
             ? column.propertyAccessor(object[column.key], object)
@@ -149,23 +149,19 @@ export class MatTableAdvancedComponent
               return String(columnValue)
                 .trim()
                 .toLowerCase()
-                .includes(
-                  String(filter)
-                    .toLowerCase()
-                    .trim()
-                );
+                .includes(String(filter).toLowerCase().trim());
             case "Number":
             case "Object":
               return columnValue === filter;
           }
         })
-        .find(ok => ok);
+        .find((ok) => ok);
     };
     this.dataSource.filter = filterValue;
   }
   sortData(sort: Sort) {
     const isAsc = sort.direction === "asc";
-    const column = this.columns.find(c => c.key === sort.active);
+    const column = this.columns.find((c) => c.key === sort.active);
     const direction = isAsc ? "asc" : "desc";
     if (!sort.active || sort.direction === "") {
       this.dataSource.data = this._originalData.slice();
@@ -177,8 +173,8 @@ export class MatTableAdvancedComponent
         [
           column.sortByAccessor
             ? column.sortByAccessor
-            : instance =>
-                column.propertyAccessor(instance[column.key], instance)
+            : (instance) =>
+                column.propertyAccessor(instance[column.key], instance),
         ],
         [direction]
       );
@@ -190,7 +186,7 @@ export class MatTableAdvancedComponent
       );
     }
   }
-  notInHidden = item => !this.hiddenColumns.includes(item.key);
+  notInHidden = (item) => !this.hiddenColumns.includes(item.key);
 
   private buildColumns() {
     if (!this.columns) {
@@ -198,27 +194,29 @@ export class MatTableAdvancedComponent
     }
     this.sortColumns();
     if (this.options.actions) {
-      if (!this.columns.find(col => col.key.includes(this.actionsColumn.key))) {
+      if (
+        !this.columns.find((col) => col.key.includes(this.actionsColumn.key))
+      ) {
         this.columns = [
           ...this.columns,
           {
             ...this.actionsColumn,
             verboseName:
-              this.options.actionsLabel || this.actionsColumn.verboseName
-          }
+              this.options.actionsLabel || this.actionsColumn.verboseName,
+          },
         ];
       }
     }
     this.displayedColumns = this.columns
-      .filter(col => col.visible && !this.hiddenColumns.includes(col.key))
-      .map(col => col.key);
+      .filter((col) => col.visible && !this.hiddenColumns.includes(col.key))
+      .map((col) => col.key);
     if (
       this.options.selection &&
       !this.displayedColumns.includes(this.selectionColumnName)
     ) {
       this.displayedColumns = [
         this.selectionColumnName,
-        ...this.displayedColumns
+        ...this.displayedColumns,
       ];
     }
     if (
@@ -227,11 +225,11 @@ export class MatTableAdvancedComponent
       this.columns.length > 0
     ) {
       const sortByColumn =
-        this.columns.find(col => !!col.sortBy) || this.columns[0];
+        this.columns.find((col) => !!col.sortBy) || this.columns[0];
       this.dataSource.sort.sort({
         id: sortByColumn.key,
         start: sortByColumn.sortBy,
-        disableClear: false
+        disableClear: false,
       });
     }
   }

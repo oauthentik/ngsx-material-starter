@@ -12,7 +12,7 @@ export const AppStateDefaults: AppStateModel = {
   menus: [],
   about: "",
   dashboard: {
-    widgets: []
+    widgets: [],
   },
-  breadcrumb: null
+  breadcrumb: null,
 };

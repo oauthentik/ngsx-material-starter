@@ -6,7 +6,7 @@ import { BreadcrumbService } from "./breadcrumb.service";
 describe("Service: Breadcrumb", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [BreadcrumbService]
+      providers: [BreadcrumbService],
     });
   });
 

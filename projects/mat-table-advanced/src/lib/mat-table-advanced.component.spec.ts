@@ -2,7 +2,7 @@ import {
   async,
   ComponentFixture,
   TestBed,
-  fakeAsync
+  fakeAsync,
 } from "@angular/core/testing";
 
 import { MatTableAdvancedComponent } from "./mat-table-advanced.component";
@@ -21,7 +21,7 @@ describe("MatTableAdvancedComponent", () => {
   let service: MatTableAdvancedService;
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      imports: [BrowserAnimationsModule, MatAdvancedTableModule]
+      imports: [BrowserAnimationsModule, MatAdvancedTableModule],
     }).compileComponents();
     service = TestBed.get(MatTableAdvancedService);
   }));
@@ -35,22 +35,22 @@ describe("MatTableAdvancedComponent", () => {
     const setupColumns = () => {
       component.columns = service.getColumnsOfType(MockClass);
       component.ngOnChanges({
-        columns: new SimpleChange(null, component.columns, true)
+        columns: new SimpleChange(null, component.columns, true),
       });
       component.cdr.detectChanges();
     };
-    const toggleLoadingData = loading => {
+    const toggleLoadingData = (loading) => {
       component.data = loading ? [] : mockData;
       component.loading = loading;
       component.ngOnChanges({
-        loading: new SimpleChange(null, component.loading, true)
+        loading: new SimpleChange(null, component.loading, true),
       });
       component.cdr.detectChanges();
     };
     const setupData = (data = mockData) => {
       component.data = data;
       component.ngOnChanges({
-        data: new SimpleChange(null, component.data, true)
+        data: new SimpleChange(null, component.data, true),
       });
       component.cdr.detectChanges();
     };
@@ -125,7 +125,7 @@ describe("MatTableAdvancedComponent", () => {
       it("Should have no sorting headers", () => {
         expect(
           fixture.debugElement.queryAll(By.directive(MatSortHeader)).length
-        ).toEqual(component.columns.filter(col => col.canSort).length);
+        ).toEqual(component.columns.filter((col) => col.canSort).length);
       });
       it("Should toggle the loading text depending on loading input", () => {
         toggleLoadingData(true);

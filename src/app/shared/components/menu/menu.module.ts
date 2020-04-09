@@ -3,7 +3,7 @@ import { CommonModule } from "@angular/common";
 import {
   MatButtonModule,
   MatIconModule,
-  MatExpansionModule
+  MatExpansionModule,
 } from "@angular/material";
 import { RouterModule } from "@angular/router";
 import { MenuComponent } from "./menu.component";
@@ -18,8 +18,8 @@ import { IconModule } from "../icon/icon.module";
     NgPipesModule,
     MatExpansionModule,
     IconModule,
-    MatButtonModule
+    MatButtonModule,
   ],
-  exports: [MenuComponent]
+  exports: [MenuComponent],
 })
 export class MenuModule {}

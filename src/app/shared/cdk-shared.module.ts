@@ -6,6 +6,6 @@ import { CdkScrollable } from "@angular/cdk/overlay";
   declarations: [CdkScrollable],
   imports: [CommonModule],
   exports: [CdkScrollable],
-  providers: []
+  providers: [],
 })
 export class CdkSharedModule {}

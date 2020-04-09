@@ -8,6 +8,6 @@ import { MenuModule } from "@app/shared/components/menu/menu.module";
   declarations: [AppMenuComponent],
   imports: [CommonModule, MenuModule],
   exports: [AppMenuComponent],
-  providers: [AppMenuService]
+  providers: [AppMenuService],
 })
 export class AppMenuModule {}

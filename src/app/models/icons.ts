@@ -4,13 +4,13 @@ export type AppIcons = Icon | string;
 
 export enum IconType {
   FontAwesome = "fontawesome",
-  Material = "material"
+  Material = "material",
 }
 export enum IconSize {
   Default = 0,
   Medium,
   Large,
-  XLarge
+  XLarge,
 }
 export interface Icon {
   name: string | IconName;

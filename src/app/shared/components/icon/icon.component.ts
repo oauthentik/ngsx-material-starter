@@ -2,7 +2,7 @@ import {
   Component,
   OnInit,
   ChangeDetectionStrategy,
-  Input
+  Input,
 } from "@angular/core";
 import { Icon, IconSize, IconType } from "@app/models/icons";
 import { library } from "@fortawesome/fontawesome-svg-core";
@@ -13,7 +13,7 @@ import { appIcons } from "@app/config/icons";
   selector: "app-icon",
   templateUrl: "./icon.component.html",
   styleUrls: ["./icon.component.scss"],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class IconComponent implements OnInit {
   constructor() {}

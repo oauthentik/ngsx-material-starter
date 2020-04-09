@@ -9,7 +9,7 @@ import { CoreModule } from "@angular/flex-layout";
 const routes: Routes = [
   {
     path: "login",
-    component: AuthComponent
+    component: AuthComponent,
   },
   {
     path: "",
@@ -18,19 +18,19 @@ const routes: Routes = [
       {
         path: "",
         redirectTo: "dashboard",
-        pathMatch: "full"
+        pathMatch: "full",
       },
       {
         path: "dashboard",
-        component: AppDashboardComponent
-      }
+        component: AppDashboardComponent,
+      },
     ],
-    canActivate: [AuthGuardService]
-  }
+    canActivate: [AuthGuardService],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class AppRoutingModule {}

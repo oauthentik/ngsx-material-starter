@@ -5,7 +5,7 @@ import { MockClass } from "./mocks";
 describe("MatTableAdvancedService", () => {
   beforeEach(() =>
     TestBed.configureTestingModule({
-      providers: [MatTableAdvancedService]
+      providers: [MatTableAdvancedService],
     })
   );
 

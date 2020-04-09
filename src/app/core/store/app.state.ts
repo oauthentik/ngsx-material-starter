@@ -8,7 +8,7 @@ export const APP_STATE_TOKEN = new StateToken<AppStateModel>("app_state");
 
 @State<AppStateModel>({
   name: APP_STATE_TOKEN,
-  defaults: AppStateDefaults
+  defaults: AppStateDefaults,
 })
 export class AppState {
   @Selector()
@@ -28,7 +28,7 @@ export class AppState {
   @Action(LoadAppMenu)
   loadAppMenu(ctx: StateContext<AppStateModel>, role: UserRoles) {
     ctx.patchState({
-      menus: appMenus.filter(menu => menu.access.includes(role))
+      menus: appMenus.filter((menu) => menu.access.includes(role)),
     });
   }
 
@@ -38,7 +38,7 @@ export class AppState {
     { role = UserRoles.Guest }
   ) {
     ctx.patchState({
-      dashboard: { ...dashboards[role] }
+      dashboard: { ...dashboards[role] },
     });
   }
 }

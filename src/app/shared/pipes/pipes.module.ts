@@ -6,6 +6,6 @@ import { SafePipe } from "./safe.pipe";
   declarations: [SafePipe],
   imports: [CommonModule],
   exports: [SafePipe],
-  providers: []
+  providers: [],
 })
 export class SharedPipesModule {}

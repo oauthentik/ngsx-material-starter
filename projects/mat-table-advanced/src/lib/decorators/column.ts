@@ -4,7 +4,7 @@ import { TableModel } from "../models/table.model";
 import { tableSymbol } from "./table";
 let columnCount = 0;
 export function Column(options: Partial<ColumnModel> = {}) {
-  return function(target: any, propertyKey: string) {
+  return function (target: any, propertyKey: string) {
     if (!target[tableSymbol]) {
       target[tableSymbol] = new TableModel();
     }

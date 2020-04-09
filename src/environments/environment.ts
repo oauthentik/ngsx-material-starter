@@ -8,7 +8,7 @@ export const environment = {
   appLogo: `assets/logo.svg`,
   appBackground: `assets/imgs/bg.jpg`,
   appLoginBackground: `assets/imgs/login-bg.jpg`,
-  appName: "Angular Boilerplate"
+  appName: "Angular Boilerplate",
 };
 
 /*
