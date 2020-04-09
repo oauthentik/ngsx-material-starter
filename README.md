@@ -1,5 +1,9 @@
 # Angular 7, Ngxs and Angular Material Starter
 
+---
+
+## [![Build Status](https://travis-ci.org/oauthentik/ngsx-material-starter.svg?branch=master)](https://travis-ci.org/oauthentik/ngsx-material-starter)
+
 ![Login preview](./previews/login.png "Project login preview")
 ![Dashboard with sample widgets preview](./previews/dashboard.png "Project dashboard preview")
 
