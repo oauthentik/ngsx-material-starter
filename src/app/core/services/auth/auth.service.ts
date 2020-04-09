@@ -8,11 +8,13 @@ import { Store } from "@ngxs/store";
 import * as jwt_decode from "jwt-decode";
 import { Observable, of } from "rxjs";
 import { catchError, switchMap } from "rxjs/operators";
-import { AuthStateModel } from "../../store/models/auth.model";
-import { AppAuthStateDefaults } from "@app/core/store/auth.state";
+import {
+  AuthStateModel,
+  AppAuthStateDefaults,
+} from "../../store/models/auth.model";
 
 @Injectable({
-  providedIn: "root"
+  providedIn: "root",
 })
 export class AuthService {
   constructor(
@@ -42,24 +44,24 @@ export class AuthService {
               refresh: data.token,
               tokenExpireAt: data.expiresIn,
               authenticating: false,
-              error: null
+              error: null,
             }) as Observable<AuthStateModel>;
           }
           return of({
             ...AppAuthStateDefaults,
             error: this.messageService.getMessageText(
               "auth.invalid-credentials"
-            )
+            ),
           });
         }),
-        catchError(err => {
+        catchError((err) => {
           return of({
             ...AppAuthStateDefaults,
             authenticating: false,
             error:
               err.status === 401
                 ? this.messageService.getMessageText("auth.invalid-credentials")
-                : `${err.status} - ${err.message}`
+                : `${err.status} - ${err.message}`,
           });
         })
       );

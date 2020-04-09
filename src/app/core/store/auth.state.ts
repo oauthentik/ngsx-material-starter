@@ -8,26 +8,23 @@ import {
   State,
   StateContext,
   StateToken,
-  Store
+  Store,
 } from "@ngxs/store";
 import { tap, switchMap, catchError } from "rxjs/operators";
 import { AuthService } from "../services/auth/auth.service";
 import { Login, Logout, RefreshToken } from "./actions/auth.action";
-import { AuthStateModel, LoginPayload } from "./models/auth.model";
+import {
+  AuthStateModel,
+  LoginPayload,
+  AppAuthStateDefaults,
+} from "./models/auth.model";
 import { NotificationsService } from "../services/notifications/notifications.service";
 import { of } from "rxjs";
 export const AUTH_STATE_TOKEN = new StateToken<AuthStateModel>("auth");
-export const AppAuthStateDefaults: AuthStateModel = {
-  token: null,
-  refresh: null,
-  tokenExpireAt: null,
-  error: null,
-  authenticating: false,
-  user: null
-};
+
 @State({
   name: AUTH_STATE_TOKEN,
-  defaults: AppAuthStateDefaults
+  defaults: AppAuthStateDefaults,
 })
 export class AuthState {
   @Selector()
@@ -79,24 +76,24 @@ export class AuthState {
     const payload: LoginPayload = action.payload;
     ctx.setState({
       authenticating: true,
-      ...AppAuthStateDefaults
+      ...AppAuthStateDefaults,
     });
     return this.authService.login(payload).pipe(
-      tap(auth => {
+      tap((auth) => {
         ctx.patchState({ ...auth });
       }),
-      switchMap(authState => {
+      switchMap((authState) => {
         if (this.isAuthorized()) {
           return this.authService.getUser(authState.user.userId).pipe(
             tap(
-              user => {
+              (user) => {
                 this.notify.success(
                   "Connected! Welcome " + authState.user.username
                 );
                 ctx.patchState({ ...authState, user });
                 this.store.dispatch(new Navigate([this.baseHref]));
               },
-              err => {
+              (err) => {
                 this.notify.error(
                   `${err.statusText} ! Cannot load profile for ${authState.user.username}`
                 );
@@ -117,7 +114,7 @@ export class AuthState {
   @Action(RefreshToken)
   refreshToken(ctx: StateContext<AuthStateModel>, action: RefreshToken) {
     ctx.patchState({
-      refresh: action.payload
+      refresh: action.payload,
     });
     this.store.dispatch(new Navigate([this.baseHref]));
   }

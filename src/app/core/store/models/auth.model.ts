@@ -12,3 +12,12 @@ export interface LoginPayload {
   username: string;
   password: string;
 }
+
+export const AppAuthStateDefaults: AuthStateModel = {
+  token: null,
+  refresh: null,
+  tokenExpireAt: null,
+  error: null,
+  authenticating: false,
+  user: null,
+};
