@@ -1,0 +1,6 @@
+package.json
+package-lock.json
+dist
+.vscode
+node_modules
+previews
