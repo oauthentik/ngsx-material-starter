@@ -2,11 +2,15 @@
 
 import { TestBed, async, inject } from "@angular/core/testing";
 import { JwtInterceptService } from "./jwt-intercept.service";
+import { mockProviders } from "@test/providers";
+import { mockStoreModules } from "@test/modules";
+import { HttpClientModule } from "@angular/common/http";
 
 describe("Service: JwtIntercept", () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [JwtInterceptService]
+      providers: [JwtInterceptService, ...mockProviders],
+      imports: [...mockStoreModules, HttpClientModule],
     });
   });
 

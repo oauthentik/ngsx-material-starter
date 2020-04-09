@@ -11,6 +11,8 @@ import { MatExpansionModule, MatButtonModule } from "@angular/material";
 import { IconModule } from "../icon/icon.module";
 import { Icon } from "@app/models/icons";
 import { IconComponent } from "../icon/icon.component";
+import { mockProviders } from "@test/providers";
+import { mockStartupModules } from "@test/modules";
 
 describe("MenuComponent", () => {
   let component: MenuComponent;
@@ -19,14 +21,13 @@ describe("MenuComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       imports: [
-        CommonModule,
-        RouterModule,
-        NgPipesModule,
+        ...mockStartupModules,
         MatExpansionModule,
         IconModule,
         MatButtonModule,
       ],
       declarations: [MenuComponent],
+      providers: [...mockProviders],
     }).compileComponents();
   }));
 
@@ -44,7 +45,7 @@ describe("MenuComponent", () => {
   });
   it("should always render a dashboard menu entry", () => {
     const firstItem: HTMLElement = fixture.nativeElement.querySelector(
-      ".menu-entry:first"
+      ".menu-entry:first-child"
     );
     const firstitemIcon = fixture.debugElement.query(
       By.directive(IconComponent)
