@@ -3,16 +3,21 @@
   class="app-widget-list"
   fxLayout="row"
   fxLayoutAlign="space-between start"
-  fxLayoutGap="20px"
 >
   <app-widget
     [widget]="widget"
     *ngFor="
       let widget of dashboard.widgets
         | where: ['layout.placement', 'top']
-        | orderBy: ['layout', 'order']
+        | orderBy: ['layout', 'order'];
+      let i = index
     "
-    fxFlex="calc({{ widget.layout.xAxisRatio * 100 }}%  - 20px)"
+    [style.padding-left.px]="i === 0 ? 0 : 10"
+    [fxFlex]="
+      dashboard.widgets?.length === i - 1
+        ? 'flex'
+        : widget.layout.xAxisRatio * 100
+    "
     [style.height.px]="widget.layout.xAxisRatio * dashboardHeight"
     [style.max-height.px]="widget.layout.xAxisRatio * dashboardHeight"
   ></app-widget>
