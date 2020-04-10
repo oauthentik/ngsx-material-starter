@@ -1,94 +1,36 @@
-import { NgModule } from "@angular/core";
-import { CommonModule } from "@angular/common";
-import {
-  MatIconModule,
-  MatProgressBarModule,
-  MatBottomSheetModule,
-  MatDialogModule,
-  MatSnackBarModule,
-  MatTooltipModule,
-  MatToolbarModule,
-  MatSidenavModule,
-  MatBadgeModule,
-  MatMenuModule,
-  MatCardModule,
-  MatExpansionModule,
-  MatGridListModule,
-  MatListModule,
-  MatTabsModule,
-  MatTreeModule,
-  MatButtonModule,
-  MatButtonToggleModule,
-  MatChipsModule,
-  MatTableModule,
-  MatProgressSpinnerModule,
-  MatPaginatorModule,
-  MatSortModule,
-} from "@angular/material";
-import { FlexLayoutModule } from "@angular/flex-layout";
-import { FormsUIModule } from "./forms.module";
-import { ImgFallbackModule } from "ngx-img-fallback";
 import { LayoutModule } from "@angular/cdk/layout";
-import { ObserversModule } from "@angular/cdk/observers";
+import { CommonModule } from "@angular/common";
+import { NgModule } from "@angular/core";
+import { FlexLayoutModule } from "@angular/flex-layout";
+import { MatBadgeModule } from "@angular/material/badge";
+import { MatBottomSheetModule } from "@angular/material/bottom-sheet";
+import { MatButtonModule } from "@angular/material/button";
+import { MatButtonToggleModule } from "@angular/material/button-toggle";
+import { MatCardModule } from "@angular/material/card";
+import { MatChipsModule } from "@angular/material/chips";
+import { MatDialogModule } from "@angular/material/dialog";
+import { MatExpansionModule } from "@angular/material/expansion";
+import { MatIconModule } from "@angular/material/icon";
+import { MatListModule } from "@angular/material/list";
+import { MatMenuModule } from "@angular/material/menu";
+import { MatProgressBarModule } from "@angular/material/progress-bar";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
+import { MatTabsModule } from "@angular/material/tabs";
+import { MatToolbarModule } from "@angular/material/toolbar";
+import { MatTooltipModule } from "@angular/material/tooltip";
+import { MatTreeModule } from "@angular/material/tree";
 import { CKEditorModule } from "ng2-ckeditor";
-import { RouterModule } from "@angular/router";
-import { CdkTableModule } from "@angular/cdk/table";
+import { ImgFallbackModule } from "ngx-img-fallback";
+import { FormsUIModule } from "./forms.module";
 
 @NgModule({
-  imports: [
-    // Angular
-    CommonModule,
-    RouterModule,
-    // Material
-    MatMenuModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatCardModule,
-    MatExpansionModule,
-    MatTableModule,
-    CdkTableModule,
-    MatGridListModule,
-    MatListModule,
-    MatTabsModule,
-    MatTreeModule,
-    MatBadgeModule,
-    MatIconModule,
-    MatProgressBarModule,
-    MatBottomSheetModule,
-    MatDialogModule,
-    MatSnackBarModule,
-    MatTooltipModule,
-    MatButtonModule,
-    MatButtonToggleModule,
-    MatChipsModule,
-    MatSnackBarModule,
-    MatProgressSpinnerModule,
-    MatPaginatorModule,
-    MatSortModule,
-    LayoutModule,
-    MatToolbarModule,
-    MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    FlexLayoutModule,
-    ObserversModule,
-    // Core
-    FormsUIModule,
-    // Third parties
-    ImgFallbackModule,
-    CKEditorModule,
-  ],
   exports: [
+    CommonModule,
     // Material
     MatMenuModule,
-    MatSidenavModule,
     MatToolbarModule,
     MatCardModule,
     MatExpansionModule,
-    MatTableModule,
-    CdkTableModule,
-    MatGridListModule,
     MatListModule,
     MatTabsModule,
     MatTreeModule,
@@ -97,25 +39,16 @@ import { CdkTableModule } from "@angular/cdk/table";
     MatProgressBarModule,
     MatBottomSheetModule,
     MatDialogModule,
-    MatSnackBarModule,
     MatTooltipModule,
-    MatButtonModule,
     MatButtonToggleModule,
     MatChipsModule,
-    MatSnackBarModule,
     MatProgressSpinnerModule,
-    MatPaginatorModule,
-    MatSortModule,
     LayoutModule,
-    MatToolbarModule,
     MatButtonModule,
-    MatSidenavModule,
-    MatIconModule,
-    MatListModule,
-    ObserversModule,
     FlexLayoutModule,
     // Core
     FormsUIModule,
+    ImgFallbackModule,
     // Third parties
     CKEditorModule,
   ],

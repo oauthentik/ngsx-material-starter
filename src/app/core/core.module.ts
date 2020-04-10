@@ -26,6 +26,7 @@ import { library } from "@fortawesome/fontawesome-svg-core";
 import { appIcons } from "@app/config/icons";
 import { MatAdvancedTableModule } from "mat-table-advanced";
 import { UsersState } from "./store/users.state";
+import { MatSidenavModule } from "@angular/material/sidenav";
 
 @NgModule({
   declarations: [ShellComponent, AuthComponent, AppDashboardComponent],
@@ -41,6 +42,7 @@ import { UsersState } from "./store/users.state";
     NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
     HttpClientModule,
     UiModule,
+    MatSidenavModule,
     WidgetModule,
     MatAdvancedTableModule.forRoot(),
     NgPipesModule,
