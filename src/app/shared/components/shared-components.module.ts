@@ -7,7 +7,7 @@ import { MenuModule } from "./menu/menu.module";
 import { IconModule } from "./icon/icon.module";
 
 @NgModule({
-  declarations: [LoadingIndicatorComponent, IconModule],
+  declarations: [LoadingIndicatorComponent],
   imports: [
     CommonModule,
     IconModule,
