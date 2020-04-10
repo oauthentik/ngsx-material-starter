@@ -46,7 +46,7 @@ import { UsersState } from "./store/users.state";
     NgPipesModule,
     MenuModule,
     AppMenuModule,
-    MessagesModule,
+    MessagesModule.forRoot(),
     BreadcrumbModule,
     FontAwesomeModule,
   ],
