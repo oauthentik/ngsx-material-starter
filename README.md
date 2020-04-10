@@ -1,8 +1,8 @@
 # Angular 7, Ngxs and Angular Material Starter
 
----
+**by [Othmane A.B](https://twitter.com/Oauthentik)**
 
-## [![Build Status](https://travis-ci.org/oauthentik/ngsx-material-starter.svg?branch=master)](https://travis-ci.org/oauthentik/ngsx-material-starter)
+## [![Build Status](https://travis-ci.org/oauthentik/ngsx-material-starter.svg?branch=master)](https://travis-ci.org/oauthentik/ngsx-material-starter) ![GitHub](https://img.shields.io/github/license/oauthentik/ngsx-material-starter)
 
 ![Login preview](./previews/login.png "Project login preview")
 ![Dashboard with sample widgets preview](./previews/dashboard.png "Project dashboard preview")
@@ -43,11 +43,15 @@ So change it to your real values
 
 ## Upcoming Improvments
 
-1. Adding a material table enhanced library for less code (MatDatatable (Using the same Mat Table but with more features: Advanced column filtering, Interfacing columns, Decorators, configurations... ))
+1. Adding a material table enhanced library for less code (MatDatatable (Using the same Mat Table but with more features: Advanced column filtering, Interfacing columns, Decorators, configurations... )) [Work in Progress]
 2. Adding a navigation dialog strategy (Dialogs with routes)
 3. Adding a beautifull generic dashboards
 4. More control
 
+## Inspiration
+
+This work is inspired by the ngrx material starter of [tomastrajan](https://github.com/tomastrajan/angular-ngrx-material-starter)
+
 ## Licence
 
-Apache 2
+MIT

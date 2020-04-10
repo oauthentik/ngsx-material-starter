@@ -1,7 +1,7 @@
 {
   "name": "mat-table-advanced",
   "version": "1.0.1",
-  "license": "Apache-2.0",
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "https://github.com/oauthentik/ngsx-material-starter/tree/master/projects/mat-table-advanced"
