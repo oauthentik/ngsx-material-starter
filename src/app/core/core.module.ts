@@ -36,7 +36,7 @@ import { UsersState } from "./store/users.state";
       developmentMode: !environment.production,
     }),
     NgxsRouterPluginModule.forRoot(),
-    NgxsStoragePluginModule.forRoot({ key: AUTH_STATE_TOKEN.getName() }),
+    NgxsStoragePluginModule.forRoot({ key: "auth" }),
     NgxsFormPluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot({ disabled: environment.production }),
     HttpClientModule,
