@@ -6,12 +6,13 @@
     "start": "ng serve",
     "format": "npx prettier --write .",
     "build-lib": "ng build mat-table-advanced",
-    "build-app": "ng build ngx-material-starter",
+    "build-app": "ng build --prod ngsx-material-starter",
     "build": "npm run build-lib && ng build --prod",
     "test-lib": "ng test --watch=false mat-table-advanced",
-    "test-app": "ng test --watch=false ngx-material-starter",
+    "test-app": "ng test --watch=false ngsx-material-starter",
     "pretest": "npm run format",
     "test": "npm run test-lib && npm run test-app",
+    "analyze":"npm run build-app -- --statsJson && npx webpack-bundle-analyzer dist/ngsx-material-starter/stats.json",
     "lint": "ng lint",
     "e2e": "ng e2e"
   },
@@ -89,7 +90,8 @@
     "tsickle": ">=0.29.0",
     "tslib": "^1.9.0",
     "tslint": "^5.11.0",
-    "typescript": "~3.1.6"
+    "typescript": "~3.1.6",
+    "webpack-bundle-analyzer": "^3.6.1"
   },
   "config": {
     "commitizen": {
