@@ -15,9 +15,7 @@
     "paths": {
       "@app/*": ["src/app/*"],
       "@test/*": ["src/test/*"],
-      "@env/*": ["src/environments/*"],
-      "mat-table-advanced": ["dist/mat-table-advanced"],
-      "mat-table-advanced/*": ["dist/mat-table-advanced/*"]
+      "@env/*": ["src/environments/*"]
     }
   }
 }
