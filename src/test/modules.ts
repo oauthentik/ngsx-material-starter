@@ -4,7 +4,7 @@ import { FlexLayoutModule } from "@angular/flex-layout";
 import { NoopAnimationsModule } from "@angular/platform-browser/animations";
 import { RouterTestingModule } from "@angular/router/testing";
 import { NgPipesModule } from "angular-pipes";
-import { MatAdvancedTableModule } from "mat-table-advanced";
+import { MatAdvancedTableModule } from "mat-advanced-table";
 import { WidgetModule } from "@app/shared/components/widget/widget.module";
 import { NgxsModule } from "@ngxs/store";
 import { AppState } from "@app/core/store/app.state";

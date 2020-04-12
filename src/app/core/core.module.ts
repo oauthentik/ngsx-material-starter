@@ -24,7 +24,7 @@ import { MenuModule } from "@app/shared/components/menu/menu.module";
 import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { appIcons } from "@app/config/icons";
-import { MatAdvancedTableModule } from "mat-table-advanced";
+import { MatAdvancedTableModule } from "mat-advanced-table";
 import { UsersState } from "./store/users.state";
 import { MatSidenavModule } from "@angular/material/sidenav";
 

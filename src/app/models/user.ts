@@ -1,4 +1,4 @@
-import { Table, Column } from "mat-table-advanced";
+import { Table, Column } from "mat-advanced-table";
 
 export interface User {
   userId: number;

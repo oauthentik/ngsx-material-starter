@@ -14,8 +14,7 @@ import { UsersState } from "@app/core/store/users.state";
 import { User, UserModel } from "@app/models/user";
 import { LoadUsers } from "@app/core/store/actions/users.action";
 import { WidgetLayouts } from "@app/config/layouts";
-import { MatTableAdvancedService } from "mat-table-advanced";
-import { ColumnModel } from "projects/mat-table-advanced/src/lib/models/column.model";
+import { ColumnModel, MatAdvancedTableService } from "mat-advanced-table";
 
 @Component({
   selector: "app-dashboard",
@@ -27,7 +26,7 @@ export class AppDashboardComponent implements OnInit {
   constructor(
     public store: Store,
     public el: ElementRef,
-    private advancedTableService: MatTableAdvancedService
+    private advancedTableService: MatAdvancedTableService
   ) {}
   @Select(AppState.getDashboard) dashboard$: Observable<Dashboard>;
   @Select(UsersState) users$: Observable<User[]>;

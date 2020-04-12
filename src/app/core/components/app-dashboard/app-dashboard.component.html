@@ -22,9 +22,9 @@
     [style.max-height.px]="widget.layout.xAxisRatio * dashboardHeight"
   ></app-widget>
   <app-widget [widget]="usersWidget" style="margin-top: 10px;">
-    <ngx-mat-table-advanced
+    <mat-advanced-table
       [columns]="userModelColumns"
       [data]="users$ | async"
-    ></ngx-mat-table-advanced>
+    ></mat-advanced-table>
   </app-widget>
 </div>
