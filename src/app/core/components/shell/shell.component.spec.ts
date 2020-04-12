@@ -9,6 +9,7 @@ import { UiModule } from "@app/core/ui.module";
 import { mockProviders } from "@test/providers";
 import { MenuModule } from "@app/shared/components/menu/menu.module";
 import { BreadcrumbModule } from "../breadcrumb/breadcrumb..module";
+import { MatSidenavModule } from "@angular/material";
 
 describe("ShellComponent", () => {
   let component: ShellComponent;
@@ -22,6 +23,7 @@ describe("ShellComponent", () => {
         ...mockCoreModules,
         UiModule,
         BreadcrumbModule,
+        MatSidenavModule,
         MenuModule,
       ],
       providers: [...mockProviders],
