@@ -11,6 +11,7 @@ import { AppState } from "@app/core/store/app.state";
 import { AuthState, AUTH_STATE_TOKEN } from "@app/core/store/auth.state";
 import { UsersState } from "@app/core/store/users.state";
 import { NgxsStoragePluginModule } from "@ngxs/storage-plugin";
+import { FontAwesomeModule } from "@fortawesome/angular-fontawesome";
 export const mockStartupModules: any[] = [
   CommonModule,
   FlexLayoutModule,
@@ -26,6 +27,7 @@ export const mockCoreModules: any[] = [
   ...mockStartupModules,
   UiModule,
   MatAdvancedTableModule,
+  FontAwesomeModule,
   WidgetModule,
   ...mockStoreModules,
 ];

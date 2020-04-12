@@ -8,6 +8,8 @@ import { mockProviders } from "@test/providers";
 import { AppDashboardComponent } from "./app-dashboard.component";
 import { By } from "@angular/platform-browser";
 import { WidgetComponent } from "@app/shared/components/widget/widget.component";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { appIcons } from "@app/config/icons";
 
 describe("AppDashboardComponent", () => {
   let component: AppDashboardComponent;
@@ -22,6 +24,7 @@ describe("AppDashboardComponent", () => {
   }));
 
   beforeEach(() => {
+    library.add(...appIcons);
     store = TestBed.get(Store);
     store.dispatch(new Login(mockCredentials));
     fixture = TestBed.createComponent(AppDashboardComponent);
